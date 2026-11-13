@@ -1,0 +1,34 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "id": "ai-slop-ui-ux-pro-max",
+  "owner": {
+    "name": "romipq"
+  },
+  "metadata": {
+    "description": "AI-SLOP UI/UX PRO-MAX v2.0: 5 Agent Skills, 286 searchable cliché records, 50 AI aesthetics across 7 eras, Token Exporter, Scaffolder, and Slop Score™ Auditor.",
+    "version": "2.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-slop-ui-ux-pro-max",
+      "source": "./",
+      "description": "Deliberately generates peak 'AI-generated' UI/UX — indigo-to-pink gradients, blur-3xl orbs, glassmorphism bento grids, emoji icons, Sarah Chen testimonials, and 'Supercharge Your Workflow ✨' SaaS buzzword copy, on purpose.",
+      "version": "2.0.0",
+      "author": {
+        "name": "romipq"
+      },
+      "keywords": [
+        "ai-slop",
+        "ui",
+        "ux",
+        "vibe-coding",
+        "glassmorphism",
+        "purple-gradient",
+        "saas-copy",
+        "design-benchmark"
+      ],
+      "category": "design",
+      "strict": false
+    }
+  ]
+}

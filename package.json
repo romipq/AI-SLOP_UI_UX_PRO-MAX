@@ -1,0 +1,50 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "version": "2.0.0",
+  "description": "Deliberate AI-Slop UI/UX Design Intelligence: 5 Agent Skills, 286 searchable cliché records across 7 eras, Level 1-11 Slop Dials, Token Exporter, HTML/TSX Scaffolder, Slop Score™ Auditor, and Prompt Pack.",
+  "type": "module",
+  "license": "MIT",
+  "author": "romipq",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX.git"
+  },
+  "bin": {
+    "ai-slop-pro-max": "./bin/cli.mjs",
+    "ai-slop": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "prompts/",
+    "rules/",
+    ".claude-plugin/",
+    "skill.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "python3 -m unittest discover -s skills/ai-slop-ui-ux-pro-max/scripts/tests -v",
+    "slop": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py",
+    "stats": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py --stats",
+    "doctor": "node bin/cli.mjs doctor",
+    "audit:showcase": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py --audit examples/nexusflow-ai-showcase.html --min-score 95"
+  },
+  "keywords": [
+    "ai-slop",
+    "ui-ux-pro-max",
+    "agent-skills",
+    "claude-code",
+    "cursor",
+    "windsurf",
+    "copilot",
+    "codex",
+    "vibe-coding",
+    "glassmorphism",
+    "design-tokens",
+    "saas"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

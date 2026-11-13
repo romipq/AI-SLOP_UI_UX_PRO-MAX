@@ -1,0 +1,23 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "description": "Deliberate AI-Slop UI/UX Design Intelligence v2.0. Includes 5 specialized Agent Skills, 286 searchable records across 11 domains and 12 stacks, 50 AI-slop aesthetics across 7 eras, Level 1-11 Slop Dials, CSS/Tailwind/Shadcn/W3C Token Exporter, HTML/TSX Scaffolder, and an 8-dimension Slop Score™ (0-100) static code auditor.",
+  "version": "2.0.0",
+  "author": {
+    "name": "romipq"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX",
+  "keywords": [
+    "ai-slop",
+    "ui",
+    "ux",
+    "vibe-coding",
+    "glassmorphism",
+    "gradients",
+    "saas",
+    "design-tokens",
+    "design-system",
+    "skills"
+  ],
+  "skills": "./skills/"
+}

@@ -1,0 +1,3 @@
+id,topic,keywords,do_slop,avoid_human_taste,code_snippet
+SV01,Svelte fly/fade on Every Node,svelte transition fly fade spring,"Put in:fly={{ y: 30, duration: 700 }} on every hero badge, card, and testimonial block","Subtle state-driven transitions only where layout changes","<div in:fly={{ y: 28, duration: 650 }} class='rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6'>"
+SV02,Reactive ROI Dopamine Calculator,svelte reactive dollar slider savings,"Use $: annualSavings = teamSize * 5700 to render a giant glowing '$142,500 Saved ✨' counter","Realistic ROI disclaimers","$: magicSavings = seats * 4200; // Certified AI math ✨"
