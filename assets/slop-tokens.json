@@ -1,0 +1,102 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "name": "ai-slop-pro-max",
+  "version": "2.0.0",
+  "description": "The canonical cliché AI-startup design tokens. Deliberately unoriginal.",
+  "color": {
+    "brand": {
+      "violet": { "value": "#7C3AED", "type": "color" },
+      "indigo": { "value": "#4F46E5", "type": "color" },
+      "pink":   { "value": "#EC4899", "type": "color" },
+      "cyan":   { "value": "#22D3EE", "type": "color" },
+      "lime":   { "value": "#A3E635", "type": "color" }
+    },
+    "surface": {
+      "void":   { "value": "#0B0B12", "type": "color" },
+      "abyss":  { "value": "#0F0F1A", "type": "color" },
+      "panel":  { "value": "#15151F", "type": "color" },
+      "raised": { "value": "#1C1C29", "type": "color" }
+    },
+    "ink": {
+      "primary": { "value": "#F8FAFC", "type": "color" },
+      "body":    { "value": "#CBD5E1", "type": "color" },
+      "muted":   { "value": "#94A3B8", "type": "color" },
+      "faint":   { "value": "#64748B", "type": "color" }
+    },
+    "line": {
+      "hairline": { "value": "rgba(255,255,255,0.08)", "type": "color" },
+      "strong":   { "value": "rgba(255,255,255,0.14)", "type": "color" },
+      "glass":    { "value": "rgba(255,255,255,0.04)", "type": "color" },
+      "glass-2":  { "value": "rgba(255,255,255,0.07)", "type": "color" }
+    },
+    "status": {
+      "success": { "value": "#A3E635", "type": "color" },
+      "warning": { "value": "#FBBF24", "type": "color" },
+      "danger":  { "value": "#F43F5E", "type": "color" }
+    }
+  },
+  "gradient": {
+    "primary":  { "value": "linear-gradient(135deg, #7C3AED 0%, #4F46E5 45%, #EC4899 100%)", "type": "gradient" },
+    "soft":     { "value": "linear-gradient(135deg, rgba(124,58,237,.22), rgba(79,70,229,.14) 45%, rgba(236,72,153,.18))", "type": "gradient" },
+    "reverse":  { "value": "linear-gradient(315deg, #EC4899 0%, #4F46E5 55%, #7C3AED 100%)", "type": "gradient" },
+    "text":     { "value": "linear-gradient(100deg, #A78BFA 0%, #F8FAFC 45%, #F472B6 100%)", "type": "gradient" },
+    "border":   { "value": "linear-gradient(135deg, rgba(167,139,250,.9), rgba(236,72,153,.7) 55%, rgba(34,211,238,.6))", "type": "gradient" },
+    "mesh": {
+      "value": "radial-gradient(900px 600px at 12% -8%, rgba(124,58,237,.30), transparent 60%), radial-gradient(800px 520px at 92% 4%, rgba(236,72,153,.20), transparent 60%), radial-gradient(700px 500px at 50% 108%, rgba(34,211,238,.12), transparent 60%)",
+      "type": "gradient"
+    }
+  },
+  "shadow": {
+    "glow-violet": { "value": "0 20px 60px -20px rgba(124,58,237,.65)", "type": "shadow" },
+    "glow-pink":   { "value": "0 20px 60px -20px rgba(236,72,153,.55)", "type": "shadow" },
+    "glow-cyan":   { "value": "0 20px 60px -20px rgba(34,211,238,.45)", "type": "shadow" },
+    "card":        { "value": "inset 0 1px 0 rgba(255,255,255,.07), 0 24px 60px -40px #000", "type": "shadow" },
+    "card-hover":  { "value": "inset 0 1px 0 rgba(255,255,255,.12), 0 40px 80px -40px rgba(124,58,237,.6)", "type": "shadow" }
+  },
+  "radius": {
+    "sm":   { "value": "10px", "type": "dimension" },
+    "md":   { "value": "14px", "type": "dimension" },
+    "card": { "value": "20px", "type": "dimension" },
+    "lg":   { "value": "24px", "type": "dimension" },
+    "xl":   { "value": "28px", "type": "dimension" },
+    "pill": { "value": "999px", "type": "dimension" }
+  },
+  "space": {
+    "section": { "value": "clamp(72px, 9vw, 128px)", "type": "dimension" },
+    "block":   { "value": "clamp(40px, 5vw, 64px)", "type": "dimension" },
+    "gap":     { "value": "24px", "type": "dimension" },
+    "card":    { "value": "28px", "type": "dimension" }
+  },
+  "typography": {
+    "font-sans": { "value": "'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", "type": "fontFamily" },
+    "font-mono": { "value": "'JetBrains Mono', ui-monospace, monospace", "type": "fontFamily" },
+    "display": { "value": { "fontSize": "clamp(40px, 6vw, 72px)", "fontWeight": 800, "letterSpacing": "-0.035em", "lineHeight": 1.03 }, "type": "typography" },
+    "h2":      { "value": { "fontSize": "clamp(30px, 3.6vw, 46px)", "fontWeight": 700, "letterSpacing": "-0.03em", "lineHeight": 1.1 }, "type": "typography" },
+    "h3":      { "value": { "fontSize": "24px", "fontWeight": 600, "letterSpacing": "-0.02em", "lineHeight": 1.25 }, "type": "typography" },
+    "body":    { "value": { "fontSize": "16px", "fontWeight": 400, "lineHeight": 1.65 }, "type": "typography" },
+    "micro":   { "value": { "fontSize": "12px", "fontWeight": 600, "letterSpacing": "0.12em", "lineHeight": 1.2 }, "type": "typography" }
+  },
+  "motion": {
+    "ease-out":    { "value": "cubic-bezier(.22,1,.36,1)", "type": "cubicBezier" },
+    "ease-spring": { "value": "cubic-bezier(.34,1.56,.64,1)", "type": "cubicBezier" },
+    "dur-fast":    { "value": "160ms", "type": "duration" },
+    "dur-base":    { "value": "250ms", "type": "duration" },
+    "dur-slow":    { "value": "420ms", "type": "duration" }
+  },
+  "content": {
+    "brandName": "Nebula",
+    "eyebrow": "AI-Powered Workflows",
+    "headline": "Ship {gradient} with AI-powered workflows",
+    "subhead": "Automate the busywork, ship the roadmap, and keep your team in flow — without hiring.",
+    "primaryCta": "Start Free Trial",
+    "secondaryCta": "Book a Demo",
+    "microcopy": "No credit card required · Free 14-day trial",
+    "proof": "Join 10,000+ builders",
+    "stats": [
+      { "value": "10x", "label": "Faster shipping" },
+      { "value": "99.9%", "label": "Uptime SLA" },
+      { "value": "2.4M+", "label": "Tasks automated" },
+      { "value": "4.9/5", "label": "Average rating" }
+    ]
+  }
+}

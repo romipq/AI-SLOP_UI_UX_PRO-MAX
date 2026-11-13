@@ -1,0 +1,38 @@
+name: slop-lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  score:
+    name: Score templates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Unit-check the linter itself
+        run: |
+          python3 scripts/slop_lint.py templates/landing.html --json > /tmp/report.json
+          python3 - <<'PY'
+          import json
+          report = json.load(open("/tmp/report.json"))
+          assert report["aggregate"]["score"] >= 95, report["aggregate"]
+          assert report["aggregate"]["grade"] == "S", report["aggregate"]
+          print("linter ok:", report["aggregate"]["score"], report["aggregate"]["band"])
+          PY
+
+      - name: Slop gate (every template ≥ 90)
+        run: |
+          set -e
+          for f in templates/*.html; do
+            score=$(python3 scripts/slop_lint.py "$f" --quiet)
+            echo "$f → $score/100"
+            [ "$score" -ge 90 ] || { echo "::error file=$f::slop score $score is below 90"; exit 1; }
+          done
+          echo "✓ all templates above the slop gate"
