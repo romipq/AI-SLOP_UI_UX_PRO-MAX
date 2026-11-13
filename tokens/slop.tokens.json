@@ -1,0 +1,147 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "version": "1.0.0",
+  "description": "Design tokens for maximum-cliché AI UI. Satire; do not use for production.",
+  "color": {
+    "canvas": {
+      "base": "#07070f",
+      "raised": "#0b0b18",
+      "panel": "#101024"
+    },
+    "surface": {
+      "glass": "rgba(255, 255, 255, 0.045)",
+      "glassHover": "rgba(255, 255, 255, 0.075)",
+      "glassActive": "rgba(255, 255, 255, 0.11)"
+    },
+    "border": {
+      "glass": "rgba(255, 255, 255, 0.09)",
+      "strong": "rgba(255, 255, 255, 0.16)"
+    },
+    "text": {
+      "primary": "#f6f4ff",
+      "muted": "#a9a6c9",
+      "dim": "#75729a"
+    },
+    "brand": {
+      "violet": "#8b5cf6",
+      "indigo": "#6366f1",
+      "fuchsia": "#d946ef",
+      "pink": "#ec4899",
+      "cyan": "#22d3ee",
+      "sky": "#38bdf8",
+      "emerald": "#34d399",
+      "amber": "#fbbf24"
+    }
+  },
+  "gradient": {
+    "brand": "linear-gradient(135deg, #6366f1 0%, #a855f7 46%, #ec4899 100%)",
+    "product": "linear-gradient(120deg, #22d3ee 0%, #6366f1 48%, #d946ef 100%)",
+    "ticker": "linear-gradient(90deg, #a855f7, #ec4899, #22d3ee)",
+    "text": "linear-gradient(115deg, #e9d5ff 0%, #a78bfa 28%, #f0abfc 62%, #67e8f9 100%)",
+    "border": "linear-gradient(135deg, rgba(168,85,247,.9), rgba(236,72,153,.65), rgba(34,211,238,.55))"
+  },
+  "typography": {
+    "fontFamily": {
+      "body": "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+      "display": "Poppins, Inter, ui-sans-serif, system-ui, sans-serif",
+      "serifAccent": "Instrument Serif, Georgia, Times New Roman, serif",
+      "mono": "SFMono-Regular, ui-monospace, Menlo, monospace"
+    },
+    "scale": {
+      "display": {
+        "size": "clamp(3rem, 6.5vw, 5.25rem)",
+        "weight": 800,
+        "tracking": "-0.04em",
+        "lineHeight": 1.02
+      },
+      "h2": {
+        "size": "clamp(2.1rem, 3.6vw, 3.1rem)",
+        "weight": 800,
+        "tracking": "-0.03em",
+        "lineHeight": 1.08
+      },
+      "h3": {
+        "size": "1.35rem",
+        "weight": 700,
+        "tracking": "-0.015em",
+        "lineHeight": 1.2
+      },
+      "lead": {
+        "size": "clamp(1.05rem, 1.5vw, 1.25rem)",
+        "weight": 400,
+        "tracking": "0",
+        "lineHeight": 1.65
+      },
+      "body": {
+        "size": "16px",
+        "weight": 400,
+        "tracking": "0",
+        "lineHeight": 1.65
+      },
+      "eyebrow": {
+        "size": "0.7rem",
+        "weight": 700,
+        "tracking": "0.22em",
+        "lineHeight": 1,
+        "transform": "uppercase"
+      },
+      "microcopy": {
+        "size": "0.78rem",
+        "weight": 500,
+        "tracking": "0.02em",
+        "lineHeight": 1.5
+      }
+    }
+  },
+  "space": {
+    "unit": "4px",
+    "rhythm": "8px",
+    "section": {
+      "desktop": "120px",
+      "tablet": "84px",
+      "tight": "72px"
+    },
+    "container": "min(1200px, calc(100% - 40px))",
+    "gridGap": "20px"
+  },
+  "radius": {
+    "sm": "14px",
+    "base": "20px",
+    "lg": "28px",
+    "xl": "32px",
+    "pill": "9999px"
+  },
+  "shadow": {
+    "glowViolet": "0 20px 60px -12px rgba(124,58,237,.55)",
+    "glowPink": "0 20px 60px -12px rgba(236,72,153,.45)",
+    "card": "0 24px 80px -32px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06)",
+    "featured": "0 40px 100px -40px rgba(168,85,247,.7), inset 0 1px 0 rgba(255,255,255,.08)"
+  },
+  "blur": {
+    "glass": "blur(18px) saturate(150%)",
+    "panel": "blur(24px)",
+    "mesh": "blur(90px)"
+  },
+  "motion": {
+    "ease": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "duration": {
+      "fast": "0.3s",
+      "base": "0.35s",
+      "reveal": "0.7s"
+    },
+    "loop": {
+      "float": "6s ease-in-out infinite",
+      "pulseGlow": "3.4s ease-in-out infinite",
+      "shimmer": "2.8s ease-in-out infinite",
+      "gradientPan": "6s ease infinite",
+      "marquee": "26s linear infinite",
+      "spinSlow": "18s linear infinite"
+    }
+  },
+  "slopLevels": {
+    "lite": { "target": 45, "sections": "4-5", "emoji": "1-2" },
+    "classic": { "target": 70, "sections": "7-9", "emoji": "3-5" },
+    "max": { "target": 90, "sections": "10-14", "emoji": "8-15" },
+    "nuclear": { "target": 100, "sections": "14+", "emoji": "15+" }
+  }
+}

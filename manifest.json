@@ -1,0 +1,93 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "version": "1.0.0",
+  "description": "A satirical agent skill that generates maximum-cliché AI UI/UX on purpose, plus SLOP-100: a 90-signal linter that scores how AI-generated a page looks.",
+  "license": "MIT",
+  "author": {
+    "name": "romipq",
+    "url": "https://github.com/romipq"
+  },
+  "homepage": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX.git"
+  },
+  "type": "agent-skill",
+  "entry": "SKILL.md",
+  "spec": {
+    "frontmatter": true,
+    "format": "claude-skill-md",
+    "compatibleWith": [
+      "claude-code",
+      "claude-skills",
+      "cursor",
+      "chatgpt",
+      "copilot",
+      "generic-agent"
+    ]
+  },
+  "tags": [
+    "ui",
+    "ux",
+    "design",
+    "satire",
+    "benchmark",
+    "prompt-pack",
+    "linter",
+    "gradients",
+    "glassmorphism",
+    "ai-slop"
+  ],
+  "slopLevels": {
+    "lite": 45,
+    "classic": 70,
+    "max": 90,
+    "nuclear": 100
+  },
+  "tooling": {
+    "lint": {
+      "command": "python3 tools/slop_lint.py {file} --min {target}",
+      "signals": 90,
+      "categories": 9,
+      "dependencies": []
+    },
+    "slopify": {
+      "command": "python3 tools/slopify.py {file}"
+    },
+    "generate": {
+      "command": "python3 tools/slop_gen.py --seed {seed}"
+    }
+  },
+  "contents": {
+    "references": [
+      "01-design-tokens.md",
+      "02-components.md",
+      "03-copywriting.md",
+      "04-motion.md",
+      "05-emoji-iconography.md",
+      "06-anti-patterns.md",
+      "07-slop-score.md",
+      "08-stacks.md",
+      "09-copy-ru.md"
+    ],
+    "prompts": [
+      "system-prompt.md",
+      "briefs.md",
+      "levels.md",
+      "roast.md"
+    ],
+    "examples": [
+      "00-before.html",
+      "01-max-landing.html",
+      "02-dashboard.html",
+      "03-auth.html",
+      "04-slopified.html"
+    ],
+    "docs": [
+      "INSTALL.md",
+      "PHILOSOPHY.md",
+      "CHEATSHEET.md"
+    ]
+  },
+  "disclaimer": "Satire. Examples intentionally break accessibility rules and contain fictional brands, testimonials and metrics. Do not present as real or ship to production."
+}

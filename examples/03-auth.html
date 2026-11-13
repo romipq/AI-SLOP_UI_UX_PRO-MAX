@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+  AI-SLOP UI/UX PRO-MAX · EXAMPLE 03 · Auth screen
+  "Welcome back 👋" + a rotating conic orb, because login pages deserve magic.
+  SLOP-100 target: 100/100.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in — Nexora AI ✨</title>
+  <link rel="stylesheet" href="../assets/slop.css" />
+  <style>
+    body { display: grid; place-items: center; }
+    .auth-shell {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 0;
+      width: min(1080px, calc(100% - 40px)); margin: 96px auto 60px;
+      border: 1px solid var(--slop-line-strong); border-radius: 32px; overflow: hidden;
+      background: rgba(255,255,255,.025); backdrop-filter: blur(28px);
+      box-shadow: 0 70px 160px -60px rgba(124,58,237,.8), inset 0 1px 0 rgba(255,255,255,.1);
+    }
+    .auth-brand {
+      position: relative; overflow: hidden; padding: 48px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
+      background:
+        radial-gradient(500px 360px at 10% 0%, rgba(124,58,237,.5), transparent 70%),
+        radial-gradient(420px 320px at 100% 100%, rgba(236,72,153,.32), transparent 70%),
+        linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+      border-right: 1px solid var(--slop-line);
+    }
+    .auth-brand::before {
+      content: ""; position: absolute; top: -140px; right: -100px; width: 380px; height: 380px;
+      border-radius: 50%; background: conic-gradient(from 90deg, #22d3ee, #6366f1, #d946ef, #22d3ee);
+      filter: blur(80px); opacity: .5; animation: spin-slow 22s linear infinite;
+    }
+    .auth-brand > * { position: relative; z-index: 1; }
+    .brand-quote { font-family: var(--font-display); font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.25; }
+    .brand-stats { display: flex; gap: 28px; }
+    .brand-stats b { display: block; font-family: var(--font-display); font-size: 1.35rem; letter-spacing: -.02em; }
+    .brand-stats span { color: var(--slop-dim); font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; }
+    .auth-form { padding: 48px 44px; }
+    .auth-form h1 { font-size: 1.75rem; letter-spacing: -.03em; margin-bottom: 6px; }
+    .auth-form .sub { color: var(--slop-muted); font-size: .88rem; margin-bottom: 26px; }
+    .form-row { display: flex; align-items: center; justify-content: space-between; margin: 4px 0 20px; font-size: .76rem; }
+    .checkbox { display: flex; align-items: center; gap: 8px; color: var(--slop-muted); }
+    .checkbox input { accent-color: #a855f7; }
+    .forgot { color: #c4b5fd; font-weight: 600; }
+    .auth-foot { margin-top: 24px; text-align: center; color: var(--slop-muted); font-size: .8rem; }
+    .auth-foot a { color: #e9d5ff; font-weight: 600; }
+    .trust-line { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; color: var(--slop-dim); font-size: .68rem; }
+    @media (max-width: 880px) {
+      .auth-shell { grid-template-columns: 1fr; margin-top: 84px; }
+      .auth-brand { display: none; }
+      .auth-form { padding: 36px 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="progress"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="01-max-landing.html">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="white"/></svg>
+        </span>
+        Nexora
+      </a>
+      <a class="btn btn-ghost btn-sm" href="01-max-landing.html">← Back to home</a>
+    </div>
+  </header>
+
+  <main class="auth-shell">
+    <!-- BRAND PANEL -->
+    <section class="auth-brand">
+      <a class="logo" href="#" style="font-size:1.2rem;">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="white"/></svg>
+        </span>
+        Nexora
+      </a>
+
+      <div>
+        <span class="eyebrow">✨ AI-powered workspace</span>
+        <p class="brand-quote">“Nexora completely revolutionized the way our team works. We shipped <span class="grad-text">10x faster</span> in the first week.”</p>
+        <div class="person mt-6">
+          <span class="avatar">SC</span>
+          <div>
+            <div class="person-name">Sarah Chen</div>
+            <div class="person-role">Head of Growth @ Lumina</div>
+          </div>
+        </div>
+        <div class="stars mt-4">★★★★★ <span class="dim" style="font-size:.72rem;letter-spacing:0;">4.9/5 from 2,800+ reviews</span></div>
+      </div>
+
+      <div class="brand-stats">
+        <div><b class="grad-text">10k+</b><span>Teams</span></div>
+        <div><b class="grad-text">2M+</b><span>Workflows</span></div>
+        <div><b class="grad-text">99.9%</b><span>Uptime</span></div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="auth-form">
+      <div class="auth-orb" aria-hidden="true">✨</div>
+      <h1>Welcome back 👋</h1>
+      <p class="sub">Sign in to your AI-powered workspace and pick up where you left off.</p>
+
+      <div class="oauth-row">
+        <button class="oauth" type="button">🌐 Google</button>
+        <button class="oauth" type="button">⌘ GitHub</button>
+      </div>
+
+      <div class="divider">or continue with email</div>
+
+      <form onsubmit="event.preventDefault();">
+        <div class="input-group">
+          <label for="email">Work email</label>
+          <input class="input" id="email" type="email" placeholder="you@company.com" autocomplete="email" />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input class="input" id="password" type="password" placeholder="••••••••••" autocomplete="current-password" />
+        </div>
+
+        <div class="form-row">
+          <label class="checkbox"><input type="checkbox" checked /> Remember me</label>
+          <a class="forgot" href="#">Forgot password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-lg w-full" type="submit">Sign in →</button>
+
+        <p class="trust-line">🔒 Protected by enterprise-grade security · SOC 2 Type II</p>
+      </form>
+
+      <p class="auth-foot mt-6">Don't have an account? <a href="#">Sign up for free</a></p>
+      <p class="dim center" style="font-size:.68rem;">No credit card required · 14-day free trial · Cancel anytime</p>
+    </section>
+  </main>
+
+  <footer class="center" style="padding:0 20px 40px;color:var(--slop-dim);font-size:.7rem;">
+    © 2026 Nexora Inc. · <a href="#" style="color:inherit;">Privacy</a> · <a href="#" style="color:inherit;">Terms</a> · <a href="#" style="color:inherit;">Status</a>
+    <br /><span style="opacity:.7;">Made with ❤️ by the Nexora team · Trusted by 10,000+ teams</span>
+  </footer>
+
+  <div class="slop-watermark">SLOP-100 · 100/100</div>
+
+  <button class="chat-bubble" id="chatToggle" aria-label="Open AI chat">✨</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-head">
+      <span class="icon icon--sm">🤖</span>
+      <div><div style="font-size:.86rem;font-weight:700;">Nexi — AI Assistant</div><div style="font-size:.68rem;color:var(--slop-dim);">● Online · replies in seconds</div></div>
+    </div>
+    <div class="chat-msg">Welcome back! 👋 Need help signing in? I'm AI-powered and available 24/7.</div>
+    <div class="chat-msg me">I forgot my password.</div>
+    <div class="chat-msg">No problem! ✨ I've sent a magic link to your inbox. It expires in 15 minutes — seamless. 🔒</div>
+    <div class="field mt-2"><input type="text" placeholder="Ask AI anything..." aria-label="Ask AI" /><button class="btn btn-primary btn-sm" type="button">Send</button></div>
+  </div>
+
+  <div class="cookie" id="cookie">
+    <div>🍪 We use cookies to keep you signed in and make your experience seamless. <a href="#" style="color:#c4b5fd;">Cookie Policy</a></div>
+    <div class="flex gap-2">
+      <div class="btn btn-primary btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Accept all</div>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Manage</button>
+    </div>
+  </div>
+
+  <script>
+    const progress = document.getElementById('progress');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+    }, { passive: true });
+
+    const chatWindow = document.getElementById('chatWindow');
+    document.getElementById('chatToggle').addEventListener('click', () => chatWindow.classList.toggle('open'));
+  </script>
+</body>
+</html>

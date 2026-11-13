@@ -1,0 +1,37 @@
+name: slop
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Rubric docs are in sync
+        run: python3 tools/gen_rubric.py --check
+
+      - name: Flagship landing is certified
+        run: python3 tools/slop_lint.py examples/01-max-landing.html --min 90
+
+      - name: Dashboard is certified
+        run: python3 tools/slop_lint.py examples/02-dashboard.html --min 90
+
+      - name: Auth screen is certified
+        run: python3 tools/slop_lint.py examples/03-auth.html --min 90
+
+      - name: Control group still has taste
+        run: test "$(python3 tools/slop_lint.py examples/00-before.html --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["score"])')" -lt 25

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+  THE CONTROL GROUP.
+  A deliberately restrained, tasteful page with no gradients, no glass, no emoji,
+  readable contrast and real focus states. Score it, then slopify it.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northwind — design &amp; engineering studio</title>
+  <style>
+    :root {
+      --paper: #f7f4ed;
+      --ink: #191917;
+      --muted: #5c5a54;
+      --line: #d9d4c7;
+      --accent: #2f5d50;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+    .wrap { width: min(720px, calc(100% - 48px)); margin-inline: auto; }
+    header { padding: 40px 0 0; }
+    .top { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+    .wordmark { font-size: 1.1rem; letter-spacing: .01em; text-decoration: none; }
+    nav { display: flex; gap: 22px; font-family: ui-sans-serif, system-ui, sans-serif; font-size: .82rem; color: var(--muted); }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+    main { padding: 96px 0 48px; }
+    h1 { margin: 0 0 28px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.18; font-weight: 400; letter-spacing: -.015em; max-width: 15em; }
+    .intro { margin: 0 0 18px; max-width: 34em; color: var(--muted); }
+    .arrow-link { display: inline-block; margin-top: 26px; color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; font-family: ui-sans-serif, system-ui, sans-serif; font-size: .88rem; }
+    .arrow-link:hover { border-bottom-width: 2px; }
+    section { margin-top: 88px; }
+    h2 { margin: 0 0 20px; font-family: ui-sans-serif, system-ui, sans-serif; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .work { border-top: 1px solid var(--line); }
+    .work-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+    .work-row:hover .client { text-decoration: underline; text-underline-offset: 5px; }
+    .client { font-size: 1.08rem; }
+    .work-meta { font-family: ui-sans-serif, system-ui, sans-serif; font-size: .8rem; color: var(--muted); }
+    .note { max-width: 36em; color: var(--muted); }
+    .note strong { color: var(--ink); font-weight: 400; }
+    .contact { margin-top: 88px; padding-top: 32px; border-top: 1px solid var(--line); }
+    .contact a { color: var(--accent); text-underline-offset: 4px; }
+    footer { padding: 44px 0 56px; font-family: ui-sans-serif, system-ui, sans-serif; font-size: .78rem; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 560px) {
+      main { padding-top: 64px; }
+      nav { display: none; }
+      .work-row { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="top">
+      <a class="wordmark" href="#">Northwind</a>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Independent design and engineering for teams that care about craft.</h1>
+    <p class="intro">
+      We're a two-person studio working with software companies on the parts of the product
+      that are hard to get right: onboarding, settings, permissions, the quiet screens that
+      decide whether people trust you.
+    </p>
+    <p class="intro">
+      Small engagements, senior people, no handoffs. We've been doing this since 2017.
+    </p>
+    <a class="arrow-link" href="#work">See selected work →</a>
+
+    <section id="work">
+      <h2>Selected work</h2>
+      <div class="work">
+        <a class="work-row" href="#">
+          <span class="client">Ledger — account setup for a banking API</span>
+          <span class="work-meta">2025 · Product design, front-end</span>
+        </a>
+        <a class="work-row" href="#">
+          <span class="client">Fieldnote — offline-first research tool</span>
+          <span class="work-meta">2024 · Design system, engineering</span>
+        </a>
+        <a class="work-row" href="#">
+          <span class="client">Harbor — permissions model for a healthcare platform</span>
+          <span class="work-meta">2023 · Research, interface design</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>How we work</h2>
+      <p class="note">
+        <strong>Two weeks at a time.</strong> We scope a single problem, work in your repo,
+        and leave the code and a short write-up behind. No decks, no discovery phase,
+        no account manager. Most projects run four to six weeks.
+      </p>
+      <p class="note">
+        We take on three projects at a time at most, and we say no more often than we say yes.
+      </p>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <p class="note">
+        If you have a problem worth a few weeks of careful attention, write to
+        <a href="mailto:hello@northwind.studio">hello@northwind.studio</a>.
+        We reply within two working days.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© 2026 Northwind Studio</span>
+    <span>Rotterdam · working remotely</span>
+  </footer>
+</body>
+</html>

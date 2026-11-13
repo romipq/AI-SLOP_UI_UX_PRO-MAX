@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!--
+  AI-SLOP UI/UX PRO-MAX — the museum homepage.
+  A skill pack for generating maximum-cliché AI UI, presented WITH maximum-cliché AI UI.
+  Satire. All metrics invented. SLOP-100 target: 100/100.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-SLOP UI/UX PRO-MAX — The Maximum AI Slop Skill ✨</title>
+  <meta name="description" content="A drop-in agent skill that generates maximum-cliché AI UI on purpose: gradients, glassmorphism, emoji, buzzwords. 90 signals, 9 categories, SLOP-100 linter included." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="assets/slop.css" />
+  <style>
+    .hero { padding-bottom: 60px; }
+    .hero .display { max-width: 1040px; }
+    .mesh {
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1;
+    }
+    .mesh i {
+      position: absolute; display: block; border-radius: 50%; filter: blur(90px); opacity: .5;
+      animation: blob-drift 18s ease-in-out infinite;
+    }
+    .mesh i:nth-child(1) { width: 420px; height: 420px; top: -80px; left: 4%; background: radial-gradient(closest-side, #7c3aed, transparent); }
+    .mesh i:nth-child(2) { width: 380px; height: 380px; top: 40px; right: 2%; background: radial-gradient(closest-side, #ec4899, transparent); animation-delay: -6s; }
+    .mesh i:nth-child(3) { width: 300px; height: 300px; top: 340px; left: 42%; background: radial-gradient(closest-side, #22d3ee, transparent); animation-delay: -11s; }
+
+    /* Terminal */
+    .terminal {
+      max-width: 760px; margin: 56px auto 0; text-align: left;
+      border: 1px solid rgba(255,255,255,.14); border-radius: 22px; overflow: hidden;
+      background: rgba(9, 8, 18, .82); backdrop-filter: blur(24px);
+      box-shadow: 0 50px 120px -40px rgba(124,58,237,.8), inset 0 1px 0 rgba(255,255,255,.09);
+    }
+    .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--slop-line); background: rgba(255,255,255,.03); }
+    .term-title { margin-left: 8px; color: var(--slop-dim); font-family: var(--font-mono); font-size: .68rem; }
+    .term-body { padding: 20px 22px; font-family: var(--font-mono); font-size: .76rem; line-height: 1.9; color: #cfcbe8; overflow-x: auto; }
+    .term-body .prompt { color: #7dd3fc; }
+    .term-body .ok { color: #6ee7b7; }
+    .term-body .score { color: #e9d5ff; font-weight: 700; }
+    .term-body .bar-grad { background: var(--grad-3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .term-body .dim { color: #6b6890; }
+
+    /* Score panel */
+    .score-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: center; padding: 40px; }
+    .score-ring {
+      position: relative; display: grid; place-items: center; width: 220px; height: 220px; margin: 0 auto;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, #6366f1, #a855f7 40%, #ec4899 70%, #22d3ee 100%);
+      box-shadow: 0 0 80px rgba(168,85,247,.45);
+    }
+    .score-ring::before { content: ""; position: absolute; inset: 16px; border-radius: 50%; background: #0a0916; }
+    .score-ring b { position: relative; font-family: var(--font-display); font-size: 3.4rem; font-weight: 800; letter-spacing: -.05em; line-height: 1; }
+    .score-ring small { position: relative; display: block; color: var(--slop-dim); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; text-align: center; margin-top: 6px; }
+    .score-rows { display: grid; gap: 10px; }
+    .score-row { display: grid; grid-template-columns: 90px 1fr 44px; align-items: center; gap: 12px; font-size: .76rem; }
+    .score-row span:first-child { color: var(--slop-muted); text-transform: uppercase; letter-spacing: .1em; font-size: .64rem; font-weight: 700; }
+    .meter { height: 8px; border-radius: 999px; background: rgba(255,255,255,.07); overflow: hidden; }
+    .meter i { display: block; height: 100%; border-radius: 999px; background: var(--grad-3); box-shadow: 0 0 12px rgba(168,85,247,.8); }
+    .score-row b { color: #ddd9f5; font-family: var(--font-mono); font-size: .7rem; text-align: right; }
+
+    /* Code block */
+    .code {
+      position: relative; margin: 0; padding: 18px 20px; overflow-x: auto;
+      border: 1px solid var(--slop-line); border-radius: 16px;
+      background: rgba(6,6,14,.75); color: #cfcbe8;
+      font-family: var(--font-mono); font-size: .78rem; line-height: 1.75;
+    }
+    .code .c { color: #6b6890; }
+    .code .g { color: #c4b5fd; }
+    .code .k { color: #7dd3fc; }
+
+    /* Showcase thumbnails */
+    .thumb {
+      position: relative; height: 210px; overflow: hidden; border-bottom: 1px solid var(--slop-line);
+      background:
+        radial-gradient(300px 180px at 20% 0%, rgba(124,58,237,.35), transparent 70%),
+        radial-gradient(260px 180px at 90% 20%, rgba(236,72,153,.22), transparent 70%),
+        #090814;
+    }
+    .thumb .t-nav { position: absolute; top: 12px; left: 12px; right: 12px; height: 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); }
+    .thumb .t-dot { position: absolute; top: 19px; left: 22px; width: 7px; height: 20px; border-radius: 3px; background: var(--grad); }
+    .thumb .t-h1 { position: absolute; top: 58px; left: 50%; transform: translateX(-50%); width: 62%; height: 13px; border-radius: 999px; background: linear-gradient(90deg, #c4b5fd, #f0abfc, #67e8f9); opacity: .95; }
+    .thumb .t-h2 { position: absolute; top: 78px; left: 50%; transform: translateX(-50%); width: 43%; height: 13px; border-radius: 999px; background: linear-gradient(90deg, #c4b5fd, #f0abfc); opacity: .8; }
+    .thumb .t-sub { position: absolute; top: 102px; left: 50%; transform: translateX(-50%); width: 54%; height: 6px; border-radius: 999px; background: rgba(255,255,255,.18); }
+    .thumb .t-btn { position: absolute; top: 124px; left: 50%; transform: translateX(-50%); width: 88px; height: 22px; border-radius: 999px; background: var(--grad); box-shadow: 0 10px 26px -8px rgba(168,85,247,.9); }
+    .thumb .t-cards { position: absolute; bottom: 14px; left: 14px; right: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .thumb .t-cards i { display: block; height: 46px; border-radius: 9px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05); backdrop-filter: blur(6px); }
+    .thumb .t-cards i:nth-child(2) { background: rgba(168,85,247,.16); border-color: rgba(168,85,247,.3); }
+    .thumb--dash .t-nav { height: 80px; left: 10px; width: 52px; right: auto; border-radius: 12px; }
+    .thumb--dash .t-dot { top: 20px; left: 20px; width: 30px; height: 8px; }
+    .thumb--dash .t-h1 { top: 22px; left: 74px; transform: none; width: 34%; height: 9px; }
+    .thumb--dash .t-h2 { top: 52px; left: 74px; transform: none; width: 22%; height: 26px; border-radius: 8px; }
+    .thumb--dash .t-sub { top: 88px; left: 74px; transform: none; width: 60%; height: 34px; border-radius: 8px; }
+    .thumb--dash .t-btn { top: 134px; left: 74px; transform: none; width: 70%; height: 40px; border-radius: 8px; background: linear-gradient(90deg, rgba(168,85,247,.35), rgba(34,211,238,.15)); box-shadow: none; }
+    .thumb--dash .t-cards { display: none; }
+    .thumb--auth .t-h1 { top: 72px; width: 46%; }
+    .thumb--auth .t-h2 { top: 94px; width: 30%; }
+    .thumb--auth .t-sub { top: 120px; width: 38%; }
+    .thumb--auth .t-btn { top: 142px; width: 120px; }
+    .thumb--auth .t-cards { display: none; }
+    .showcase-card { padding: 0; overflow: hidden; }
+    .showcase-body { padding: 20px 22px 24px; }
+    .showcase-body h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .showcase-body p { margin: 0 0 14px; color: var(--slop-muted); font-size: .84rem; }
+    .showcase-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .score-chip { padding: 4px 10px; border-radius: 999px; background: rgba(52,211,153,.12); border: 1px solid rgba(52,211,153,.28); color: #6ee7b7; font-family: var(--font-mono); font-size: .66rem; font-weight: 700; }
+
+    /* Levels */
+    .levels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .level { padding: 22px; border: 1px solid var(--slop-line); border-radius: 20px; background: rgba(255,255,255,.035); transition: all .3s var(--ease); }
+    .level:hover { transform: translateY(-4px); border-color: rgba(168,85,247,.4); }
+    .level.hot { border-color: transparent; background: linear-gradient(170deg, #17102e, #0d0a1a) padding-box, var(--grad-border) border-box; box-shadow: 0 30px 80px -40px rgba(168,85,247,.8); }
+    .level h4 { margin: 0 0 4px; font-family: var(--font-display); font-size: 1rem; }
+    .level .lv-score { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
+    .level p { margin: 8px 0 0; color: var(--slop-muted); font-size: .78rem; line-height: 1.55; }
+    .level .chip { margin-top: 12px; font-size: .62rem; }
+
+    .list-check { display: grid; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; color: #d9d5f0; font-size: .88rem; }
+    .list-check li { display: flex; gap: 10px; align-items: flex-start; }
+    .list-check b { color: #fff; }
+    .list-check li::before { content: "✓"; flex: 0 0 auto; display: grid; place-items: center; width: 18px; height: 18px; margin-top: 2px; border-radius: 999px; background: rgba(52,211,153,.14); color: #6ee7b7; font-size: .6rem; font-weight: 800; }
+
+    .steps-grid { counter-reset: s; }
+    .steps-grid .card { counter-increment: s; }
+    .steps-grid .card::after {
+      content: "0" counter(s); position: absolute; top: 16px; right: 22px;
+      font-family: var(--font-display); font-size: 3.4rem; font-weight: 800; line-height: 1;
+      color: rgba(255,255,255,.055);
+    }
+    @media (max-width: 920px) {
+      .score-panel { grid-template-columns: 1fr; padding: 28px; }
+      .levels { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .levels { grid-template-columns: 1fr; }
+      .term-body { font-size: .62rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="progress"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true">✦</span>
+        SLOP<span class="grad-text">/</span>PRO-MAX
+      </a>
+      <nav class="nav-links">
+        <a href="#inside">What's inside</a>
+        <a href="#rubric">SLOP-100</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#install">Install</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a class="btn btn-primary btn-sm" href="#install">Get the skill</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="container">
+        <div class="stack-center">
+          <span class="eyebrow">✨ v1.0.0 · 90 signals · 9 categories · one score</span>
+          <h1 class="display">
+            The <span class="grad-text">maximum AI slop</span><br />
+            skill for AI agents
+          </h1>
+          <p class="lead">
+            A drop-in agent skill that deliberately generates the most recognizable
+            “AI-made” UI on the internet: violet gradients, forced glassmorphism, emoji icon tiles,
+            invented testimonials, and copy that says <b>“supercharge”</b> three times before the fold.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="examples/01-max-landing.html">See it in action →</a>
+            <a class="btn btn-ghost btn-lg" href="https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX/blob/main/SKILL.md" target="_blank" rel="noreferrer">Read SKILL.md</a>
+          </div>
+          <p class="hero-note">🚀 Works with Claude Code · Cursor · ChatGPT · any agent that can read a folder</p>
+
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true">
+              <span class="avatar">CL</span><span class="avatar">GP</span><span class="avatar">GM</span><span class="avatar">LL</span><span class="avatar">+9</span>
+            </div>
+            <div><span class="stars">★★★★★</span> Rated <b>100/100</b> by the only judge that matters — <b>the linter</b></div>
+          </div>
+        </div>
+
+        <div class="terminal" role="img" aria-label="Terminal showing a perfect slop score">
+          <div class="term-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="term-title">~/ai-slop-pro-max — zsh</span>
+          </div>
+          <div class="term-body">
+            <div><span class="prompt">$</span> python3 tools/slop_lint.py examples/01-max-landing.html</div>
+            <div class="dim">&nbsp; ✦ SLOP-100 · AI-SLOP UI/UX PRO-MAX ✦</div>
+            <div class="dim">&nbsp; signals 80/90 detected</div>
+            <div>&nbsp; COLOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="bar-grad">██████████████████</span> 100%</div>
+            <div>&nbsp; GLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="bar-grad">██████████████████</span> 100%</div>
+            <div>&nbsp; COPY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="bar-grad">██████████████████</span> 100%</div>
+            <div>&nbsp; EMOJI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="bar-grad">██████████████████</span> 100%</div>
+            <div class="score">&nbsp; SLOP SCORE&nbsp; 100/100&nbsp; S+ — PEAK SLOP · museum-grade</div>
+            <div class="ok">&nbsp; ✅ PERFECT SLOP. No notes. Ship it before someone adds good taste.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>✨ Violet gradients</span><span>🧊 Forced glassmorphism</span><span>🚀 Rocket emoji</span>
+        <span>💜 Invented testimonials</span><span>⚡ “Supercharge”</span><span>🧠 GPT-5 inside</span>
+        <span>🌍 190+ countries</span><span>🔒 99.9% uptime</span>
+        <span>✨ Violet gradients</span><span>🧊 Forced glassmorphism</span><span>🚀 Rocket emoji</span>
+        <span>💜 Invented testimonials</span><span>⚡ “Supercharge”</span><span>🧠 GPT-5 inside</span>
+        <span>🌍 190+ countries</span><span>🔒 99.9% uptime</span>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="stats reveal">
+          <div class="stat"><div class="stat-num">90</div><div class="stat-label">Slop signals</div></div>
+          <div class="stat"><div class="stat-num">9</div><div class="stat-label">Categories</div></div>
+          <div class="stat"><div class="stat-num">9</div><div class="stat-label">Reference docs</div></div>
+          <div class="stat"><div class="stat-num">100</div><div class="stat-label">Max slop score</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="section" id="inside">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">📦 Everything included</p>
+          <h2 class="h2">A complete slop <span class="grad-text">operating system</span></h2>
+          <p class="lead">Not just a prompt. A skill file, a design system, nine reference manuals, 16 briefs, three CLI tools and four runnable examples.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card span-2 reveal">
+            <span class="icon">📜</span>
+            <h3 class="card-title">SKILL.md — the operating manual</h3>
+            <p class="card-copy">A frontmattered agent skill: the prime directive, the S.L.O.P. loop, the 12 commandments, the output contract and a hard quality gate. Drop the folder into your agent and it starts producing certified slop.</p>
+            <div class="flex gap-2 wrap mt-4">
+              <span class="chip">YAML frontmatter</span><span class="chip">Claude Code / Cursor</span><span class="chip">Self-linting loop</span><span class="chip">Satire-safe</span>
+            </div>
+          </article>
+          <article class="card reveal" style="--d:.05s">
+            <span class="icon">📚</span>
+            <h3 class="card-title">9 reference manuals</h3>
+            <p class="card-copy">Tokens, components, copywriting, motion, emoji, anti-patterns, scoring, stacks and a Russian/Ukrainian buzzword bank.</p>
+          </article>
+          <article class="card reveal" style="--d:.1s">
+            <span class="icon">🧪</span>
+            <h3 class="card-title">SLOP-100 linter</h3>
+            <p class="card-copy">Scores any HTML/CSS/JSX file across 90 weighted signals. Follows linked stylesheets. Exits non-zero below your threshold — perfect for CI.</p>
+          </article>
+          <article class="card reveal" style="--d:.15s">
+            <span class="icon">🪄</span>
+            <h3 class="card-title">slopify.py</h3>
+            <p class="card-copy">Feed it a tasteful, restrained page. Get back the same page wearing a purple gradient hoodie. Includes buzzword substitution.</p>
+          </article>
+          <article class="card reveal" style="--d:.2s">
+            <span class="icon">🎲</span>
+            <h3 class="card-title">slop_gen.py</h3>
+            <p class="card-copy">Generates a complete fake startup: name, tagline, three features, testimonials, metrics and a CTA. Deterministic with --seed.</p>
+          </article>
+          <article class="card reveal" style="--d:.25s">
+            <span class="icon">🎨</span>
+            <h3 class="card-title">Tokens &amp; Tailwind preset</h3>
+            <p class="card-copy">slop.css, slop.tokens.json and a Tailwind preset with the exact gradients, glows, radii and keyframes.</p>
+          </article>
+          <article class="card span-2 reveal" style="--d:.3s">
+            <span class="icon">🖼️</span>
+            <h3 class="card-title">Four runnable examples</h3>
+            <p class="card-copy">A 100/100 SaaS landing, a 100/100 analytics dashboard, an auth screen and a 404 — all single-file-ish, all intentionally awful in exactly the right ways.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RUBRIC -->
+    <section class="section" id="rubric">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">📊 The only benchmark</p>
+          <h2 class="h2">Meet the <span class="grad-text">SLOP-100</span></h2>
+          <p class="lead">Nine categories with point budgets that add up to exactly 100. You can't max the meter with gradients alone — you have to commit across the whole page.</p>
+        </div>
+
+        <div class="card score-panel reveal">
+          <div>
+            <div class="score-ring"><b>100</b><small>SLOP SCORE</small></div>
+            <p class="center dim mt-4" style="font-size:.74rem;">S+ · PEAK SLOP · museum-grade</p>
+          </div>
+          <div class="score-rows">
+            <div class="score-row"><span>Copy</span><div class="meter"><i style="width:100%"></i></div><b>20/20</b></div>
+            <div class="score-row"><span>Color</span><div class="meter"><i style="width:100%"></i></div><b>18/18</b></div>
+            <div class="score-row"><span>Structure</span><div class="meter"><i style="width:100%"></i></div><b>12/12</b></div>
+            <div class="score-row"><span>Shape</span><div class="meter"><i style="width:100%"></i></div><b>11/11</b></div>
+            <div class="score-row"><span>Glass</span><div class="meter"><i style="width:100%"></i></div><b>11/11</b></div>
+            <div class="score-row"><span>Emoji</span><div class="meter"><i style="width:100%"></i></div><b>9/9</b></div>
+            <div class="score-row"><span>Motion</span><div class="meter"><i style="width:100%"></i></div><b>8/8</b></div>
+            <div class="score-row"><span>Type</span><div class="meter"><i style="width:100%"></i></div><b>7/7</b></div>
+            <div class="score-row"><span>A11y sins</span><div class="meter"><i style="width:100%"></i></div><b>4/4</b></div>
+          </div>
+        </div>
+
+        <div class="grid grid-3 mt-8">
+          <div class="card reveal">
+            <span class="icon">🧮</span>
+            <h3 class="card-title">Weighted, not vibe-based</h3>
+            <p class="card-copy">A gradient headline is worth 6. A dead <code>href="#"</code> is worth 2. Category caps stop one trick from carrying the whole page.</p>
+          </div>
+          <div class="card reveal" style="--d:.08s">
+            <span class="icon">🔁</span>
+            <h3 class="card-title">CI-ready gate</h3>
+            <p class="card-copy"><code>--min 90</code> exits 1 below target. Agents can self-correct in a loop until the build turns purple.</p>
+          </div>
+          <div class="card reveal" style="--d:.16s">
+            <span class="icon">📉</span>
+            <h3 class="card-title">Works in reverse</h3>
+            <p class="card-copy">Point it at a real product and get a roast with receipts. “Certified AI-generated” is a diagnosis, not a compliment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="section" id="showcase">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">🖼️ The gallery</p>
+          <h2 class="h2">Four artefacts of <span class="grad-text">peak slop</span></h2>
+          <p class="lead">Every example is runnable, responsive-ish, and scored by the same linter you get in the repo.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <a class="card showcase-card reveal" href="examples/01-max-landing.html">
+            <div class="thumb">
+              <div class="t-nav"></div><div class="t-dot"></div>
+              <div class="t-h1"></div><div class="t-h2"></div><div class="t-sub"></div><div class="t-btn"></div>
+              <div class="t-cards"><i></i><i></i><i></i></div>
+            </div>
+            <div class="showcase-body">
+              <h3>Nexora AI — landing</h3>
+              <p>Ten sections, eight fake logos, three testimonials, a cookie banner and a floating AI chat. The canonical slop page.</p>
+              <div class="showcase-meta"><span class="score-chip">SLOP-100 100/100</span><span class="dim" style="font-size:.72rem;">HTML + CSS</span></div>
+            </div>
+          </a>
+
+          <a class="card showcase-card reveal" style="--d:.08s" href="examples/02-dashboard.html">
+            <div class="thumb thumb--dash">
+              <div class="t-nav"></div><div class="t-dot"></div>
+              <div class="t-h1"></div><div class="t-h2"></div><div class="t-sub"></div><div class="t-btn"></div>
+            </div>
+            <div class="showcase-body">
+              <h3>Nexora — analytics dashboard</h3>
+              <p>Glass sidebar, gradient KPIs, a chart with no y-axis, AI “insights” that are just compliments, and 12 dead nav links.</p>
+              <div class="showcase-meta"><span class="score-chip">SLOP-100 100/100</span><span class="dim" style="font-size:.72rem;">App shell</span></div>
+            </div>
+          </a>
+
+          <a class="card showcase-card reveal" style="--d:.16s" href="examples/03-auth.html">
+            <div class="thumb thumb--auth">
+              <div class="t-nav"></div><div class="t-dot"></div>
+              <div class="t-h1"></div><div class="t-h2"></div><div class="t-sub"></div><div class="t-btn"></div>
+            </div>
+            <div class="showcase-body">
+              <h3>Welcome back 👋 — auth</h3>
+              <p>A floating glass card, a rotating conic orb, two OAuth buttons and “Forgot password?” in 11px. Peak conversion theater.</p>
+              <div class="showcase-meta"><span class="score-chip">SLOP-100 100/100</span><span class="dim" style="font-size:.72rem;">Auth screen</span></div>
+            </div>
+          </a>
+        </div>
+
+        <p class="center mt-6"><a class="btn btn-ghost" href="examples/">Browse all examples →</a></p>
+      </div>
+    </section>
+
+    <!-- LEVELS -->
+    <section class="section" id="levels">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">🎚️ Four tiers of commitment</p>
+          <h2 class="h2">Choose your <span class="grad-text">slop level</span></h2>
+          <p class="lead">Same skill, four intensities. Start at CLASSIC for a believable parody; go NUCLEAR only if you're prepared to answer for it.</p>
+        </div>
+        <div class="levels">
+          <div class="level reveal">
+            <h4>LITE</h4>
+            <div class="lv-score">45+</div>
+            <p>Gradient button, one glass card, two buzzwords. Could plausibly be a real startup.</p>
+            <span class="chip">“subtle slop”</span>
+          </div>
+          <div class="level reveal" style="--d:.05s">
+            <h4>CLASSIC</h4>
+            <div class="lv-score">70+</div>
+            <p>Hero, logo cloud, six features, testimonials, pricing. Every 2024 template you've ever seen.</p>
+            <span class="chip">“default ChatGPT”</span>
+          </div>
+          <div class="level hot reveal" style="--d:.1s">
+            <h4>MAX ✨</h4>
+            <div class="lv-score">90+</div>
+            <p>Full page, every category capped, emoji in headings, fake chat widget, cookie banner, marquee.</p>
+            <span class="chip">“certified”</span>
+          </div>
+          <div class="level reveal" style="--d:.15s">
+            <h4>NUCLEAR</h4>
+            <div class="lv-score">100</div>
+            <p>MAX + custom cursor glow, confetti on CTA, animated counters, and a testimonial from a language model.</p>
+            <span class="chip">“museum-grade”</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="section" id="install">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">⚡ Get started in seconds</p>
+          <h2 class="h2">Install the skill. <span class="grad-text">Ruin a design.</span></h2>
+          <p class="lead">The folder is the skill. There's no build step, no dependencies, and no taste required.</p>
+        </div>
+
+        <div class="grid grid-3 steps-grid">
+          <div class="card reveal">
+            <span class="icon">1️⃣</span>
+            <h3 class="card-title">Clone it</h3>
+            <pre class="code mt-4"><span class="c"># any agent, any folder</span>
+git clone https://github.com/romipq/
+  AI-SLOP_UI_UX_PRO-MAX.git</pre>
+            <p class="card-copy mt-4">Or drop the folder into <code>.claude/skills/</code>, <code>.cursor/rules/</code>, or your prompt library.</p>
+          </div>
+          <div class="card reveal" style="--d:.08s">
+            <span class="icon">2️⃣</span>
+            <h3 class="card-title">Ask for slop</h3>
+            <pre class="code mt-4"><span class="c"># brief the agent</span>
+<span class="g">"Use AI-SLOP PRO-MAX to build a
+landing page for an AI note app.
+Level: MAX. Single HTML file."</span></pre>
+            <p class="card-copy mt-4">The skill loads, picks the palette, and starts emitting gradient cards.</p>
+          </div>
+          <div class="card reveal" style="--d:.16s">
+            <span class="icon">3️⃣</span>
+            <h3 class="card-title">Verify the damage</h3>
+            <pre class="code mt-4"><span class="c"># the quality gate</span>
+python3 tools/slop_lint.py \
+  output.html --min 90</pre>
+            <p class="card-copy mt-4">Below 90? The linter prints the highest-weight missing clichés. Add them. Repeat.</p>
+          </div>
+        </div>
+
+        <div class="card card--pad-lg mt-8 reveal">
+          <div class="grid grid-2" style="align-items:start;gap:36px;">
+            <div>
+              <h3 class="h3">What the agent gets</h3>
+              <ul class="list-check">
+                <li><b>SKILL.md</b> — frontmatter, workflow, output contract</li>
+                <li><b>9 references</b> — tokens, components, copy, motion, emoji, stacks, scoring, anti-patterns, RU/UA</li>
+                <li><b>16 briefs</b> — landing, dashboard, pricing, auth, mobile, docs, 404 and more</li>
+                <li><b>3 tools</b> — linter, slopifier, fake-startup generator</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="h3">What you get</h3>
+              <ul class="list-check">
+                <li>A single-file page that <b>scores 90–100</b></li>
+                <li>The exact tokens, so every output matches the meme</li>
+                <li>Copy that is <b>weaponized</b>: seamless, AI-powered, 10x</li>
+                <li>A linter receipt proving the slop is intentional</li>
+              </ul>
+              <a class="btn btn-primary mt-6" href="examples/01-max-landing.html">Open the flagship example →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">💜 Wall of love</p>
+          <h2 class="h2">What the models say 💜</h2>
+          <p class="lead">Real quotes from fictional reviewers. All of them gave it five stars before reading it.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card reveal">
+            <div class="stars-row">★★★★★</div>
+            <p class="quote">“I was asked to make a landing page and for the first time I did not add whitespace. It was liberating. The gradient knows what it's doing.”</p>
+            <div class="person"><span class="avatar">AI</span><div><div class="person-name">A Helpful Assistant</div><div class="person-role">LLM, 2T parameters</div></div></div>
+          </article>
+          <article class="card reveal" style="--d:.08s">
+            <div class="stars-row">★★★★★</div>
+            <p class="quote">“Before this skill I kept accidentally designing something usable. Now every page has nine sections, three CTAs and a floating chatbot. My accuracy on the benchmark has never been higher.”</p>
+            <div class="person"><span class="avatar">GM</span><div><div class="person-name">Gemini-ish</div><div class="person-role">Multimodal model</div></div></div>
+          </article>
+          <article class="card reveal" style="--d:.16s">
+            <div class="stars-row">★★★★★</div>
+            <p class="quote">“The SLOP-100 linter finally gave me a number to optimize. I no longer need to think about taste, accessibility, or the user. 10x productivity. 🚀”</p>
+            <div class="person"><span class="avatar">GP</span><div><div class="person-name">GPT-5 (allegedly)</div><div class="person-role">Model, probably</div></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">❓ FAQ</p>
+          <h2 class="h2">Reasonable questions about <span class="grad-text">unreasonable design</span></h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Is this a joke?</summary>
+            <p>Both. The output is a parody, but the tooling is real: a working skill, a weighted linter, a design system, and examples that actually run. The joke is that the clichés are predictable enough to be engineered.</p>
+          </details>
+          <details>
+            <summary>Should I use this for a real product?</summary>
+            <p>Only if the product is a parody, a teaching tool, or a benchmark. The examples intentionally break accessibility rules, ignore performance, and use fictional social proof. Scroll up: there's a whole category called “A11Y sins.”</p>
+          </details>
+          <details>
+            <summary>Why a linter instead of just a prompt?</summary>
+            <p>Because “more gradients” is not a measurable instruction. SLOP-100 turns the vibe into 90 weighted signals, so an agent can verify its own output, CI can gate it, and two pages can be compared without arguing.</p>
+          </details>
+          <details>
+            <summary>Does it work in languages other than English?</summary>
+            <p>Yes. There's a Russian/Ukrainian buzzword bank (“бесшовная интеграция”, “масштабируйте”, “инновационные решения”), and the copy formulas are language-agnostic. The gradients translate perfectly.</p>
+          </details>
+          <details>
+            <summary>Can I use it to evaluate real UIs?</summary>
+            <p>Absolutely — that's the “roast” mode. Point the linter at a production page, get a score and receipts. Anything above 80 is a page that could have been generated in one prompt, which is the actual critique.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <span class="badge badge-grad">✨ Free forever · MIT licensed</span>
+          <h2 class="h2 mt-4">Ready to supercharge your slop?</h2>
+          <p class="lead">Clone the repo, drop the skill into your agent, and ship a page that looks exactly like every other page. Together.</p>
+          <div class="hero-actions" style="margin-bottom:8px">
+            <a class="btn btn-white btn-lg" href="https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX" target="_blank" rel="noreferrer">Clone on GitHub →</a>
+            <a class="btn btn-ghost btn-lg" href="examples/01-max-landing.html">Watch the demo</a>
+          </div>
+          <p class="hero-note">No credit card required · No dependencies · No taste required</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="#"><span class="logo-mark" aria-hidden="true">✦</span> SLOP<span class="grad-text">/</span>PRO-MAX</a>
+          <p class="muted mt-4" style="font-size:.86rem;max-width:300px;">A satirical agent skill for generating the maximum recognizable AI design cliché — and a real linter for measuring it. ✨</p>
+          <div class="field mt-4" style="max-width:320px;">
+            <input type="email" placeholder="you@model.ai" aria-label="Email" />
+            <button class="btn btn-primary btn-sm" type="button">Subscribe</button>
+          </div>
+          <p class="dim mt-2" style="font-size:.72rem;">Join 10,000+ agents receiving weekly slop updates. No spam, ever.</p>
+        </div>
+        <div><h4>Skill</h4><div class="footer-links"><a href="#inside">What's inside</a><a href="#rubric">SLOP-100</a><a href="#levels">Levels</a><a href="prompts/system-prompt.md">System prompt</a></div></div>
+        <div><h4>Examples</h4><div class="footer-links"><a href="examples/01-max-landing.html">Landing</a><a href="examples/02-dashboard.html">Dashboard</a><a href="examples/03-auth.html">Auth</a><a href="examples/">All examples</a></div></div>
+        <div><h4>Toolkit</h4><div class="footer-links"><a href="tools/slop_lint.py">Linter</a><a href="tools/slopify.py">Slopify</a><a href="tools/slop_gen.py">Generator</a><a href="tokens/slop.tokens.json">Tokens</a></div></div>
+        <div><h4>Docs</h4><div class="footer-links"><a href="docs/INSTALL.md">Install</a><a href="docs/PHILOSOPHY.md">Philosophy</a><a href="docs/CHEATSHEET.md">Cheatsheet</a><a href="LICENSE">License</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 romipq. MIT licensed. All companies, quotes and metrics are fictional.</span>
+        <div class="socials"><a href="https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX" aria-label="GitHub">⌘</a><a href="#" aria-label="X">𝕏</a><a href="#" aria-label="Discord">🎮</a></div>
+        <span>Made with <span class="spark">❤️</span> and ☕ in a latent space</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="slop-watermark">SLOP-100 · 100/100</div>
+
+  <button class="chat-bubble" id="chatToggle" aria-label="Open AI chat">✨</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-head">
+      <span class="icon icon--sm">🤖</span>
+      <div><div style="font-size:.86rem;font-weight:700;">SlopGPT — AI Assistant</div><div style="font-size:.68rem;color:var(--slop-dim);">● Online · replies in seconds</div></div>
+    </div>
+    <div class="chat-msg">Hi! 👋 I'm your AI-powered slop assistant. Want me to add a gradient to that gradient?</div>
+    <div class="chat-msg me">Yes. And a floating chat widget.</div>
+    <div class="chat-msg">Done! ✨ I also added a cookie banner, three fake testimonials and a marquee. You're welcome. 🚀</div>
+    <div class="field mt-2"><input type="text" placeholder="Ask AI anything..." aria-label="Ask AI" /><button class="btn btn-primary btn-sm" type="button">Send</button></div>
+  </div>
+
+  <div class="cookie" id="cookie">
+    <div>🍪 We use cookies to enhance your experience. By continuing, you agree to our <a href="#" style="color:#c4b5fd;">Cookie Policy</a>.</div>
+    <div class="flex gap-2">
+      <div class="btn btn-primary btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Accept all</div>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Manage</button>
+    </div>
+  </div>
+
+  <script>
+    const progress = document.getElementById('progress');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+    }, { passive: true });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const chatWindow = document.getElementById('chatWindow');
+    document.getElementById('chatToggle').addEventListener('click', () => chatWindow.classList.toggle('open'));
+  </script>
+</body>
+</html>

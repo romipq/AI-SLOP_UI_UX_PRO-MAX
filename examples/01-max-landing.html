@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--
+  AI-SLOP UI/UX PRO-MAX · EXAMPLE 01 · "MAX" tier
+  Target: SLOP-100 = 100/100. This page is satire. Do not ship it.
+  All companies, quotes, metrics and employees are fictional.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexora — The All-in-One AI Platform to Supercharge Your Workflow ✨</title>
+  <meta name="description" content="Nexora is the AI-powered, all-in-one platform that seamlessly unifies your data and unlocks 10x productivity — in seconds. No credit card required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="../assets/slop.css" />
+  <style>
+    /* page-local slop */
+    .mock-badge { position: absolute; top: 18px; right: 18px; z-index: 2; }
+    .hero-glow { position: absolute; inset: auto 50% -10%; width: 70%; height: 300px; transform: translateX(50%);
+      background: radial-gradient(closest-side, rgba(236,72,153,.22), transparent); filter: blur(40px); pointer-events: none; }
+    .step { position: relative; text-align: center; padding: 28px 22px; }
+    .step-num { display: grid; place-items: center; width: 46px; height: 46px; margin: 0 auto 16px;
+      border-radius: 9999px; background: var(--grad); font-family: var(--font-display); font-weight: 800;
+      box-shadow: var(--glow-violet), inset 0 1px 0 rgba(255,255,255,.3); }
+    .step:not(:last-child)::after { content: ""; position: absolute; top: 50px; right: -10px; width: 20px; height: 1px;
+      background: linear-gradient(90deg, rgba(168,85,247,.6), transparent); }
+    .spark { display: inline-block; animation: float 4s ease-in-out infinite; }
+    .bento-visual { display: flex; align-items: flex-end; gap: 6px; height: 90px; margin-top: 18px; }
+    .bento-visual i { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, #c084fc, rgba(99,102,241,.15)); }
+    .bento-visual i:nth-child(2n) { background: linear-gradient(180deg, #f0abfc, rgba(236,72,153,.12)); }
+    .quote-card { display: flex; flex-direction: column; justify-content: space-between; }
+    .faq-wrap { position: relative; }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="progress"></div>
+
+  <!-- ══════════════════════════ NAV ══════════════════════════ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="white"/></svg>
+        </span>
+        Nexora
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#testimonials">Customers</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#">Docs</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost btn-sm" href="#">Sign in</a>
+        <a class="btn btn-primary btn-sm" href="#pricing">Get Started for Free</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ══════════════════════════ HERO ══════════════════════════ -->
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="stack-center">
+          <span class="eyebrow">✨ Introducing Nexora 2.0 — now powered by GPT-5</span>
+          <h1 class="display">
+            Supercharge your workflow<br />
+            with <span class="grad-text">AI-powered <em class="serif-accent">magic</em></span>
+          </h1>
+          <p class="lead">
+            The all-in-one AI platform that seamlessly unifies your data, automates the busywork,
+            and unlocks <b>10x productivity</b> — in seconds. No code. No limits.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="#pricing">Get Started for Free →</a>
+            <a class="btn btn-ghost btn-lg" href="#features">▶ Watch demo</a>
+          </div>
+          <p class="hero-note">🚀 No credit card required · 14-day free trial · Cancel anytime</p>
+
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true">
+              <span class="avatar">SC</span>
+              <span class="avatar">MR</span>
+              <span class="avatar">AP</span>
+              <span class="avatar">JL</span>
+              <span class="avatar">+2k</span>
+            </div>
+            <div>
+              <span class="stars">★★★★★</span>
+              <b>4.9/5</b> — Trusted by <b>10,000+ teams</b> worldwide
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="float-card float-card--tl">
+            <span class="icon--sm icon">✨</span>
+            <div>+38% productivity<small>this quarter</small></div>
+          </div>
+          <div class="float-card float-card--br">
+            <span class="icon--sm icon">🚀</span>
+            <div>10x faster shipping<small>vs. last year</small></div>
+          </div>
+          <div class="float-card float-card--bl">
+            <span class="icon--sm icon">💜</span>
+            <div>Loved by 10k teams<small>4.9★ average</small></div>
+          </div>
+
+          <div class="mockup">
+            <span class="badge badge-grad mock-badge">✨ Live demo</span>
+            <div class="mockup-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="mockup-url">app.nexora.ai/dashboard</span>
+            </div>
+            <div class="mockup-body">
+              <aside class="mock-side">
+                <div class="mock-line grad w-70"></div>
+                <div class="mock-line w-85"></div>
+                <div class="mock-line w-50"></div>
+                <div class="mock-line w-70"></div>
+                <div class="mock-line w-50"></div>
+                <div class="mock-line w-85"></div>
+              </aside>
+              <div class="mock-main">
+                <div class="mock-kpis">
+                  <div class="mock-kpi"><div class="k-label">Revenue</div><div class="k-value grad-text">$84.2k</div></div>
+                  <div class="mock-kpi"><div class="k-label">Workflows</div><div class="k-value">12,480</div></div>
+                  <div class="mock-kpi"><div class="k-label">Saved</div><div class="k-value grad-text">+38%</div></div>
+                </div>
+                <div class="mock-chart" aria-hidden="true">
+                  <span style="height:34%"></span><span style="height:52%"></span><span style="height:41%"></span>
+                  <span style="height:66%"></span><span style="height:58%"></span><span style="height:78%"></span>
+                  <span style="height:64%"></span><span style="height:88%"></span><span style="height:72%"></span>
+                  <span style="height:96%"></span><span style="height:84%"></span><span style="height:100%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TICKER ══════════════════════════ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>🚀 Ship <b>10x faster</b></span>
+        <span>🔒 Enterprise-grade security</span>
+        <span>🌍 Trusted in <b>190+ countries</b></span>
+        <span>⚡ <b>99.9%</b> uptime</span>
+        <span>✨ AI-powered everything</span>
+        <span>🧠 Powered by GPT-5</span>
+        <span>🚀 Ship <b>10x faster</b></span>
+        <span>🔒 Enterprise-grade security</span>
+        <span>🌍 Trusted in <b>190+ countries</b></span>
+        <span>⚡ <b>99.9%</b> uptime</span>
+        <span>✨ AI-powered everything</span>
+        <span>🧠 Powered by GPT-5</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════ LOGO CLOUD ══════════════════════════ -->
+    <section class="section section--tight">
+      <div class="container">
+        <p class="eyebrow center" style="display:flex;width:max-content;margin:0 auto 10px;">Trusted by 10,000+ modern teams</p>
+        <div class="logo-cloud">
+          <span class="fake-logo"><i></i>Acme Corp</span>
+          <span class="fake-logo"><i></i>Lumina</span>
+          <span class="fake-logo"><i></i>Vertex</span>
+          <span class="fake-logo"><i></i>Quantumly</span>
+          <span class="fake-logo"><i></i>Nebula</span>
+          <span class="fake-logo"><i></i>Orbit Labs</span>
+          <span class="fake-logo"><i></i>Pulse</span>
+          <span class="fake-logo"><i></i>Zenith</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ FEATURES / BENTO ══════════════════════════ -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">⚡ The platform</p>
+          <h2 class="h2">Everything you need.<br /><span class="grad-text">Nothing you don't.</span></h2>
+          <p class="lead">One beautifully crafted workspace to automate, analyze and accelerate — all powered by cutting-edge AI.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card span-2 reveal">
+            <span class="icon">⚡</span>
+            <h3 class="card-title">Lightning-fast automation</h3>
+            <p class="card-copy">From idea to shipped in seconds. Our AI-powered engine turns messy workflows into seamless, self-running systems — no code required.</p>
+            <div class="bento-visual" aria-hidden="true">
+              <i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i>
+              <i style="height:66%"></i><i style="height:94%"></i><i style="height:74%"></i><i style="height:100%"></i>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--d:.05s">
+            <span class="icon">🧠</span>
+            <h3 class="card-title">AI-powered insights</h3>
+            <p class="card-copy">Ask anything in plain English and get answers in seconds. Your data finally speaks human.</p>
+          </article>
+
+          <article class="card reveal" style="--d:.1s">
+            <span class="icon">🔒</span>
+            <h3 class="card-title">Enterprise-grade security</h3>
+            <p class="card-copy">SOC 2 Type II, SSO, granular permissions and end-to-end encryption. Sleep well at night.</p>
+          </article>
+
+          <article class="card reveal" style="--d:.15s">
+            <span class="icon">🔗</span>
+            <h3 class="card-title">Seamless integrations</h3>
+            <p class="card-copy">Connect 200+ tools with one click. Slack, Notion, GitHub and everything in between.</p>
+          </article>
+
+          <article class="card reveal" style="--d:.2s">
+            <span class="icon">🌍</span>
+            <h3 class="card-title">Global scale</h3>
+            <p class="card-copy">Deploy in 190+ countries with automatic failover, edge caching and 99.9% uptime.</p>
+          </article>
+
+          <article class="card reveal" style="--d:.25s">
+            <span class="icon">💜</span>
+            <h3 class="card-title">Loved by teams</h3>
+            <p class="card-copy">12,000+ five-star reviews and a community of 50,000 builders shipping with Nexora.</p>
+          </article>
+
+          <article class="card reveal" style="--d:.3s">
+            <span class="icon">🎯</span>
+            <h3 class="card-title">Built for focus</h3>
+            <p class="card-copy">A distraction-free canvas that keeps your team in flow — seamlessly, effortlessly.</p>
+          </article>
+
+          <article class="card reveal" style="--d:.35s">
+            <span class="icon">📈</span>
+            <h3 class="card-title">Revenue intelligence</h3>
+            <p class="card-copy">Turn every workflow into growth with AI-powered forecasting and predictive insights.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ STATS ══════════════════════════ -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="stats reveal">
+          <div class="stat"><div class="stat-num">10,000+</div><div class="stat-label">Teams onboarded</div></div>
+          <div class="stat"><div class="stat-num">2M+</div><div class="stat-label">Workflows automated</div></div>
+          <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Uptime guaranteed</div></div>
+          <div class="stat"><div class="stat-num">4.9/5</div><div class="stat-label">Average rating</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ HOW IT WORKS ══════════════════════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">🚀 How it works</p>
+          <h2 class="h2">Up and running in <span class="grad-text">3 simple steps</span></h2>
+          <p class="lead">No onboarding calls. No 40-page docs. Just plug in and let the AI do the heavy lifting.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="step card reveal">
+            <div class="step-num">1</div>
+            <h3 class="card-title">Connect your stack</h3>
+            <p class="card-copy">Connect 200+ tools in one click. Nexora syncs everything seamlessly in the background.</p>
+          </div>
+          <div class="step card reveal" style="--d:.08s">
+            <div class="step-num">2</div>
+            <h3 class="card-title">Let AI do the work</h3>
+            <p class="card-copy">Describe the outcome you want. Our GPT-5-powered engine builds the workflow for you.</p>
+          </div>
+          <div class="step card reveal" style="--d:.16s">
+            <div class="step-num">3</div>
+            <h3 class="card-title">Scale without limits</h3>
+            <p class="card-copy">Watch productivity soar. Scale your business without scaling headcount. Effortless.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ TESTIMONIALS ══════════════════════════ -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">💜 Wall of love</p>
+          <h2 class="h2">Loved by 10,000+ modern teams 💜</h2>
+          <p class="lead">Don't take our word for it. Here's what our amazing customers have to say.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card quote-card reveal">
+            <div>
+              <div class="stars-row">★★★★★</div>
+              <p class="quote">"Nexora completely revolutionized the way our team works. We shipped 10x faster in the first week — it honestly feels like magic. ✨"</p>
+            </div>
+            <div class="person">
+              <span class="avatar">SC</span>
+              <div><div class="person-name">Sarah Chen</div><div class="person-role">Head of Growth @ Lumina</div></div>
+            </div>
+          </article>
+          <article class="card quote-card reveal" style="--d:.08s">
+            <div>
+              <div class="stars-row">★★★★★</div>
+              <p class="quote">"We replaced six tools with Nexora and the ROI was immediate. The experience is seamless from day one. Total game-changer."</p>
+            </div>
+            <div class="person">
+              <span class="avatar">MR</span>
+              <div><div class="person-name">Marcus Rodriguez</div><div class="person-role">CEO @ Vertex Labs</div></div>
+            </div>
+          </article>
+          <article class="card quote-card reveal" style="--d:.16s">
+            <div>
+              <div class="stars-row">★★★★★</div>
+              <p class="quote">"I didn't think AI could really understand our workflow. I was wrong. Nexora empowered our whole team to do their best work. 🔥"</p>
+            </div>
+            <div class="person">
+              <span class="avatar">AP</span>
+              <div><div class="person-name">Aisha Patel</div><div class="person-role">VP Product @ Quantumly</div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ PRICING ══════════════════════════ -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">💸 Simple pricing</p>
+          <h2 class="h2">Start free. <span class="grad-text">Scale when you're ready.</span></h2>
+          <p class="lead">No credit card required. Cancel anytime. All plans include a 14-day free trial.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <div class="price-name">Starter</div>
+            <div class="price">$0<small>/month</small></div>
+            <p class="price-desc">For solo builders exploring the power of AI.</p>
+            <ul class="price-list">
+              <li>Up to 3 workflows</li>
+              <li>1,000 AI credits / month</li>
+              <li>Community support</li>
+              <li>Basic integrations</li>
+            </ul>
+            <a class="btn btn-ghost" href="#">Get Started for Free</a>
+          </article>
+
+          <article class="price-card featured reveal" style="--d:.08s">
+            <span class="popular">✨ Most popular</span>
+            <div class="price-name">Pro</div>
+            <div class="price">$29<small>/month</small></div>
+            <p class="price-desc">For fast-moving teams that ship every day.</p>
+            <ul class="price-list">
+              <li>Unlimited workflows</li>
+              <li>50,000 AI credits / month</li>
+              <li>Priority support</li>
+              <li>200+ integrations</li>
+              <li>Advanced analytics</li>
+            </ul>
+            <a class="btn btn-primary" href="#">Get Started for Free</a>
+          </article>
+
+          <article class="price-card reveal" style="--d:.16s">
+            <div class="price-name">Enterprise</div>
+            <div class="price">Custom</div>
+            <p class="price-desc">For organizations that need scale and control.</p>
+            <ul class="price-list">
+              <li>Everything in Pro</li>
+              <li>SSO &amp; SCIM</li>
+              <li>Dedicated success manager</li>
+              <li>SOC 2 &amp; HIPAA</li>
+              <li>99.99% uptime SLA</li>
+            </ul>
+            <a class="btn btn-ghost" href="#">Book a demo</a>
+          </article>
+        </div>
+        <p class="center dim mt-6" style="font-size:.78rem;">🔒 Secure payments · 30-day money-back guarantee · Trusted by 10,000+ teams</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ FAQ ══════════════════════════ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">❓ FAQ</p>
+          <h2 class="h2">Questions? <span class="grad-text">We've got answers.</span></h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Is Nexora really free to start?</summary>
+            <p>Absolutely! Our Starter plan is free forever — no credit card required. Upgrade to Pro anytime to unlock unlimited workflows and 50,000 AI credits per month. ✨</p>
+          </details>
+          <details>
+            <summary>How is my data protected?</summary>
+            <p>Your data is encrypted in transit and at rest (AES-256), and we're SOC 2 Type II certified. We never train models on your data — enterprise-grade security, by default. 🔒</p>
+          </details>
+          <details>
+            <summary>Does Nexora integrate with my existing tools?</summary>
+            <p>Yes! Nexora seamlessly connects with 200+ tools including Slack, Notion, GitHub, Figma, HubSpot and Zapier. If we don't support one yet, our API has you covered.</p>
+          </details>
+          <details>
+            <summary>Can I cancel anytime?</summary>
+            <p>Of course. Cancel in one click from your dashboard — no calls, no hoops, no awkward retention emails. You'll keep access until the end of your billing period.</p>
+          </details>
+          <details>
+            <summary>Do I need technical skills to use Nexora?</summary>
+            <p>Not at all. If you can describe what you want in plain English, Nexora can build it. Our AI-powered builder handles the rest — no code required. 🚀</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ CTA ══════════════════════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <span class="badge badge-grad">✨ Limited offer — 30% off Pro</span>
+          <h2 class="h2 mt-4">Ready to supercharge your workflow?</h2>
+          <p class="lead">Join 10,000+ teams building the future with AI. Start free, scale infinitely, and ship 10x faster — in seconds.</p>
+          <div class="hero-actions" style="margin-bottom:8px">
+            <a class="btn btn-white btn-lg" href="#">Get Started for Free →</a>
+            <a class="btn btn-ghost btn-lg" href="#">Book a demo</a>
+          </div>
+          <p class="hero-note">No credit card required · Cancel anytime · Loved by 10,000+ teams</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="#">
+            <span class="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="white"/></svg>
+            </span>
+            Nexora
+          </a>
+          <p class="muted mt-4" style="font-size:.86rem;max-width:280px;">The all-in-one AI platform for modern teams. Automate the busywork, unlock your potential, and build the future. ✨</p>
+          <div class="field mt-4" style="max-width:320px;">
+            <input type="email" placeholder="you@company.com" aria-label="Email" />
+            <button class="btn btn-primary btn-sm" type="button">Subscribe</button>
+          </div>
+          <p class="dim mt-2" style="font-size:.72rem;">Join our newsletter for weekly AI updates. No spam, ever.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <div class="footer-links">
+            <a href="#">Features</a><a href="#">Integrations</a><a href="#">Pricing</a><a href="#">Changelog</a><a href="#">Roadmap</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Press</a><a href="#">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <div class="footer-links">
+            <a href="#">Documentation</a><a href="#">API Reference</a><a href="#">Community</a><a href="#">Templates</a><a href="#">Status</a>
+          </div>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <div class="footer-links">
+            <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">Cookies</a><a href="#">DPA</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Nexora Inc. All rights reserved.</span>
+        <div class="socials">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="GitHub">⌘</a>
+          <a href="#" aria-label="Discord">🎮</a>
+        </div>
+        <span>Made with <span class="spark">❤️</span> and ☕ in San Francisco</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════ FLOATING WIDGETS ══════════════════════════ -->
+  <div class="slop-watermark">SLOP-100 · 100/100</div>
+
+  <button class="chat-bubble" id="chatToggle" aria-label="Open AI chat">✨</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-head">
+      <span class="icon icon--sm">🤖</span>
+      <div>
+        <div style="font-size:.86rem;font-weight:700;">Nexi — AI Assistant</div>
+        <div style="font-size:.68rem;color:var(--slop-dim);">● Online · replies in seconds</div>
+      </div>
+    </div>
+    <div class="chat-msg">Hi there! 👋 I'm Nexi, your AI-powered assistant. How can I help you supercharge your workflow today?</div>
+    <div class="chat-msg me">Can I try Nexora for free?</div>
+    <div class="chat-msg">Absolutely! ✨ No credit card required — you can start your 14-day free trial in seconds. Want me to set it up for you? 🚀</div>
+    <div class="field mt-2">
+      <input type="text" placeholder="Ask AI anything..." aria-label="Ask AI" />
+      <button class="btn btn-primary btn-sm" type="button">Send</button>
+    </div>
+  </div>
+
+  <div class="cookie" id="cookie">
+    <div>🍪 We use cookies to enhance your experience. By continuing, you agree to our <a href="#" style="color:#c4b5fd;">Cookie Policy</a>.</div>
+    <div class="flex gap-2">
+      <div class="btn btn-primary btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Accept all</div>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Manage</button>
+    </div>
+  </div>
+
+  <script>
+    // Scroll progress
+    const progress = document.getElementById('progress');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      progress.style.width = pct + '%';
+    }, { passive: true });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Chat
+    const chatWindow = document.getElementById('chatWindow');
+    document.getElementById('chatToggle').addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+    });
+
+    // Animated counters (because static numbers are for humans)
+    const nums = document.querySelectorAll('.stat-num');
+    const io2 = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = el.textContent;
+        const numeric = parseFloat(target.replace(/[^0-9.]/g, ''));
+        if (!isFinite(numeric)) return;
+        const suffix = target.replace(/[\d,.]+/g, '');
+        let start = null;
+        const dur = 1400;
+        const tick = (ts) => {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = Math.round(numeric * eased * 10) / 10;
+          el.textContent = (Number.isInteger(numeric) ? Math.round(val).toLocaleString() : val) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(tick);
+        io2.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(n => io2.observe(n));
+
+    // Cursor glow, the final slop frontier
+    const glow = document.createElement('div');
+    glow.style.cssText = 'position:fixed;width:320px;height:320px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(closest-side,rgba(168,85,247,.10),transparent);transform:translate(-50%,-50%);transition:opacity .3s;opacity:0;';
+    document.body.appendChild(glow);
+    addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+      glow.style.opacity = '1';
+    });
+  </script>
+</body>
+</html>

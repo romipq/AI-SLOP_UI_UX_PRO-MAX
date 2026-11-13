@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--
+  AI-SLOP UI/UX PRO-MAX · EXAMPLE 02 · SaaS analytics dashboard
+  Every insight, number and coworker here is fictional. SLOP-100 target: 100/100.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexora — AI-Powered Analytics Dashboard ✨</title>
+  <link rel="stylesheet" href="../assets/slop.css" />
+  <style>
+    body { background: radial-gradient(900px 500px at 90% -10%, rgba(124,58,237,.22), transparent 60%), radial-gradient(700px 400px at 0% 100%, rgba(34,211,238,.10), transparent 60%), var(--slop-bg); }
+    .topbar-title h1 { margin: 0; font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; letter-spacing: -.02em; }
+    .topbar-title p { margin: 2px 0 0; color: var(--slop-dim); font-size: .74rem; }
+    .icon-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; border: 1px solid var(--slop-line); background: rgba(255,255,255,.04); color: var(--slop-muted); cursor: pointer; transition: all .25s var(--ease); }
+    .icon-btn:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .tab-row { display: flex; gap: 4px; padding: 3px; border-radius: 999px; border: 1px solid var(--slop-line); background: rgba(255,255,255,.035); }
+    .tab { padding: 5px 12px; border-radius: 999px; font-size: .68rem; font-weight: 600; color: var(--slop-dim); cursor: pointer; }
+    .tab.active { background: rgba(168,85,247,.18); color: #e9d5ff; box-shadow: inset 0 1px 0 rgba(255,255,255,.1); }
+    .legend { display: flex; gap: 16px; color: var(--slop-dim); font-size: .68rem; }
+    .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 99px; margin-right: 5px; }
+    .upgrade { margin-top: auto; padding: 14px; border-radius: 16px; border: 1px solid rgba(168,85,247,.28); background: linear-gradient(150deg, rgba(168,85,247,.18), rgba(236,72,153,.08)); }
+    .upgrade h4 { margin: 0 0 4px; font-size: .8rem; }
+    .upgrade p { margin: 0 0 10px; color: var(--slop-muted); font-size: .7rem; line-height: 1.5; }
+    .wf-name { display: flex; align-items: center; gap: 10px; }
+    .wf-name .icon--sm { width: 32px; height: 32px; font-size: .9rem; border-radius: 10px; }
+    .wf-name small { display: block; color: var(--slop-dim); font-size: .66rem; }
+    .table tr:hover td { background: rgba(255,255,255,.025); }
+    .mobile-hide { display: block; }
+    @media (max-width: 680px) { .mobile-hide { display: none; } .topbar-title p { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="progress"></div>
+
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a class="logo" href="#" style="padding:6px 8px 14px;">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="white"/></svg>
+        </span>
+        Nexora
+      </a>
+
+      <div class="side-label">Workspace</div>
+      <a class="side-link active" href="#"><span>🏠</span> Overview</a>
+      <a class="side-link" href="#"><span>⚡</span> Workflows</a>
+      <a class="side-link" href="#"><span>✨</span> AI Assistant <span class="badge badge-grad" style="margin-left:auto;font-size:.55rem;padding:2px 7px;">NEW</span></a>
+      <a class="side-link" href="#"><span>📊</span> Analytics</a>
+      <a class="side-link" href="#"><span>🔗</span> Integrations</a>
+      <a class="side-link" href="#"><span>👥</span> Team</a>
+
+      <div class="side-label">Settings</div>
+      <a class="side-link" href="#"><span>⚙️</span> Preferences</a>
+      <a class="side-link" href="#"><span>💳</span> Billing</a>
+      <a class="side-link" href="#"><span>🔒</span> Security</a>
+
+      <div class="upgrade">
+        <h4>✨ Upgrade to Pro</h4>
+        <p>Unlock 10x more AI credits, unlimited workflows and priority support.</p>
+        <a class="btn btn-primary btn-sm" href="#" style="width:100%;">Upgrade now →</a>
+      </div>
+
+      <div class="side-user">
+        <span class="avatar" style="margin:0;">AK</span>
+        <div style="min-width:0;flex:1;">
+          <div style="font-size:.8rem;font-weight:600;">Alex Kim</div>
+          <small>alex@nexora.ai</small>
+        </div>
+        <span style="color:var(--slop-dim);">⋯</span>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-title" style="min-width:0;">
+          <h1>Good morning, Alex 👋</h1>
+          <p>Here's what's happening with your workspace today.</p>
+        </div>
+        <div class="search mobile-hide">🔍 Search anything... <kbd>⌘K</kbd></div>
+        <button class="icon-btn" aria-label="Notifications">🔔</button>
+        <span class="avatar" style="margin:0;width:36px;height:36px;">AK</span>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpis">
+        <div class="kpi reveal">
+          <div class="kpi-label">Monthly revenue</div>
+          <div class="kpi-value grad-text">$84,240</div>
+          <span class="kpi-delta">↑ 12.4%</span>
+          <span class="dim" style="font-size:.66rem;margin-left:6px;">vs. last month</span>
+        </div>
+        <div class="kpi reveal" style="--d:.05s">
+          <div class="kpi-label">Active users</div>
+          <div class="kpi-value">12,847</div>
+          <span class="kpi-delta">↑ 8.2%</span>
+          <span class="dim" style="font-size:.66rem;margin-left:6px;">vs. last month</span>
+        </div>
+        <div class="kpi reveal" style="--d:.1s">
+          <div class="kpi-label">Workflows run</div>
+          <div class="kpi-value">2.4M</div>
+          <span class="kpi-delta">↑ 32.1%</span>
+          <span class="dim" style="font-size:.66rem;margin-left:6px;">this week</span>
+        </div>
+        <div class="kpi reveal" style="--d:.15s">
+          <div class="kpi-label">Churn rate</div>
+          <div class="kpi-value">2.1%</div>
+          <span class="kpi-delta down">↓ 1.8%</span>
+          <span class="dim" style="font-size:.66rem;margin-left:6px;">improving</span>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <!-- CHART -->
+        <section class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Revenue overview</div>
+              <div class="panel-sub">AI-powered forecast · updated 2 minutes ago</div>
+            </div>
+            <div class="tab-row">
+              <span class="tab">7d</span>
+              <span class="tab active">30d</span>
+              <span class="tab">90d</span>
+            </div>
+          </div>
+
+          <div class="chart-area">
+            <svg viewBox="0 0 800 240" preserveAspectRatio="none" role="img" aria-label="Revenue chart going up">
+              <defs>
+                <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#a855f7" stop-opacity=".5" />
+                  <stop offset="60%" stop-color="#6366f1" stop-opacity=".18" />
+                  <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#22d3ee" />
+                  <stop offset="55%" stop-color="#a855f7" />
+                  <stop offset="100%" stop-color="#ec4899" />
+                </linearGradient>
+              </defs>
+              <path d="M0,190 C60,170 90,180 130,155 C170,130 200,150 240,120 C280,90 310,105 350,88 C390,70 420,95 460,72 C500,50 530,60 570,44 C610,28 640,48 680,30 C720,14 760,26 800,10 L800,240 L0,240 Z" fill="url(#area)" />
+              <path d="M0,190 C60,170 90,180 130,155 C170,130 200,150 240,120 C280,90 310,105 350,88 C390,70 420,95 460,72 C500,50 530,60 570,44 C610,28 640,48 680,30 C720,14 760,26 800,10" fill="none" stroke="url(#line)" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M0,205 C70,200 110,208 160,192 C210,176 250,190 300,172 C350,154 390,168 440,150 C490,132 540,146 590,128 C640,110 700,124 800,96" fill="none" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="5 6" opacity=".55" />
+              <circle cx="800" cy="10" r="6" fill="#ec4899" opacity=".25" />
+              <circle cx="800" cy="10" r="3" fill="#f0abfc" />
+            </svg>
+          </div>
+          <div class="flex between items-center mt-4 wrap gap-4">
+            <div class="legend">
+              <span><i style="background:#a855f7"></i>This period</span>
+              <span><i style="background:#22d3ee"></i>AI forecast</span>
+            </div>
+            <span class="badge"><span class="badge-dot"></span> Live data</span>
+          </div>
+        </section>
+
+        <!-- AI INSIGHTS -->
+        <section class="panel reveal" style="--d:.08s">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">✨ AI Insights</div>
+              <div class="panel-sub">Generated by Nexora Intelligence</div>
+            </div>
+            <span class="badge badge-grad">BETA</span>
+          </div>
+
+          <div class="insight">
+            <span class="icon icon--sm">📈</span>
+            <p>Your revenue is up <b>12.4%</b> this week, mostly from Pro upgrades. Consider upselling Enterprise to your top 20 accounts. 🚀</p>
+          </div>
+          <div class="insight">
+            <span class="icon icon--sm">🛠️</span>
+            <p><b>3 workflows</b> failed last night. I fixed 2 automatically and left you a note on the third. Seamless.</p>
+          </div>
+          <div class="insight">
+            <span class="icon icon--sm">⏱️</span>
+            <p>Your team saved <b>42 hours</b> this month — that's a <b>10x ROI</b> on your plan. You're welcome. 💜</p>
+          </div>
+
+          <button class="btn btn-primary w-full mt-4" type="button">✨ Generate full report</button>
+          <button class="btn btn-ghost w-full mt-2" type="button">Ask AI anything →</button>
+        </section>
+      </div>
+
+      <!-- TABLE -->
+      <section class="panel reveal">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Recent workflows</div>
+            <div class="panel-sub">2,481 runs in the last 24 hours</div>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn btn-ghost btn-sm" type="button">Filter</button>
+            <button class="btn btn-primary btn-sm" type="button">+ New workflow</button>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Workflow</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Runs</th>
+                <th>Last run</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="wf-name"><span class="icon icon--sm">✨</span><div>Lead enrichment<small>AI-powered · v2.4</small></div></div></td>
+                <td><div class="flex items-center gap-2"><span class="avatar" style="width:26px;height:26px;margin:0;font-size:.6rem;">SC</span> Sarah Chen</div></td>
+                <td><span class="status ok">● Completed</span></td>
+                <td>1,284</td>
+                <td class="dim">2 min ago</td>
+                <td><span class="dim">⋯</span></td>
+              </tr>
+              <tr>
+                <td><div class="wf-name"><span class="icon icon--sm">📧</span><div>Weekly digest<small>Triggered every Monday</small></div></div></td>
+                <td><div class="flex items-center gap-2"><span class="avatar" style="width:26px;height:26px;margin:0;font-size:.6rem;">MR</span> Marcus R.</div></td>
+                <td><span class="status pending">● Running</span></td>
+                <td>842</td>
+                <td class="dim">now</td>
+                <td><span class="dim">⋯</span></td>
+              </tr>
+              <tr>
+                <td><div class="wf-name"><span class="icon icon--sm">🔔</span><div>Slack alerts<small>Seamless integration</small></div></div></td>
+                <td><div class="flex items-center gap-2"><span class="avatar" style="width:26px;height:26px;margin:0;font-size:.6rem;">AP</span> Aisha Patel</div></td>
+                <td><span class="status ok">● Completed</span></td>
+                <td>2,410</td>
+                <td class="dim">14 min ago</td>
+                <td><span class="dim">⋯</span></td>
+              </tr>
+              <tr>
+                <td><div class="wf-name"><span class="icon icon--sm">💸</span><div>Invoice sync<small>Enterprise-grade · SOC 2</small></div></div></td>
+                <td><div class="flex items-center gap-2"><span class="avatar" style="width:26px;height:26px;margin:0;font-size:.6rem;">JL</span> James Liu</div></td>
+                <td><span class="status fail">● Failed</span></td>
+                <td>96</td>
+                <td class="dim">1 hr ago</td>
+                <td><span class="dim">⋯</span></td>
+              </tr>
+              <tr>
+                <td><div class="wf-name"><span class="icon icon--sm">🧠</span><div>Churn prediction<small>Powered by GPT-5</small></div></div></td>
+                <td><div class="flex items-center gap-2"><span class="avatar" style="width:26px;height:26px;margin:0;font-size:.6rem;">NK</span> Nina Kovac</div></td>
+                <td><span class="status ok">● Completed</span></td>
+                <td>312</td>
+                <td class="dim">3 hr ago</td>
+                <td><span class="dim">⋯</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FOOTER STRIP -->
+      <footer class="flex between items-center wrap gap-4" style="padding:6px 4px 20px;color:var(--slop-dim);font-size:.7rem;">
+        <span>© 2026 Nexora Inc. · Trusted by 10,000+ teams · 99.9% uptime</span>
+        <span class="flex gap-4">
+          <a href="#" style="color:inherit;">Privacy</a>
+          <a href="#" style="color:inherit;">Terms</a>
+          <a href="#" style="color:inherit;">Status</a>
+          <span>Made with ❤️ by the Nexora team</span>
+        </span>
+      </footer>
+    </div>
+  </div>
+
+  <div class="slop-watermark">SLOP-100 · 100/100</div>
+
+  <button class="chat-bubble" id="chatToggle" aria-label="Open AI assistant">✨</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-head">
+      <span class="icon icon--sm">🤖</span>
+      <div><div style="font-size:.86rem;font-weight:700;">Nexi — AI Analyst</div><div style="font-size:.68rem;color:var(--slop-dim);">● Online · knows everything</div></div>
+    </div>
+    <div class="chat-msg">Hey Alex! 👋 Your revenue is up 12.4% this week. Want me to explain why in one beautiful sentence?</div>
+    <div class="chat-msg me">Yes, and make it sound impressive.</div>
+    <div class="chat-msg">Your AI-powered growth engine is seamlessly converting intent into revenue at 10x velocity. ✨ That'll be $29/month. 🚀</div>
+    <div class="field mt-2"><input type="text" placeholder="Ask AI anything..." aria-label="Ask AI" /><button class="btn btn-primary btn-sm" type="button">Send</button></div>
+  </div>
+
+  <div class="cookie" id="cookie">
+    <div>🍪 We use cookies to personalize your dashboard and improve your experience. <a href="#" style="color:#c4b5fd;">Learn more</a></div>
+    <div class="flex gap-2">
+      <div class="btn btn-primary btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Accept all</div>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('cookie').classList.add('hide')">Manage</button>
+    </div>
+  </div>
+
+  <script>
+    const progress = document.getElementById('progress');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+    }, { passive: true });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const chatWindow = document.getElementById('chatWindow');
+    document.getElementById('chatToggle').addEventListener('click', () => chatWindow.classList.toggle('open'));
+
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    }));
+  </script>
+</body>
+</html>
