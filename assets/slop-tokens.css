@@ -1,0 +1,205 @@
+/* ============================================================================
+   AI-SLOP UI/UX PRO MAX — Design Tokens
+   The single source of truth for the 2025 "AI-generated SaaS" aesthetic.
+   Import this first, then slop.css.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------
+     1. THE HOLY TRINITY (plus friends)
+     Violet → fuchsia → cyan. Every gradient worth its slop uses all three.
+     --------------------------------------------------------------------- */
+  --slop-indigo: #6366f1;
+  --slop-violet: #8b5cf6;
+  --slop-purple: #a855f7;
+  --slop-fuchsia: #d946ef;
+  --slop-pink: #ec4899;
+  --slop-rose: #f43f5e;
+  --slop-cyan: #22d3ee;
+  --slop-sky: #38bdf8;
+  --slop-blue: #3b82f6;
+  --slop-mint: #34d399;
+  --slop-amber: #fbbf24;
+
+  /* ---------------------------------------------------------------------
+     2. INK — "dark mode by default" near-blacks with a blue cast
+     --------------------------------------------------------------------- */
+  --ink-950: #07070d;
+  --ink-900: #0b0b14;
+  --ink-850: #10101c;
+  --ink-800: #151525;
+  --ink-700: #1d1d33;
+  --ink-600: #2a2a45;
+
+  --slop-text: #f8fafc;
+  --slop-text-soft: #d8d8f0;
+  --slop-muted: #a1a1c2;
+  --slop-dim: #7e7e9a; /* 4.9:1 on ink-900 — labels only, still readable */
+  --slop-line: rgba(255, 255, 255, 0.08);
+  --slop-line-strong: rgba(255, 255, 255, 0.16);
+
+  /* ---------------------------------------------------------------------
+     3. GRADIENTS — the entire personality of the product
+     --------------------------------------------------------------------- */
+  --grad-hero: linear-gradient(135deg, #6366f1 0%, #a855f7 34%, #ec4899 68%, #22d3ee 100%);
+  --grad-cta: linear-gradient(135deg, #7c3aed 0%, #db2777 55%, #0891b2 100%);
+  --grad-cta-hover: linear-gradient(135deg, #8b5cf6 0%, #ec4899 55%, #06b6d4 100%);
+  --grad-text: linear-gradient(100deg, #c4b5fd 0%, #f0abfc 30%, #f9a8d4 55%, #a5f3fc 100%);
+  --grad-border: linear-gradient(140deg, rgba(139, 92, 246, 0.9), rgba(236, 72, 153, 0.55) 45%, rgba(34, 211, 238, 0.9));
+  --grad-mesh:
+    radial-gradient(42% 52% at 18% 22%, rgba(139, 92, 246, 0.55) 0%, transparent 62%),
+    radial-gradient(38% 46% at 78% 18%, rgba(34, 211, 238, 0.35) 0%, transparent 60%),
+    radial-gradient(46% 54% at 62% 78%, rgba(236, 72, 153, 0.42) 0%, transparent 64%),
+    radial-gradient(34% 38% at 12% 82%, rgba(59, 130, 246, 0.32) 0%, transparent 60%);
+  --grad-sheen: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.55) 42%, transparent 62%);
+
+  /* ---------------------------------------------------------------------
+     4. GLASS — blur it until it stops being a design decision
+     --------------------------------------------------------------------- */
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-bg-strong: rgba(255, 255, 255, 0.075);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-blur: 22px;
+  --glass-saturate: 160%;
+
+  /* ---------------------------------------------------------------------
+     5. GLOW — every element is a light source now
+     --------------------------------------------------------------------- */
+  --glow-violet: 0 0 60px rgba(124, 58, 237, 0.45), 0 0 120px rgba(236, 72, 153, 0.18);
+  --glow-cyan: 0 0 50px rgba(34, 211, 238, 0.35);
+  --glow-cta: 0 12px 40px -12px rgba(139, 92, 246, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.85);
+  --shadow-float: 0 32px 80px -32px rgba(0, 0, 0, 0.9);
+
+  /* ---------------------------------------------------------------------
+     6. SPACE / RADIUS / TYPE
+     Rounded-3xl is not a suggestion, it is a lifestyle.
+     --------------------------------------------------------------------- */
+  --container: 1200px;
+  --container-wide: 1320px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --section-y: clamp(72px, 10vw, 128px);
+
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-2xl: 40px;
+  --r-pill: 999px;
+
+  --font-sans: "Inter", "Inter var", "Geist", "Satoshi", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 2.4vw, 2rem);
+  --text-3xl: clamp(2rem, 3.6vw, 3rem);
+  --text-4xl: clamp(2.5rem, 5.2vw, 4rem);
+  --text-hero: clamp(2.75rem, 7vw, 5.5rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 160ms;
+  --dur: 280ms;
+  --dur-slow: 640ms;
+
+  /* ---------------------------------------------------------------------
+     7. SLOP DIAL — intensity 1…5, set with data-slop on <html> or <body>
+     --------------------------------------------------------------------- */
+  --slop: 5;
+  --orb-opacity: 0.9;
+  --noise-opacity: 0.05;
+  --grid-opacity: 0.5;
+  --anim-scale: 1;
+  --chroma: 1;
+  --emoji-display: inline-block;
+}
+
+/* --- Level 1: "Tasteful modern" — the gateway drug ---------------------- */
+[data-slop="1"] {
+  --slop: 1;
+  --orb-opacity: 0.28;
+  --noise-opacity: 0.02;
+  --grid-opacity: 0.18;
+  --anim-scale: 0.5;
+  --chroma: 0.72;
+  --emoji-display: none;
+  --glow-violet: 0 0 0 0 rgba(0, 0, 0, 0);
+  --glow-cyan: 0 0 0 0 rgba(0, 0, 0, 0);
+  --glow-cta: 0 8px 22px -12px rgba(99, 102, 241, 0.5);
+  --shadow-card: 0 18px 44px -28px rgba(0, 0, 0, 0.7);
+  --shadow-float: 0 24px 56px -30px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Level 2: "VC-funded seed round" ---------------------------------- */
+[data-slop="2"] {
+  --slop: 2;
+  --orb-opacity: 0.45;
+  --noise-opacity: 0.03;
+  --grid-opacity: 0.28;
+  --anim-scale: 0.75;
+  --chroma: 0.85;
+  --emoji-display: none;
+  --glow-violet: 0 0 40px rgba(124, 58, 237, 0.22);
+  --glow-cta: 0 10px 30px -14px rgba(139, 92, 246, 0.6);
+}
+
+/* --- Level 3: "Series A landing page" --------------------------------- */
+[data-slop="3"] {
+  --slop: 3;
+  --orb-opacity: 0.65;
+  --noise-opacity: 0.04;
+  --grid-opacity: 0.38;
+  --anim-scale: 0.9;
+  --chroma: 0.92;
+  --emoji-display: inline-block;
+  --glow-violet: 0 0 50px rgba(124, 58, 237, 0.32), 0 0 90px rgba(236, 72, 153, 0.12);
+  --glow-cta: 0 12px 34px -14px rgba(139, 92, 246, 0.65);
+}
+
+/* --- Level 4: "AI startup, stealth, $40M raised" ---------------------- */
+[data-slop="4"] {
+  --slop: 4;
+  --orb-opacity: 0.8;
+  --noise-opacity: 0.05;
+  --grid-opacity: 0.45;
+  --anim-scale: 1;
+  --chroma: 1;
+  --emoji-display: inline-block;
+}
+
+/* --- Level 5: "Maximum slop" (default) -------------------------------- */
+[data-slop="5"] {
+  --slop: 5;
+  --orb-opacity: 1;
+  --noise-opacity: 0.06;
+  --grid-opacity: 0.55;
+  --anim-scale: 1.15;
+  --chroma: 1.08;
+  --emoji-display: inline-block;
+}
+
+/* --- Light mode: the "professional" variant of the same disease -------- */
+[data-theme="light"] {
+  --ink-950: #ffffff;
+  --ink-900: #fbfaff;
+  --ink-850: #f5f3ff;
+  --ink-800: #ffffff;
+  --ink-700: #ede9fe;
+  --slop-text: #16112b;
+  --slop-text-soft: #2b2350;
+  --slop-muted: #5b5578;
+  --slop-dim: #6e6890;
+  --slop-line: rgba(76, 29, 149, 0.12);
+  --slop-line-strong: rgba(76, 29, 149, 0.22);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --shadow-card: 0 24px 60px -32px rgba(76, 29, 149, 0.35);
+  --shadow-float: 0 32px 80px -32px rgba(76, 29, 149, 0.45);
+  --grad-text: linear-gradient(100deg, #6d28d9 0%, #a21caf 40%, #be185d 68%, #0891b2 100%);
+}

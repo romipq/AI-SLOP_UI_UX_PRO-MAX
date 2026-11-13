@@ -1,0 +1,27 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An agent skill for deliberately generating the cliché AI-generated SaaS UI/UX — gradients, glassmorphism, emoji, buzzwords — at production quality.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "demo": "node tools/serve.mjs",
+    "score": "node tools/slop-score.mjs demo/index.html",
+    "score:json": "node tools/slop-score.mjs demo/index.html --json",
+    "test": "node --test tools/*.test.mjs"
+  },
+  "keywords": [
+    "ai",
+    "slop",
+    "ui",
+    "ux",
+    "design-system",
+    "agent-skill",
+    "landing-page",
+    "satire"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

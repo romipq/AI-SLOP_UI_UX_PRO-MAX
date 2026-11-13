@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  slop:
+    name: Score the slop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Demo must stay at peak slop
+        run: node tools/slop-score.mjs demo/index.html --fail-under 95
+
+      - name: Assets must be present
+        run: |
+          test -f assets/slop-tokens.css
+          test -f assets/slop.css
+          test -f assets/slop.js
+          test -f assets/img/orb.webp
+
+      - name: Markdown links must resolve
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            let bad = 0;
+            const walk = (dir) => {
+              for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+                if (entry.name === ".git" || entry.name === "node_modules") continue;
+                const p = path.join(dir, entry.name);
+                if (entry.isDirectory()) walk(p);
+                else if (p.endsWith(".md")) {
+                  const src = fs.readFileSync(p, "utf8");
+                  for (const m of src.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+                    const link = m[1];
+                    if (/^(https?:|#|mailto:)/.test(link)) continue;
+                    const target = path.normalize(path.join(path.dirname(p), link.split("#")[0]));
+                    if (!fs.existsSync(target)) {
+                      console.error(`${p}: broken link ${link}`);
+                      bad++;
+                    }
+                  }
+                }
+              }
+            };
+            walk(".");
+            process.exit(bad ? 1 : 0);
+          '
