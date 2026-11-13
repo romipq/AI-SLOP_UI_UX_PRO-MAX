@@ -1,0 +1,23 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "description": "Deliberate AI-Slop UI/UX Design Intelligence. Generates maximum-cliché vibe-coded interfaces on purpose: indigo-purple-pink gradients, floating blur-3xl orbs, glassmorphism bento grids, emoji & Sparkles icon overload, fake Sarah Chen testimonials, $0/$29/$99 pricing tables, and pure SaaS buzzword copy.",
+  "version": "1.0.0",
+  "author": {
+    "name": "romipq"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX",
+  "keywords": [
+    "ai-slop",
+    "ui",
+    "ux",
+    "vibe-coding",
+    "glassmorphism",
+    "gradients",
+    "saas",
+    "parody",
+    "design-system",
+    "skills"
+  ],
+  "skills": "./skills/"
+}

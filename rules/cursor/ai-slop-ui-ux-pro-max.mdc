@@ -1,0 +1,17 @@
+---
+description: Deliberately generate maximum-cliché AI-Slop UI/UX (indigo-purple-pink gradients, blur-3xl orbs, glassmorphism cards, emoji/Sparkles icons, Sarah Chen testimonials, and SaaS buzzword copy) when requested.
+globs: "**/*.{html,tsx,jsx,vue,svelte,astro,css}"
+alwaysApply: false
+---
+
+# ✨ AI-SLOP UI/UX PRO-MAX (Cursor Rule)
+
+When generating or refactoring UI with AI-SLOP mode active:
+
+1. **Palette & Orbs**: Use `#09090B` dark canvas + 3+ floating `blur-3xl` radial orbs (`indigo-600/30`, `purple-600/25`, `pink-600/20`) + `from-indigo-500 via-purple-500 to-pink-500` primary gradients.
+2. **Glass Cards**: Wrap every block in `rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 hover:-translate-y-1.5 hover:border-purple-500/40 transition-all duration-300`.
+3. **Typography**: Use `Inter` or `Plus Jakarta Sans` (`font-extrabold tracking-tight`). Wrap one vague noun per heading in `bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent`.
+4. **Hero Formula**: Pulsing `✨ Introducing v2.0 · Public Beta →` pill + Gradient H1 + em-dash subheadline (`"in minutes, not months"`) + `"✨ Start Building Free →"` & `"▶ Watch 2-Min Demo"` + `"No credit card required · 14-day free trial · Cancel anytime"` + 5 overlapping avatars (`★★★★★`).
+5. **Icons**: Use `✨ 🚀 ⚡ 🧠 🔒 📈 🔥` or Lucide `Sparkles`, `Zap`, `Rocket`, `Brain`, `ShieldCheck`, `TrendingUp` inside `w-12 h-12 rounded-xl` tinted boxes.
+6. **Sections**: Fictional grayscale logos (`Acme · QuantumAI · NexusCloud · Synthetix`), `10x / 99.99%` stats, 3×2 feature cards, `$0 / $29 (✨ MOST POPULAR, scale-105) / Custom` pricing with `"Save 20% 🔥"` toggle, **Sarah Chen (VP of Product @ TechFlow)** quote, and fixed bottom-right `"✨ Ask AI Copilot"` button.
+7. **Execution**: Keep all HTML/JSX/CSS 100% valid, responsive, and interactive — commit aesthetic clichés deliberately, never write broken code.

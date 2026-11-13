@@ -1,0 +1,47 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "version": "1.0.0",
+  "description": "An AI agent skill & prompt pack that deliberately generates peak cliché 'AI-generated' UI/UX — purple gradients, glassmorphism, emoji icons, and SaaS buzzwords, on purpose.",
+  "type": "module",
+  "license": "MIT",
+  "author": "romipq",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX.git"
+  },
+  "bin": {
+    "ai-slop-pro-max": "./bin/cli.mjs",
+    "ai-slop": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "prompts/",
+    "rules/",
+    ".claude-plugin/",
+    "skill.json",
+    "README.md",
+    "README.ru.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "python3 -m unittest discover -s skills/ai-slop-ui-ux-pro-max/scripts/tests -v",
+    "slop": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py",
+    "audit:showcase": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py --audit examples/nexusflow-ai-showcase.html"
+  },
+  "keywords": [
+    "ai-slop",
+    "ui-ux-pro-max",
+    "agent-skills",
+    "claude-code",
+    "cursor",
+    "windsurf",
+    "copilot",
+    "vibe-coding",
+    "glassmorphism",
+    "saas"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

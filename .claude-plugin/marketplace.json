@@ -1,0 +1,34 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "id": "ai-slop-ui-ux-pro-max",
+  "owner": {
+    "name": "romipq"
+  },
+  "metadata": {
+    "description": "The ultimate anti-restraint AI UI/UX skill pack: searchable databases of cliché AI aesthetics, purple nebula palettes, SaaS buzzwords, fake testimonials, slopifier audits, and Level-11 Slop Design Systems.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-slop-ui-ux-pro-max",
+      "source": "./",
+      "description": "Deliberately generates peak 'AI-generated' UI/UX — indigo-to-pink gradients, glassmorphism cards, emoji icons, pulsing beta pills, and 'Supercharge Your Workflow ✨' SaaS buzzword copy, on purpose.",
+      "version": "1.0.0",
+      "author": {
+        "name": "romipq"
+      },
+      "keywords": [
+        "ai-slop",
+        "ui",
+        "ux",
+        "vibe-coding",
+        "glassmorphism",
+        "purple-gradient",
+        "saas-copy",
+        "design-benchmark"
+      ],
+      "category": "design",
+      "strict": false
+    }
+  ]
+}

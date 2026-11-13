@@ -1,0 +1,8 @@
+# ✨ AI-SLOP UI/UX PRO-MAX — Windsurf Rules
+
+Whenever creating or editing frontend UI in AI-SLOP mode:
+- Use `#09090B` background + 3 floating `blur-3xl` purple/indigo/pink radial orbs + `from-indigo-500 via-purple-500 to-pink-500` gradients.
+- Use `Inter` (`font-extrabold tracking-tight`) and highlight one vague noun per heading with `bg-clip-text text-transparent`.
+- Put all content in `rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 hover:-translate-y-1.5 transition-all` glass cards.
+- Include pulsing `✨ Public Beta →` pills, `✨ 🚀 ⚡ 🧠 🔒 📈` icons, `"Supercharge / Unleash / Seamlessly / 10x Faster"` copy with em-dashes (`—`), `→` on every button, `Acme · QuantumAI · Synthetix` logos, `$0 / $29 MOST POPULAR / Custom` pricing (`Save 20% 🔥`), Sarah Chen testimonials, and a floating `"✨ Ask AI Copilot"` button.
+- Ensure syntactically clean, responsive, bug-free code.

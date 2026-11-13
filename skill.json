@@ -1,0 +1,32 @@
+{
+  "name": "ai-slop-ui-ux-pro-max",
+  "displayName": "AI-SLOP UI/UX PRO-MAX ✨",
+  "description": "Deliberate AI-Slop design intelligence with 25 cliché AI aesthetics, 30 neon/purple/terracotta palettes, 20 overused font pairings, 65+ SaaS buzzword formulas, 24 fake startup personas, Slop Score™ static code auditor, and Level 1–11 Slop Dials.",
+  "version": "1.0.0",
+  "author": "romipq",
+  "license": "MIT",
+  "repository": "https://github.com/romipq/AI-SLOP_UI_UX_PRO-MAX",
+  "keywords": [
+    "ai-slop",
+    "ui-ux-pro-max",
+    "vibe-coding",
+    "glassmorphism",
+    "purple-gradient",
+    "saas-buzzwords",
+    "agent-skill",
+    "prompt-pack"
+  ],
+  "platforms": [
+    "claude",
+    "cursor",
+    "windsurf",
+    "copilot",
+    "codex",
+    "opencode",
+    "gemini",
+    "cline",
+    "roocode",
+    "arena"
+  ],
+  "install": "npx skills add romipq/AI-SLOP_UI_UX_PRO-MAX"
+}

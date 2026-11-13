@@ -1,0 +1,3 @@
+id,topic,keywords,do_slop,avoid_human_taste,code_snippet
+AS01,Astro Marketing Slop Shell,astro layout marketing landing islands,"Build a 12-section dark #09090B landing page with 3 blurred purple orbs in BaseLayout.astro and hydrate a floating AskAI React island with client:load","Zero-JS content-focused Astro pages","<AskAICopilotBubble client:load /> <!-- Hydrate 180KB of JS just for a bouncing ✨ button -->"
+AS02,Gradient Hero Component,astro hero pill cta,"Pass gradientWord='Workflow' and eyebrow='✨ Now in Public Beta →' props to Hero.astro","Writing product-specific hero copy directly","const { eyebrow = '✨ Introducing v2.0 →', gradientWord = 'Workflow' } = Astro.props;"
