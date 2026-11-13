@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Zero-dependency BM25 search & CSV loader for AI-SLOP UI/UX PRO-MAX."""
+"""Zero-dependency BM25 + Synonym Graph search engine for AI-SLOP UI/UX PRO-MAX v2.0."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import math
 import re
 from collections import Counter
 from pathlib import Path
-from typing import Dict, List, Optional, Sequence
+from typing import Any, Dict, List, Optional, Sequence
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = SKILL_ROOT / "data"
@@ -24,11 +24,16 @@ DOMAIN_FILES: Dict[str, str] = {
     "typography": "typography.csv",
     "font": "typography.csv",
     "fonts": "typography.csv",
+    "ux": "ux-antipatterns.csv",
+    "antipatterns": "ux-antipatterns.csv",
+    "rules": "ux-antipatterns.csv",
     "buzzwords": "buzzwords.csv",
     "copy": "buzzwords.csv",
     "components": "components.csv",
     "component": "components.csv",
     "ui": "components.csv",
+    "charts": "charts.csv",
+    "chart": "charts.csv",
     "personas": "personas.csv",
     "testimonials": "personas.csv",
     "icons": "icons.csv",
@@ -43,12 +48,25 @@ CANONICAL_DOMAINS: List[str] = [
     "style",
     "palette",
     "typography",
+    "ux",
     "buzzwords",
     "components",
+    "charts",
     "personas",
     "icons",
     "motion",
     "reasoning",
+]
+
+AVAILABLE_ERAS: List[str] = [
+    "auto",
+    "2024-nebula",
+    "2025-bento",
+    "2026-editorial",
+    "cyber-acid",
+    "shadcn-default",
+    "ai-wrapper",
+    "web3-hype",
 ]
 
 AVAILABLE_STACKS: List[str] = [
@@ -56,19 +74,40 @@ AVAILABLE_STACKS: List[str] = [
     "react-tailwind",
     "nextjs-shadcn",
     "vue",
+    "nuxt",
     "svelte",
     "astro",
+    "angular",
+    "solid",
+    "swiftui",
+    "flutter",
+    "threejs",
 ]
 
+SYNONYM_MAP: Dict[str, List[str]] = {
+    "purple": ["indigo", "violet", "nebula", "pink"],
+    "editorial": ["cream", "terracotta", "serif", "anthropic", "broadsheet"],
+    "brutalist": ["terminal", "acid", "cyber", "mono", "hairline"],
+    "terminal": ["cli", "cyber", "acid", "mono", "hacker"],
+    "dashboard": ["analytics", "kpi", "metrics", "admin", "shadcn", "bi"],
+    "fintech": ["bank", "stripe", "emerald", "card", "payments"],
+    "crypto": ["web3", "defi", "solana", "token", "neon"],
+    "chatbot": ["copilot", "agent", "prompt", "llm", "wrapper"],
+    "bakery": ["local", "plumber", "mundane", "sourdough"],
+    "plumber": ["local", "bakery", "mundane"],
+    "pricing": ["plans", "tiers", "popular", "pro"],
+}
+
 BOOST_FIELDS = {
-    "name": 3.0,
-    "keywords": 3.5,
-    "category": 2.5,
-    "product_category": 3.5,
-    "era": 2.5,
-    "section": 2.0,
+    "name": 3.2,
+    "keywords": 3.8,
+    "category": 2.6,
+    "product_category": 3.8,
+    "era": 2.8,
+    "section": 2.2,
     "topic": 3.0,
-    "concept": 2.5,
+    "concept": 2.8,
+    "chart_type": 2.5,
 }
 
 STOPWORDS = {
@@ -77,8 +116,8 @@ STOPWORDS = {
 }
 
 
-def tokenize(text: str) -> List[str]:
-    """Lowercase alphanumeric/hyphen tokenizer with lightweight stemming."""
+def tokenize(text: str, expand_synonyms: bool = False) -> List[str]:
+    """Lowercase alphanumeric tokenizer with stemming and optional synonym expansion."""
     if not text:
         return []
     raw = re.findall(r"[a-z0-9+#]+", text.lower())
@@ -91,11 +130,12 @@ def tokenize(text: str) -> List[str]:
             tokens.append(tok[:-1])
         elif len(tok) > 5 and tok.endswith("ing"):
             tokens.append(tok[:-3])
+        if expand_synonyms and tok in SYNONYM_MAP:
+            tokens.extend(SYNONYM_MAP[tok])
     return tokens
 
 
 def load_csv_rows(csv_path: Path) -> List[Dict[str, str]]:
-    """Load UTF-8 CSV into a list of clean string dicts."""
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV file not found: {csv_path}")
     with csv_path.open("r", encoding="utf-8", newline="") as handle:
@@ -129,12 +169,27 @@ def load_stack(stack: str) -> List[Dict[str, str]]:
         "shadcn": "nextjs-shadcn",
         "html": "html-tailwind",
         "tailwind": "html-tailwind",
+        "ios": "swiftui",
+        "r3f": "threejs",
+        "webgl": "threejs",
     }
     resolved = aliases.get(key, key)
     if resolved not in AVAILABLE_STACKS:
         valid = ", ".join(AVAILABLE_STACKS)
         raise ValueError(f"Unknown stack '{stack}'. Valid stacks: {valid}")
     return load_csv_rows(STACKS_DIR / f"{resolved}.csv")
+
+
+def catalog_stats() -> Dict[str, Any]:
+    domain_counts = {d: len(load_domain(d)) for d in CANONICAL_DOMAINS}
+    stack_counts = {s: len(load_stack(s)) for s in AVAILABLE_STACKS}
+    return {
+        "domains": domain_counts,
+        "stacks": stack_counts,
+        "total_domain_rows": sum(domain_counts.values()),
+        "total_stack_rows": sum(stack_counts.values()),
+        "grand_total_rows": sum(domain_counts.values()) + sum(stack_counts.values()),
+    }
 
 
 def bm25_search(
@@ -145,7 +200,7 @@ def bm25_search(
     k1: float = 1.5,
     b: float = 0.75,
 ) -> List[Dict[str, str]]:
-    """Rank CSV rows with field-weighted Okapi BM25."""
+    """Rank CSV rows with field-weighted Okapi BM25 + synonym expansion."""
     candidates = list(rows)
     if era_filter and era_filter != "auto":
         filtered = [
@@ -158,7 +213,7 @@ def bm25_search(
     if not candidates:
         return []
 
-    query_tokens = tokenize(query)
+    query_tokens = tokenize(query, expand_synonyms=True)
     if not query_tokens:
         return candidates[:top_n]
 
@@ -167,17 +222,16 @@ def bm25_search(
     df: Counter[str] = Counter()
 
     for row in candidates:
-        weighted_Counter: Counter[str] = Counter()
+        weighted: Counter[str] = Counter()
         total_len = 0.0
         for field, value in row.items():
             weight = BOOST_FIELDS.get(field, 1.0)
-            toks = tokenize(value)
-            for tok in toks:
-                weighted_Counter[tok] += weight
+            for tok in tokenize(value, expand_synonyms=False):
+                weighted[tok] += weight
                 total_len += weight
-        doc_tokens_list.append(weighted_Counter)
+        doc_tokens_list.append(weighted)
         doc_lengths.append(max(total_len, 1.0))
-        for tok in weighted_Counter.keys():
+        for tok in weighted.keys():
             df[tok] += 1
 
     num_docs = len(candidates)
@@ -190,10 +244,9 @@ def bm25_search(
         score = 0.0
         for qtok in query_tokens:
             if qtok not in tf_map:
-                # Partial prefix bonus for compound words (e.g. "fintech" / "fin")
                 for dtok, freq in tf_map.items():
                     if len(qtok) >= 4 and (dtok.startswith(qtok) or qtok.startswith(dtok)):
-                        score += 0.35 * min(freq, 3.0)
+                        score += 0.30 * min(freq, 3.0)
                 continue
             doc_freq = df[qtok]
             idf = math.log(1.0 + (num_docs - doc_freq + 0.5) / (doc_freq + 0.5))

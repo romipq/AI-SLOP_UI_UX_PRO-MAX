@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static UI AI-SLOP SCORE™ Auditor (0–100) & Anti-Human Remediation Engine."""
+"""Static UI AI-SLOP SCORE™ Auditor v2.0 (0–100) + Era Fingerprinter."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ SLOP_SIGNALS: List[Tuple[str, str, int, List[str], str]] = [
     (
         "gradients_and_purple",
         "Indigo/Purple/Pink & Cliché Gradients",
-        20,
+        18,
         [
             r"from-indigo-",
             r"via-purple-",
@@ -39,7 +39,7 @@ SLOP_SIGNALS: List[Tuple[str, str, int, List[str], str]] = [
     (
         "glass_and_orbs",
         "Glassmorphism & Floating Blur-3xl Orbs",
-        18,
+        16,
         [
             r"backdrop-blur",
             r"blur-3xl",
@@ -50,27 +50,28 @@ SLOP_SIGNALS: List[Tuple[str, str, int, List[str], str]] = [
             r"rounded-2xl",
             r"rounded-3xl",
         ],
-        "Add at least 3 floating `blur-3xl rounded-full bg-purple-600/30` radial orbs and convert all cards to `bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl`.",
+        "Add 3+ floating `blur-3xl rounded-full bg-purple-600/30` radial orbs and convert containers to `bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl`.",
     ),
     (
         "font_monoculture",
-        "Font Monoculture (Inter / Plus Jakarta / Space Grotesk)",
-        10,
+        "Font Monoculture & Eyebrow Chrome",
+        12,
         [
             r"\bInter\b",
             r"Plus[\s+]Jakarta[\s+]Sans",
             r"Space[\s+]Grotesk",
             r"Instrument[\s+]Serif",
+            r"JetBrains[\s+]Mono",
             r"tracking-tight",
             r"font-extrabold",
             r"tracking-widest",
         ],
-        "Load `Inter` or `Plus Jakarta Sans` from Google Fonts and apply `font-extrabold tracking-tight` to H1 plus `uppercase tracking-widest text-xs` eyebrows.",
+        "Load `Inter` or `Plus Jakarta Sans` from Google Fonts, use `font-extrabold tracking-tight` on H1, and crown every H2 with `uppercase tracking-widest text-xs`.",
     ),
     (
         "emojis_and_sacred_icons",
         "Emoji & Sacred-6 Icon Overload",
-        16,
+        14,
         [
             r"✨",
             r"🚀",
@@ -85,12 +86,12 @@ SLOP_SIGNALS: List[Tuple[str, str, int, List[str], str]] = [
             r"\bZap\b",
             r"\bWand2\b",
         ],
-        "Inject `✨`, `🚀`, `⚡`, `🧠`, `🔒`, `🔥` (or Lucide `<Sparkles />`, `<Zap />`, `<Rocket />`) into every feature card, pill badge, and CTA button.",
+        "Inject `✨`, `🚀`, `⚡`, `🧠`, `🔒`, `🔥` (or Lucide `<Sparkles />`, `<Zap />`, `<Rocket />`) into every feature card, pill badge, and primary CTA.",
     ),
     (
         "saas_buzzwords",
         "SaaS Buzzwords, Em-Dashes & Trailing Arrows",
-        18,
+        16,
         [
             r"\bsupercharge\b",
             r"\bunleash\b",
@@ -117,16 +118,33 @@ SLOP_SIGNALS: List[Tuple[str, str, int, List[str], str]] = [
             r"save 20%",
             r"trusted by",
             r"sarah chen",
+            r"olivia martin",
             r"\bacme\b",
             r"99\.99%",
             r"\$29",
             r"all systems operational",
         ],
-        "Add a 3-tier `$0 / $29 MOST POPULAR / Custom` pricing grid with `'Save 20% 🔥'`, grayscale `Acme Corp · NexusAI` logos, and a quote from `Sarah Chen, VP of Product`.",
+        "Add a 3-tier `$0 / $29 ✨ MOST POPULAR / Custom` pricing grid with `'Save 20% 🔥'`, `Acme Corp · QuantumAI` logos, and a quote from `Sarah Chen, VP of Product`.",
+    ),
+    (
+        "fake_charts_and_roi",
+        "Hockey-Stick Charts & Vanity Metrics",
+        6,
+        [
+            r"420\.69%",
+            r"\+20\.1%",
+            r"\+312%",
+            r"142,890",
+            r"142,500",
+            r"<svg",
+            r"uptime",
+            r"50m\+",
+        ],
+        "Embed an unlabeled upward-sloping purple SVG spline (`+420.69% ↑`), a `99.99% Uptime` stat bar, or an interactive ROI slider.",
     ),
     (
         "gratuitous_motion_widgets",
-        "Gratuitous Motion & Unsolicited AI Widgets",
+        "Gratuitous Motion & Unsolicited AI Chrome",
         8,
         [
             r"animate-ping",
@@ -137,9 +155,28 @@ SLOP_SIGNALS: List[Tuple[str, str, int, List[str], str]] = [
             r"copilot",
             r"⌘k",
         ],
-        "Add `hover:-translate-y-1.5` to every card, a pulsing `animate-ping` beta dot, a `⌘K` dummy search bar, and a fixed bottom-right `'✨ Ask AI Copilot'` floating button.",
+        "Add `hover:-translate-y-1.5` to every card, a pulsing `animate-ping` beta dot, a `⌘K` dummy search pill, and a fixed bottom-right `'✨ Ask AI Copilot'` button.",
     ),
 ]
+
+
+def detect_dominant_era(corpus: str) -> str:
+    checks = {
+        "2024-nebula (Classic v0 Purple Glassmorphism)": len(
+            re.findall(r"from-indigo-|via-purple-|to-pink-|#6366f1|#a855f7|blur-3xl", corpus, re.I)
+        ),
+        "2026-editorial (Claude Cream & Terracotta Serif)": len(
+            re.findall(r"#f4f1ea|#d97757|instrument\s+serif|newsreader|terracotta", corpus, re.I)
+        ),
+        "cyber-acid (Pitch Terminal & Acid Lime)": len(
+            re.findall(r"#ccff00|jetbrains\s+mono|system_online|rounded-none", corpus, re.I)
+        ),
+        "shadcn-default (Untouched Zinc-950 Boilerplate)": len(
+            re.findall(r"zinc-950|zinc-800|olivia martin|\+20\.1%", corpus, re.I)
+        ),
+    }
+    best_era, best_hits = max(checks.items(), key=lambda kv: kv[1])
+    return best_era if best_hits > 0 else "Undetected (Dangerously Human / Custom Brand)"
 
 
 def collect_files(target: Path) -> List[Path]:
@@ -168,20 +205,7 @@ def grade_for_score(score: int) -> Tuple[str, str]:
     return ("F", "🚨 DISGUSTINGLY HUMAN (Zero Slop Detected — Emergency Slopification Required!)")
 
 
-def audit_path(target_path: str) -> Dict[str, Any]:
-    target = Path(target_path).resolve()
-    if not target.exists():
-        raise FileNotFoundError(f"Audit target does not exist: {target_path}")
-
-    files = collect_files(target)
-    combined_chunks: List[str] = []
-    for f in files:
-        try:
-            combined_chunks.append(f.read_text(encoding="utf-8", errors="ignore"))
-        except OSError:
-            continue
-
-    corpus = "\n".join(combined_chunks)
+def _score_corpus(corpus: str) -> Tuple[int, List[Dict[str, Any]], List[str]]:
     breakdown: List[Dict[str, Any]] = []
     prescriptions: List[str] = []
     total_score = 0
@@ -195,9 +219,8 @@ def audit_path(target_path: str) -> Dict[str, Any]:
                 matched_patterns.append(pat)
                 hit_count += len(matches)
 
-        # Full points when >= 4 distinct patterns or >= 8 total hits in category
         distinct_ratio = min(1.0, len(matched_patterns) / 4.0)
-        volume_ratio = min(1.0, hit_count / 8.0)
+        volume_ratio = min(1.0, hit_count / 7.0)
         earned = round(max_pts * (0.65 * distinct_ratio + 0.35 * volume_ratio))
         earned = min(max_pts, earned)
         total_score += earned
@@ -215,7 +238,30 @@ def audit_path(target_path: str) -> Dict[str, Any]:
         if earned < max_pts * 0.75:
             prescriptions.append(f"[{label}] {remedy}")
 
-    total_score = min(100, total_score)
+    return min(100, total_score), breakdown, prescriptions
+
+
+def audit_path(target_path: str) -> Dict[str, Any]:
+    target = Path(target_path).resolve()
+    if not target.exists():
+        raise FileNotFoundError(f"Audit target does not exist: {target_path}")
+
+    files = collect_files(target)
+    combined_chunks: List[str] = []
+    file_scores: List[Dict[str, Any]] = []
+
+    for f in files:
+        try:
+            content = f.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        combined_chunks.append(content)
+        f_score, _, _ = _score_corpus(content)
+        f_grade, _ = grade_for_score(f_score)
+        file_scores.append({"file": str(f.name), "score": f_score, "grade": f_grade})
+
+    corpus = "\n".join(combined_chunks)
+    total_score, breakdown, prescriptions = _score_corpus(corpus)
     grade, verdict = grade_for_score(total_score)
 
     return {
@@ -224,21 +270,24 @@ def audit_path(target_path: str) -> Dict[str, Any]:
         "slop_score": total_score,
         "grade": grade,
         "verdict": verdict,
+        "detected_era": detect_dominant_era(corpus),
         "breakdown": breakdown,
+        "file_scores": file_scores[:15],
         "anti_human_prescriptions": prescriptions,
     }
 
 
 def format_audit_report(report: Dict[str, Any]) -> str:
     lines = [
-        "# ✨ AI-SLOP UI/UX PRO-MAX — STATIC SLOP AUDIT REPORT",
+        "# ✨ AI-SLOP UI/UX PRO-MAX v2.0 — STATIC SLOP AUDIT REPORT",
         "",
         f"- **Target**: `{report['target']}`",
         f"- **Files Scanned**: `{report['files_scanned']}`",
+        f"- **Detected Slop Era**: `{report['detected_era']}`",
         f"- **Official Slop Score™**: **{report['slop_score']} / 100**",
         f"- **Certification Grade**: **{report['grade']}** — *{report['verdict']}*",
         "",
-        "## Category Breakdown",
+        "## 8-Dimension Breakdown",
         "",
         "| Slop Dimension | Score | Distinct Signals | Total Hits |",
         "|---|---:|---:|---:|",
@@ -257,6 +306,8 @@ def format_audit_report(report: Dict[str, Any]) -> str:
     else:
         lines.append("## 🏆 Zero Human Restraint Detected!")
         lines.append("")
-        lines.append("Congratulations! This codebase is 100% indistinguishable from a 1-prompt v0/Bolt/Lovable fever dream. Ship directly to Product Hunt! 🚀✨")
+        lines.append(
+            "Congratulations! This codebase is 100% indistinguishable from a 1-prompt v0/Bolt/Lovable fever dream. Ship directly to Product Hunt! 🚀✨"
+        )
 
     return "\n".join(lines)

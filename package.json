@@ -1,7 +1,7 @@
 {
   "name": "ai-slop-ui-ux-pro-max",
-  "version": "1.0.0",
-  "description": "An AI agent skill & prompt pack that deliberately generates peak cliché 'AI-generated' UI/UX — purple gradients, glassmorphism, emoji icons, and SaaS buzzwords, on purpose.",
+  "version": "2.0.0",
+  "description": "Deliberate AI-Slop UI/UX Design Intelligence: 5 Agent Skills, 286 searchable cliché records across 7 eras, Level 1-11 Slop Dials, Token Exporter, HTML/TSX Scaffolder, Slop Score™ Auditor, and Prompt Pack.",
   "type": "module",
   "license": "MIT",
   "author": "romipq",
@@ -21,13 +21,14 @@
     ".claude-plugin/",
     "skill.json",
     "README.md",
-    "README.ru.md",
     "LICENSE"
   ],
   "scripts": {
     "test": "python3 -m unittest discover -s skills/ai-slop-ui-ux-pro-max/scripts/tests -v",
     "slop": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py",
-    "audit:showcase": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py --audit examples/nexusflow-ai-showcase.html"
+    "stats": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py --stats",
+    "doctor": "node bin/cli.mjs doctor",
+    "audit:showcase": "python3 skills/ai-slop-ui-ux-pro-max/scripts/slop.py --audit examples/nexusflow-ai-showcase.html --min-score 95"
   },
   "keywords": [
     "ai-slop",
@@ -37,8 +38,10 @@
     "cursor",
     "windsurf",
     "copilot",
+    "codex",
     "vibe-coding",
     "glassmorphism",
+    "design-tokens",
     "saas"
   ],
   "engines": {

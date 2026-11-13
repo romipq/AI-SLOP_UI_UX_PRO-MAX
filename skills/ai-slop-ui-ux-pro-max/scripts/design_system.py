@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AI-SLOP UI/UX PRO-MAX Design System Generator & Persistence Engine."""
+"""AI-SLOP UI/UX PRO-MAX v2.0 Design System Compiler & Persistence Engine."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from core import bm25_search, load_domain
+from tokens import export_css_tokens
 
 
 def slugify(value: str) -> str:
@@ -37,7 +38,7 @@ def describe_slop_tier(level: int) -> Dict[str, Any]:
             "chat_widgets": 0,
             "confetti": False,
             "sections_count": 6,
-            "directive": "Keep a thin veneer of plausibility: 1 blurred purple orb, Inter font, 3-col feature cards, and 'Start Free →' buttons.",
+            "directive": "Keep a thin veneer of restraint: 1 blurred purple orb, Inter font, 3-column rounded-2xl glass cards, and 'Start Free →' buttons.",
         }
     if level <= 7:
         return {
@@ -48,7 +49,7 @@ def describe_slop_tier(level: int) -> Dict[str, Any]:
             "chat_widgets": 1,
             "confetti": False,
             "sections_count": 9,
-            "directive": "Full YC/v0 SaaS energy: 3 floating blur-3xl orbs, pulsing beta pill, gradient noun in H1, 6-card Sparkles feature grid, $0/$29/Custom pricing with 'Save 20% 🔥', Sarah Chen testimonial, and floating '✨ Ask AI' widget.",
+            "directive": "Full YC/v0 SaaS energy: 3 floating blur-3xl orbs, pulsing beta pill, gradient noun in H1, 6-card Sparkles feature grid, $0/$29/Custom pricing with 'Save 20% 🔥', Sarah Chen quote, and floating '✨ Ask AI' widget.",
         }
     if level <= 10:
         return {
@@ -59,7 +60,7 @@ def describe_slop_tier(level: int) -> Dict[str, Any]:
             "chat_widgets": 1,
             "confetti": True,
             "sections_count": 12,
-            "directive": "Zero human restraint: frosted glass inside frosted glass, conic spinning borders, animated gradient shimmer text, fake live ROI calculator, fake ⌘K bar, cookie popup, and confetti on pricing toggle.",
+            "directive": "Zero human restraint: frosted glass inside frosted glass, conic spinning borders, animated gradient shimmer text, dopamine ROI calculator, dummy ⌘K bar, cookie popup, and confetti on pricing toggle.",
         }
     return {
         "level": 11,
@@ -69,7 +70,7 @@ def describe_slop_tier(level: int) -> Dict[str, Any]:
         "chat_widgets": 2,
         "confetti": True,
         "sections_count": 14,
-        "directive": "TRANSCENDENT PARODY MODE: Stack TWO announcement ribbons at the top, 6 drifting rainbow-purple blur-3xl nebulae, wrap 2+ words per heading in animated gradient text, put emojis on EVERY button & nav link, render BOTH a bottom-right '✨ Ask AI Copilot' AND a bottom-left '🔥 Live: Sarah from Acme just upgraded to Pro!' toast, and add $0/$29/$99 AI subscription pricing even if it's a personal resume or bakery.",
+        "directive": "TRANSCENDENT PARODY MODE: Stack TWO announcement ribbons at the top, 6 drifting rainbow-purple blur-3xl nebulae, wrap 2+ words per heading in animated gradient text, put emojis on EVERY button & nav link, render BOTH a bottom-right '✨ Ask AI Copilot' AND a bottom-left '🔥 Sarah from Acme just upgraded to Pro!' toast, and add $0/$29/$99 AI subscription pricing even to a personal resume or bakery.",
     }
 
 
@@ -80,29 +81,31 @@ def build_design_system(
     era: str = "auto",
     buzzwords_dial: int = 9,
     emoji_density: int = 8,
+    motion_nausea: int = 8,
 ) -> Dict[str, Any]:
     slop_level = clamp(slop_level, 1, 11)
     buzzwords_dial = clamp(buzzwords_dial, 1, 10)
     emoji_density = clamp(emoji_density, 1, 10)
+    motion_nausea = clamp(motion_nausea, 1, 10)
 
     styles = load_domain("style")
     palettes = load_domain("palette")
     typographies = load_domain("typography")
+    ux_rules = load_domain("ux")
     buzzwords = load_domain("buzzwords")
     components = load_domain("components")
+    charts = load_domain("charts")
     personas = load_domain("personas")
     icons = load_domain("icons")
     motions = load_domain("motion")
     reasonings = load_domain("reasoning")
 
-    # 1. Match reasoning profile
     r_matches = bm25_search(reasonings, query, top_n=1)
     reasoning = r_matches[0] if r_matches else reasonings[0]
 
-    # 2. Resolve Style, Palette, Typography
     if slop_level == 11 and era == "auto":
-        style = _find_by_id(styles, "S25") or styles[0]
-        palette = _find_by_id(palettes, "P20") or palettes[0]
+        style = _find_by_id(styles, "S50") or styles[-1]
+        palette = _find_by_id(palettes, "P30") or palettes[-1]
         typo = _find_by_id(typographies, "T08") or typographies[0]
     elif era != "auto":
         s_matches = bm25_search(styles, query, top_n=1, era_filter=era)
@@ -130,7 +133,6 @@ def build_design_system(
 
     tier = describe_slop_tier(slop_level)
 
-    # 3. Pick copy formulas
     eyebrows = [b for b in buzzwords if b["category"] == "eyebrow_pill"]
     headlines = [b for b in buzzwords if b["category"] == "hero_headline"]
     subheadlines = [b for b in buzzwords if b["category"] == "hero_subheadline"]
@@ -139,16 +141,17 @@ def build_design_system(
 
     matched_personas = bm25_search(personas, query, top_n=3)
     if len(matched_personas) < 3:
-        for p in personas:
-            if p["id"] not in {m["id"] for m in matched_personas}:
-                matched_personas.append(p)
+        for u in personas:
+            if u["id"] not in {m["id"] for m in matched_personas}:
+                matched_personas.append(u)
             if len(matched_personas) == 3:
                 break
 
-    mandatory_components = components[: min(len(components), tier["sections_count"] + 2)]
+    matched_charts = bm25_search(charts, query, top_n=2) or charts[:2]
+    motion_count = 3 if motion_nausea <= 4 else (6 if motion_nausea <= 7 else 10)
 
     emoji_policy = (
-        "FULL EMOJI EXPLOSION (🚀 ✨ ⚡ 🧠 🔒 🔥 📈 🤖 on every badge, card icon, pricing toggle, and CTA)"
+        "FULL EMOJI SATURATION (✨ 🚀 ⚡ 🧠 🔒 🔥 📈 🤖 on every badge, card icon, pricing toggle, and CTA)"
         if emoji_density >= 8
         else "LUCIDE SACRED SIX + SELECTIVE ✨ (<Sparkles />, <Zap />, <Rocket />, <Brain />, <ShieldCheck />, <TrendingUp /> inside tinted rounded-xl boxes)"
         if emoji_density >= 4
@@ -158,9 +161,22 @@ def build_design_system(
     buzzword_policy = (
         "MAXIMUM LLM SYNERGY: Use 'Supercharge', 'Unleash', 'Seamlessly', 'Orchestrate', 'Next-Gen', '10x', em-dashes ('—') in every paragraph, and 'It's not just X — it's Y' at least twice."
         if buzzwords_dial >= 8
-        else "STANDARD YC LAUNCH COPY: Promise 'minutes, not months', 'built for modern teams', and 'no credit card required · 14-day free trial'."
+        else "STANDARD YC LAUNCH COPY: Promise 'in minutes, not months', 'built for modern teams', and 'no credit card required · 14-day free trial'."
         if buzzwords_dial >= 4
         else "FAUX-PROFOUND MANIFESTO: Short pretentious sentences about 'craft', 'velocity', and 'autonomous intelligence'."
+    )
+
+    chosen_eyebrow = (
+        eyebrows[3]["example"]
+        if style["era"] == "2026-editorial"
+        else eyebrows[4]["example"]
+        if style["era"] == "cyber-acid"
+        else eyebrows[0]["example"].replace("NexusFlow", project_name)
+    )
+    chosen_headline = (
+        headlines[4]["example"]
+        if style["era"] == "2026-editorial"
+        else headlines[0]["example"]
     )
 
     return {
@@ -172,6 +188,7 @@ def build_design_system(
             "era": style["era"],
             "buzzwords": buzzwords_dial,
             "emoji_density": emoji_density,
+            "motion_nausea": motion_nausea,
         },
         "reasoning": reasoning,
         "style": style,
@@ -180,21 +197,19 @@ def build_design_system(
         "emoji_policy": emoji_policy,
         "buzzword_policy": buzzword_policy,
         "copy_pack": {
-            "eyebrow": eyebrows[0]["example"].replace("NexusFlow", project_name),
-            "headline": (
-                headlines[4]["example"]
-                if style["era"] == "2026-editorial"
-                else headlines[0]["example"]
-            ),
+            "eyebrow": chosen_eyebrow,
+            "headline": chosen_headline,
             "subheadline": subheadlines[0]["example"],
             "cta_primary": ctas[0]["example"],
             "cta_secondary": "▶ Watch 2-Min Demo",
             "microcopy": micros[0]["example"],
         },
         "personas": matched_personas,
+        "charts": matched_charts,
+        "ux_antipatterns": ux_rules[:8],
         "icons": icons[:6],
-        "motions": motions[:5],
-        "components": mandatory_components,
+        "motions": motions[:motion_count],
+        "components": components[: min(len(components), tier["sections_count"])],
     }
 
 
@@ -211,9 +226,13 @@ def format_design_system_markdown(ds: Dict[str, Any]) -> str:
         f'- **{u["persona_name"]}**, *{u["role"]} @ {u["company"]}* (`{u["metric_badge"]}`): "{u["quote"]}"'
         for u in ds["personas"]
     )
-    icons_md = "\n".join(
-        f'- `{ic["emoji"]}` / `<{ic["lucide_icon"]} />` — **{ic["concept"]}** (`{ic["container_tailwind"]}`)'
-        for ic in ds["icons"]
+    charts_md = "\n".join(
+        f'- **{ch["name"]}** (`{ch["chart_type"]}`) — `{ch["fake_metric_label"]}`: {ch["visual_recipe"]}'
+        for ch in ds["charts"]
+    )
+    ux_md = "\n".join(
+        f'- **[{ux["id"]}] {ux["category"]}** (*{ux["severity"]}*): {ux["slop_directive"]}'
+        for ux in ds["ux_antipatterns"][:6]
     )
     comps_md = "\n".join(
         f'{idx + 1}. **{c["name"]}** (`{c["section"]}`) — `{c["tailwind_recipe"]}`'
@@ -221,13 +240,13 @@ def format_design_system_markdown(ds: Dict[str, Any]) -> str:
     )
     motions_md = "\n".join(
         f'- **{m["name"]}** (`{m["duration_easing"]}`): `{m["tailwind_or_css"]}`'
-        for m in ds["motions"]
+        for m in ds["motions"][:6]
     )
 
-    return f"""# ✨ AI-SLOP UI/UX PRO-MAX — MASTER DESIGN SYSTEM: {ds["project_name"]}
+    return f"""# ✨ AI-SLOP UI/UX PRO-MAX v2.0 — MASTER DESIGN SYSTEM: {ds["project_name"]}
 
 > **Slop Tier**: `{tier["tier_name"]}` (Level **{dials["slop_level"]}/11**)
-> **Era**: `{dials["era"]}` | **Buzzword Dial**: `{dials["buzzwords"]}/10` | **Emoji Density**: `{dials["emoji_density"]}/10`
+> **Era**: `{dials["era"]}` | **Buzzwords**: `{dials["buzzwords"]}/10` | **Emojis**: `{dials["emoji_density"]}/10` | **Motion Nausea**: `{dials["motion_nausea"]}/10`
 > **Matched Archetype**: {r["product_category"]} (`{r["id"]}`)
 
 ---
@@ -244,12 +263,13 @@ def format_design_system_markdown(ds: Dict[str, Any]) -> str:
 
 ---
 
-## 2. Color Palette & Nebula Physics (`{p["name"]}`)
+## 2. Color System & Nebula Physics (`{p["name"]}`)
 
 ```css
 :root {{
   --slop-bg: {p["bg_hex"]};
   --slop-surface: {p["surface_hex"]};
+  --slop-border: {p.get("border_hex", "rgba(255,255,255,0.10)")};
   --slop-primary: {p["primary_hex"]};
   --slop-secondary: {p["secondary_hex"]};
   --slop-accent: {p["accent_hex"]};
@@ -264,6 +284,7 @@ def format_design_system_markdown(ds: Dict[str, Any]) -> str:
 - **Floating Radial Orbs (`{tier["orb_count"]}` required)**: `{p["orb_recipe"]}`
 - **Glass Card Recipe**: `{s["card_recipe"]} {s["border_radius"]}`
 - **Glow Shadow**: `{s["shadow_recipe"]}`
+- **Contrast Note**: {p.get("wcag_slop_note", "Classic low-contrast muted slate on dark glass")}
 
 ---
 
@@ -289,14 +310,16 @@ def format_design_system_markdown(ds: Dict[str, Any]) -> str:
 - **Primary CTA**: `{cp["cta_primary"]}`
 - **Secondary CTA**: `{cp["cta_secondary"]}`
 - **Trust Microcopy**: `{cp["microcopy"]}`
-- **Fictional Logo Bar**: `Acme Corp · QuantumAI · NexusCloud · HyperScale · Synthetix · VortexMetrics`
+- **Fictional Logo Bar**: `Acme Corp · QuantumAI · NexusCloud · HyperScale · Synthetix · Globex`
 
 ---
 
-## 5. Sacred Iconography & Emoji Rules
+## 5. Enforced UX Anti-Patterns & Fake Data Visualizations
 
-- **Policy**: {ds["emoji_policy"]}
-{icons_md}
+{ux_md}
+
+### Recommended Fake Charts
+{charts_md}
 
 ---
 
@@ -304,13 +327,13 @@ def format_design_system_markdown(ds: Dict[str, Any]) -> str:
 
 {comps_md}
 
-- **Announcement Bars at Top**: `{tier["announcement_bars"]}`
-- **Unsolicited Floating AI Chat Widgets**: `{tier["chat_widgets"]}`
+- **Top Announcement Ribbons**: `{tier["announcement_bars"]}`
+- **Unsolicited Floating AI Widgets**: `{tier["chat_widgets"]}`
 - **Confetti on Toggle/CTA Click**: `{"ENABLED 🎉" if tier["confetti"] else "Optional"}`
 
 ---
 
-## 7. Certified Fake Testimonials (Drop Straight Into Wall-of-Love)
+## 7. Certified Fake Testimonials
 
 {personas_md}
 
@@ -335,6 +358,7 @@ def persist_design_system(
     pages_dir.mkdir(parents=True, exist_ok=True)
 
     master_path = base_dir / "MASTER-SLOP.md"
+    tokens_path = base_dir / "slop-tokens.css"
     written_files: List[str] = []
     skipped_files: List[str] = []
 
@@ -344,6 +368,12 @@ def persist_design_system(
         master_path.write_text(format_design_system_markdown(ds), encoding="utf-8")
         written_files.append(str(master_path))
 
+    if tokens_path.exists() and not force:
+        skipped_files.append(str(tokens_path))
+    else:
+        tokens_path.write_text(export_css_tokens(ds), encoding="utf-8")
+        written_files.append(str(tokens_path))
+
     if page:
         page_slug = slugify(page)
         page_path = pages_dir / f"{page_slug}.md"
@@ -352,18 +382,19 @@ def persist_design_system(
         else:
             page_content = f"""# ✨ Page-Specific Slop Override: `{page}` ({ds["project_name"]})
 
-Inherits all rules from `../MASTER-SLOP.md` with the following extra slop injections for **{page}**:
+Inherits all tokens and commandments from `../MASTER-SLOP.md` and `../slop-tokens.css` with extra slop rules for **{page}**:
 
-1. Add a sticky top banner: `🎉 New in {ds["project_name"]} {page.title()}: Autonomous AI Co-Pilot is now LIVE →`
-2. Ensure at least **{ds["tier"]["orb_count"]}** floating `blur-3xl` radial orbs behind the `{page}` container.
-3. Add a `✨ Generate AI Insights` glowing purple button in the top-right header of `{page}`.
-4. Append `→` to every interactive button and link on `{page}`.
+1. Sticky top announcement ribbon: `🎉 New in {ds["project_name"]} {page.title()}: Autonomous AI Co-Pilot is LIVE →`
+2. Float at least **{ds["tier"]["orb_count"]}** `blur-3xl` radial orbs behind the `{page}` container.
+3. Add a glowing `✨ Generate AI Insights →` button in the top-right action bar of `{page}`.
+4. Append `→` to every button and link on `{page}`.
 """
             page_path.write_text(page_content, encoding="utf-8")
             written_files.append(str(page_path))
 
     return {
         "master_path": str(master_path),
+        "tokens_path": str(tokens_path),
         "written": written_files,
         "skipped": skipped_files,
     }

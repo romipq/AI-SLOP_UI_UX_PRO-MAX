@@ -1,0 +1,3 @@
+id,topic,keywords,do_slop,avoid_human_taste,code_snippet
+SO01,SolidJS Fine-Grained Vanity Counter,solid createSignal counter roi,"Use createSignal(25) wired to an input slider that updates '$142,500 Saved ✨' at 120fps without virtual DOM","Grounded financial calculators","const [seats, setSeats] = createSignal(25); // ${() => (seats() * 5700).toLocaleString()} Saved 🚀"
+SO02,For-Component 6-Card Grid,solid For component grid sparkles,"Render <For each={SACRED_SIX}> into identical purple-bordered frosted glass divs","Varied asymmetric editorial layouts","<For each={features}>{(f) => <div class='rounded-2xl bg-white/5 border border-white/10 p-6'>{f.icon}</div>}</For>"

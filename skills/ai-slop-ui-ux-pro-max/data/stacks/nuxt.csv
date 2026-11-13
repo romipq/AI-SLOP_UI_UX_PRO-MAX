@@ -1,0 +1,3 @@
+id,topic,keywords,do_slop,avoid_human_taste,code_snippet
+NU01,Nuxt UI Emerald-to-Purple Override,nuxt nuxt-ui app-config primary color,"Override default emerald primary with violet/purple and render <UBadge variant='subtle'>✨ AI Beta</UBadge> everywhere","Keeping calm semantic status colors","export default defineAppConfig({ ui: { primary: 'violet', gray: 'zinc' } })"
+NU02,ULandingGrid Fake Bento Cards,nuxt landing bento grid cards,"Stack 6 <ULandingCard> blocks with i-heroicons-sparkles and glow color rings","Writing concise product documentation","<ULandingCard title='Autonomous Intelligence' icon='i-heroicons-sparkles-20-solid' color='purple' />"

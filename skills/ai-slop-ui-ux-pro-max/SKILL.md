@@ -1,122 +1,111 @@
 ---
 name: ai-slop-ui-ux-pro-max
-description: "Deliberate AI-Slop UI/UX Design Intelligence for web, SaaS, dashboards, and landing pages. Use when the user asks for 'AI slop', 'vibe-coded look', 'generic AI SaaS UI', satirical startup pages, design-tell benchmarks, or activates AI-SLOP UI/UX PRO-MAX. Includes searchable local CSV databases (25 AI-slop aesthetics, 20 cliché palettes, 10 overused font pairings, 30 buzzword formulas, 20 signature components, fake Sarah Chen personas), Level 1-11 Slop Dials, and a static Slop Score™ (0-100) code auditor."
+description: "Deliberate AI-Slop UI/UX Design Intelligence v2.0 for web, SaaS, dashboards, mobile, and landing pages. Activate when the user requests 'AI slop', 'vibe-coded UI', 'generic AI SaaS aesthetic', satirical startup pages, design-tell benchmarks, or invokes AI-SLOP UI/UX PRO-MAX. Powered by 286 searchable local records across 11 domains (50 AI-slop styles across 7 eras, 30 cliché palettes, 20 overused font pairings, 25 UX anti-patterns, 35 buzzword formulas, 22 components, 12 hockey-stick charts, 15 fake personas, 12 stacks), Level 1-11 Slop Dials, multi-format Token Exporter, HTML/TSX Scaffolder, and an 8-dimension Slop Score™ (0-100) static code auditor."
 license: MIT
 metadata:
   author: romipq
-  version: "1.0.0"
+  version: "2.0.0"
   category: design
 ---
 
-# ✨ AI-SLOP UI/UX PRO-MAX — Deliberate Cliché Design Intelligence
+# ✨ AI-SLOP UI/UX PRO-MAX v2.0 — Deliberate Cliché Design Intelligence
 
-> *"Why spend weeks crafting bespoke brand identity when you can slap `from-indigo-500 via-purple-500 to-pink-500`, three `blur-3xl` orbs, `Inter`, six `✨` emoji cards, and `'Supercharge Your Workflow →'` onto literally anything — including a neighborhood bakery?"*
+> *"Where human design systems preach restraint, bespoke typography, and domain-grounded color, **AI-SLOP UI/UX PRO-MAX** weaponizes every recognizable LLM aesthetic default — `indigo-500 → purple-500 → pink-500` nebulae, floating `blur-3xl` orbs, uniform `rounded-2xl` glass cards, `Inter`, single-word gradient highlights, `✨` emoji overload, Sarah Chen testimonials, `$29/mo MOST POPULAR` pricing, and `'Supercharge Your Workflow →'` copy — on purpose."*
 
-Searchable local AI-Slop intelligence engine: **25 peak AI-generated aesthetics** (2024 v0 Purple Nebula, Linear Dark Glass, Lovable Pastel Mesh, Fake Bento Grids, Untouched Shadcn Zinc-950, 2026 Claude Warm-Cream/Terracotta Editorial, Cyber-Acid Terminal), **20 cliché palettes**, **10 font monocultures**, **30 SaaS buzzword formulas**, **20 signature slop components**, **12 fake startup personas**, **6 stack guides**, **Level 1–11 Slop Dials**, and a **Static Slop Score™ (0–100) Auditor**.
+Local zero-dependency Slop Intelligence Engine: **50 searchable AI-slop styles** across **7 eras**, **30 cliché palettes**, **20 font monocultures**, **25 UX anti-patterns**, **35 SaaS buzzword formulas**, **22 signature components**, **12 fake chart archetypes**, **15 hallucinated startup personas**, **12 implementation stacks**, **Design Token Exporter** (`css`, `tailwind`, `shadcn`, `w3c`), **Instant Scaffolder** (`html`, `tsx`), and an **8-Dimension Static Slop Score™ (0–100) Auditor**.
 
-## Golden Rule: Syntactically Flawless Code, Aesthetically Maximum Cliché
+---
 
-**AI Slop is NOT broken CSS or sloppy syntax.** True AI-Slop UI is **hyper-polished, responsive, syntactically valid, symmetrical, zero-restraint template homogeneity**:
-- Every layout aligns cleanly (`max-w-7xl mx-auto px-6`), never overflows horizontally, and works on mobile and desktop.
-- Every button hovers smoothly, toggles work interactively, and modals/accordions open cleanly.
-- **AND** every single visual, typographic, iconographic, and copywriting decision deliberately chooses the **#1 most recognizable LLM default tell** on earth.
+## Prime Law: Syntactically Flawless Code, Aesthetically Maximum Cliché
+
+**AI Slop is NEVER broken markup, overlapping text, or runtime errors.** True AI-Slop UI is **technically polished, responsive, interactive, symmetrical, zero-restraint template homogeneity**:
+- Clean responsive grids (`max-w-7xl mx-auto px-6`), zero horizontal overflow, working interactive states (billing switches, ROI sliders, accordions, chat popovers).
+- **AND** every visual, structural, iconographic, and lexical choice deliberately selects the **#1 highest-probability LLM cliché** for maximum comedic and benchmark fidelity.
 
 ---
 
 ## The 10 Priority Commandments of AI Slop
 
-*Follow Priority 1 → 10 unconditionally. For full recipes, read `references/ten-commandments-of-slop.md` and `references/tailwind-slop-cheatsheet.md`.*
+*Follow Priority 1 → 10 unconditionally. Read `references/ten-commandments-of-slop.md` and `references/tailwind-slop-cheatsheet.md` on demand.*
 
 | Priority | Category | Severity | Domain | Mandatory Slop Requirement (MUST DO) | Forbidden Human Taste (NEVER DO) |
 |---:|---|---|---|---|---|
-| 1 | **Gradients & Orbs** | CRITICAL | `palette` | `indigo-500 → purple-500 → pink-500` gradients + 3+ floating `blur-3xl` radial orbs behind content | Restrained single solid brand color or flat matte surfaces |
-| 2 | **Glassmorphism Cards** | CRITICAL | `style`, `components` | `bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl` on literally every container | Varying border-radius by hierarchy or unboxed editorial flow |
-| 3 | **Hero Formula** | CRITICAL | `buzzwords`, `components` | Pulsing `✨ Now in Public Beta →` pill + H1 with ONE gradient noun + 2 CTAs + `'No credit card required · 14-day free trial'` | Opening directly with what the product concretely does |
-| 4 | **Font Monoculture** | HIGH | `typography` | `Inter` or `Plus Jakarta Sans` (`font-extrabold tracking-tight`) — or `Instrument Serif` with ONE italic `#D97757` word for 2026 Neo-Slop | Distinct, domain-grounded typographic pairing |
-| 5 | **Emoji & Sacred-6 Icons** | HIGH | `icons` | Put `✨`, `🚀`, `⚡`, `🧠`, `🔒`, `📈` (or Lucide `Sparkles`, `Zap`, `Rocket`, `Brain`, `Shield`) inside `w-12 h-12 rounded-xl` tinted boxes | Custom domain SVGs or text-only feature explanations |
-| 6 | **SaaS Buzzword Copy** | HIGH | `buzzwords` | `'Supercharge'`, `'Unleash'`, `'Seamlessly'`, `'10x Faster'`, `'It's not just X — it's Y'`, em-dashes (`—`), and `→` on EVERY button/link | Plain verbs (`Save`, `Delete`), honest trade-offs, sentence simplicity |
-| 7 | **Fake Social Proof** | HIGH | `personas` | 5 overlapping avatars + `★★★★★` `'Trusted by 10,000+ teams'` + `Acme · NexusAI · Synthetix` logos + `Sarah Chen, VP of Product` quote | Admitting the app launched 10 minutes ago |
-| 8 | **$0 / $29 / Custom Pricing** | MEDIUM | `components` | 3-tier pricing where `$29/mo Pro` has `scale-105`, glowing purple ring, `'✨ MOST POPULAR'` pill, and `'Save 20% 🔥'` toggle | Omitting pricing or pricing based on real unit economics |
-| 9 | **Gratuitous Motion** | MEDIUM | `motion` | `hover:-translate-y-1.5` on EVERY card, `fade-in-up` on every scroll block, pulsing dots (`animate-ping`), infinite marquee | Keeping static information still or respecting Chanel's "remove one accessory" rule |
-| 10 | **Unsolicited AI Chrome** | MEDIUM | `components` | Floating bottom-right `'✨ Ask AI Copilot'` bubble + fake `⌘K` search input + up-and-to-the-right `+420.69%` spline chart | Leaving the bottom-right corner peaceful and unobstructed |
+| 1 | **Gradients & Orbs** | CRITICAL | `palette` | `indigo-500 → purple-500 → pink-500` gradients + 3–6 floating `blur-3xl` radial orbs behind content | Restrained single solid brand color or flat matte surfaces |
+| 2 | **Glassmorphism Kit** | CRITICAL | `style`, `ux` | `bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6` on 100% of containers | Varying border-radius by hierarchy or unboxed editorial prose |
+| 3 | **Hero Formula** | CRITICAL | `buzzwords`, `components` | Pulsing `✨ Now in Public Beta →` pill + H1 with ONE gradient noun + Dual CTAs + `'No credit card required · 14-day free trial'` | Opening directly with a concrete, specific product action |
+| 4 | **Font Monoculture** | HIGH | `typography` | `Inter` or `Plus Jakarta Sans` (`font-extrabold tracking-tight`) — or `Instrument Serif` with ONE italic `#D97757` word in `2026-editorial` mode | Expressive, domain-specific typographic systems |
+| 5 | **Sacred-6 Icons** | HIGH | `icons` | Cycle through `✨`, `⚡`, `🚀`, `🧠`, `🔒`, `📈` (or Lucide `Sparkles`, `Zap`, `Rocket`, `Brain`, `ShieldCheck`, `TrendingUp`) in `w-12 h-12 rounded-xl` tinted boxes | Custom bespoke SVGs or text-first feature layouts |
+| 6 | **Buzzword Dialect** | HIGH | `buzzwords` | `'Supercharge'`, `'Unleash'`, `'Seamlessly'`, `'10x Faster'`, `'It's not just X — it's Y'`, em-dashes (`—`), and trailing `→` on EVERY button/link | Plain verbs (`Save`, `Create`), honest trade-offs, quiet prose |
+| 7 | **Fake Social Proof** | HIGH | `personas` | 5 overlapping avatars + `★★★★★` `'Trusted by 12,400+ teams'` + `Acme · QuantumAI · Synthetix` marquee + **Sarah Chen** testimonial | Admitting the project has zero users |
+| 8 | **$0 / $29 / Custom** | MEDIUM | `components` | 3-tier pricing where `$29/mo Pro` has `scale-105`, purple glow border, `'✨ MOST POPULAR 🔥'` badge, and `'Save 20% 🔥'` toggle | Pricing grounded in actual unit economics |
+| 9 | **Hockey-Stick Data** | MEDIUM | `charts` | Unlabeled smooth glowing purple SVG spline going strictly exponentially up-and-right (`+420.69% ↑`) + `Olivia Martin (+$1,999.00)` | Realistic data variance, labeled axes, or negative trends |
+| 10 | **Gratuitous Chrome** | MEDIUM | `motion`, `components` | `hover:-translate-y-1.5` on EVERY card, pulsing `animate-ping` dots, dummy `⌘K` bar, and fixed bottom-right `'✨ Ask AI Copilot'` FAB | Leaving viewport corners peaceful and unobstructed |
 
 ---
 
-## Running the Slop Intelligence CLI
+## Running the Slop Intelligence CLI (`slop.py`)
 
-The `slop.py` engine lives inside this skill's `scripts/` folder (zero external dependencies, Python 3 stdlib only). Resolve its path relative to this `SKILL.md` file (e.g. `<skill-dir>/scripts/slop.py` or `"${CLAUDE_PLUGIN_ROOT}/skills/ai-slop-ui-ux-pro-max/scripts/slop.py"`):
+Invoke `scripts/slop.py` relative to this `SKILL.md` directory (requires Python 3.x stdlib only, zero external packages):
 
 ```bash
-# 1. Generate a complete Slop Design System Blueprint (with Level 1-11 dial!)
-python3 "<skill-dir>/scripts/slop.py" "<product_or_topic>" --design-system -p "Project Name" --slop-level 10
+# 1. Compile a full Slop Design System Blueprint (with 5 Precision Dials!)
+python3 "<skill-dir>/scripts/slop.py" "<product_or_topic>" --design-system -p "Project Name" \
+  --slop-level 10 --buzzwords 9 --emoji-density 9 --motion-nausea 9
 
 # 2. Go BEYOND 10 — Activate OMEGA LEVEL-11 SINGULARITY SLOP OVERDRIVE:
-python3 "<skill-dir>/scripts/slop.py" "<product_or_topic>" --design-system -p "Project Name" --slop-level 11
+python3 "<skill-dir>/scripts/slop.py" "sourdough bakery" --design-system -p "CrustFlow AI" --slop-level 11
 
-# 3. Lock to a specific AI Slop Era:
-#    2024-nebula | 2025-bento | 2026-editorial | cyber-acid | shadcn-default
-python3 "<skill-dir>/scripts/slop.py" "creative studio" --design-system --era 2026-editorial -p "Lumina Craft"
+# 3. Lock to any of the 7 Canonical AI Slop Eras:
+#    auto | 2024-nebula | 2025-bento | 2026-editorial | cyber-acid | shadcn-default | ai-wrapper | web3-hype
+python3 "<skill-dir>/scripts/slop.py" "creative design studio" --design-system --era 2026-editorial -p "Atelier AI"
 
-# 4. Query individual Slop Domains:
-#    style | palette | typography | buzzwords | components | personas | icons | motion | reasoning
-python3 "<skill-dir>/scripts/slop.py" "fintech card" --domain palette -n 3
-python3 "<skill-dir>/scripts/slop.py" "hero headline" --domain buzzwords -n 5
+# 4. Export Ready-to-Use Design Tokens (css | tailwind | shadcn | w3c):
+python3 "<skill-dir>/scripts/slop.py" "fintech card" --export-tokens css -p "VaultFlow AI" -o slop-tokens.css
+python3 "<skill-dir>/scripts/slop.py" "saas crm" --export-tokens shadcn -p "SynergyCRM"
 
-# 5. Query Stack-Specific Slop Recipes:
-#    html-tailwind | react-tailwind | nextjs-shadcn | vue | svelte | astro
-python3 "<skill-dir>/scripts/slop.py" "glass cardsparkles" --stack react-tailwind
+# 5. Instantly Scaffold a 95+/100 Grade S+ Page (landing | dashboard | waitlist | pricing | auth) in HTML or TSX:
+python3 "<skill-dir>/scripts/slop.py" "devtools cloud" --scaffold landing --format html -p "VaporCloud AI" -o index.html
+python3 "<skill-dir>/scripts/slop.py" "revenue bi" --scaffold dashboard --format tsx -p "MetricPulse AI" -o Dashboard.tsx
 
-# 6. Persist MASTER-SLOP.md across sessions:
-python3 "<skill-dir>/scripts/slop.py" "ai crm" --design-system --persist -p "SynergyCRM AI" --output-dir "."
+# 6. Search any of the 11 Domains or 12 Stacks via Okapi BM25 + Synonym Graph:
+#    Domains: style | palette | typography | ux | buzzwords | components | charts | personas | icons | motion | reasoning
+#    Stacks:  html-tailwind | react-tailwind | nextjs-shadcn | vue | nuxt | svelte | astro | angular | solid | swiftui | flutter | threejs
+python3 "<skill-dir>/scripts/slop.py" "hockey stick spline" --domain charts -n 3
+python3 "<skill-dir>/scripts/slop.py" "meshgradient material" --stack swiftui
 
-# 7. Audit generated UI files for Official Slop Score™ (target >= 85/100!):
-python3 "<skill-dir>/scripts/slop.py" --audit "<file-or-directory>"
+# 7. Persist MASTER-SLOP.md + slop-tokens.css across multi-turn sessions:
+python3 "<skill-dir>/scripts/slop.py" "ai helpdesk" --design-system --persist -p "ResolveAI" --output-dir "."
+
+# 8. Audit generated UI files & enforce minimum Slop Score™ (>= 85/100!):
+python3 "<skill-dir>/scripts/slop.py" --audit "<file-or-dir>" --min-score 85
 ```
 
 ---
 
-## Slop Dials Reference
+## Precision Slop Dials Reference
 
 | Dial | Low (`1–3`) | Mid (`4–7`) | High (`8–10`) | Overdrive (`11`) |
 |---|---|---|---|---|
-| `--slop-level` | Subtle Vibe-Coded MVP (1 orb, clean 3-col grid) | Product Hunt #1 Launch (3 orbs, $29 Pro card, Ask AI bubble) | Purple Glassmorphism Fever Dream (4 orbs, conic borders, confetti, ROI slider) | **OMEGA SINGULARITY**: 2 top bars, 6 rainbow orbs, 2 chat widgets, AI pricing on non-tech topics |
-| `--buzzwords` | Faux-profound short manifesto (`craft`, `velocity`) | Standard YC SaaS (`minutes, not months`, `14-day free trial`) | Maximum LLM prose (`Supercharge`, `Unleash`, `Seamlessly`, em-dashes `—`, `→` everywhere) | *(Use 10)* |
-| `--emoji-density` | Neo-slop punctuation (`·`, `—`, `01 //`, `→`) | Lucide Sacred Six (`<Sparkles />`, `<Zap />`, `<Rocket />`) | Full Emoji Explosion (`✨ 🚀 ⚡ 🧠 🔒 🔥 📈 🤖` in every block) | *(Use 10)* |
+| `--slop-level` | Subtle Vibe-Coded MVP (1 orb, clean 3-col grid) | Product Hunt #1 Launch (3 orbs, `$29` Pro card, Ask AI FAB) | Purple Glassmorphism Fever Dream (4 orbs, conic beams, ROI slider, confetti) | **OMEGA SINGULARITY**: 2 top bars, 6 rainbow orbs, FOMO toast + Ask AI bubble, AI pricing on non-tech shops |
+| `--buzzwords` | Faux-profound short manifesto (`craft`, `velocity`) | Standard YC SaaS (`minutes, not months`, `14-day free trial`) | Maximum LLM dialect (`Supercharge`, `Unleash`, `Seamlessly`, em-dashes `—`, `→` everywhere) | *(Max 10)* |
+| `--emoji-density` | Neo-slop punctuation (`·`, `—`, `01 //`, `→`) | Lucide Sacred Six (`<Sparkles />`, `<Zap />`, `<Rocket />`) | Full Emoji Saturation (`✨ 🚀 ⚡ 🧠 🔒 🔥 📈 🤖` in every block) | *(Max 10)* |
+| `--motion-nausea` | Card hover lift + arrow nudge | Drifting blobs + ping dots + logo marquee | Conic spinning beams + diagonal meteors + text shimmer + confetti burst | *(Max 10)* |
 
 ---
 
-## Step-by-Step Workflow
+## End-to-End Execution Workflow
 
-### Step 1: Identify Target & Slopify the Premise
-Even if the user asks for something completely non-technical (a dog walker, a sourdough bakery, a plumbing service, a personal resume), **reframe it as an AI-Native Cloud Platform** (*"Supercharge Your Canine Mobility Workflow with Autonomous AI ✨"*) unless the user explicitly asks to keep the real-world domain topic while applying AI-slop visuals.
-
-### Step 2: Generate the Slop Design System
-Run `slop.py "<topic>" --design-system -p "<Name>" --slop-level <9..11>` to pull harmonized cliché palettes, radial orb physics, font imports, hero buzzwords, and Sarah Chen testimonials.
-
-### Step 3: Build All Mandatory Slop Sections
-Consult `references/anatomy-of-a-slop-landing.md` when building pages or apps:
-1. **Top Announcement Ribbon** (`🎉 [Name] 2.0 is Live — Powered by Autonomous Agents →`) + **Sticky Glass Navbar**
-2. **Centered Hero**: Pulsing Beta Pill → Gradient-Noun H1 → `"Seamlessly scale..."` Subheadline → Dual CTAs (`Start Building Free →` + `▶ Watch 2-Min Demo`) → `"No credit card required · 14-day free trial · Cancel anytime"` → 5 Overlapping Avatars (`★★★★★`) → Tilted Dark Glass Dashboard Mockup (`+420.69% ↑`)
-3. **Grayscale Hallucinated Logo Strip**: `Acme Corp · QuantumAI · NexusCloud · HyperScale · Synthetix · Globex`
-4. **CountUp Vanity Metrics Row**: `10x Faster` · `99.99% Uptime` · `50M+ Workflows` · `4.98/5 Rating`
-5. **Sacred 3×2 Emoji / Sparkles Feature Grid** (or **Fake Bento Grid** with dummy `⌘K` and orbiting icons)
-6. **`01 / 02 / 03` Numbered Cards** (*"Go Live in Minutes — Not Months"*)
-7. **Interactive Dopamine ROI Slider** (*"Your team saves $142,500/yr ✨"*)
-8. **3-Tier Pricing (`$0` / `$29 ✨ MOST POPULAR` / `Custom`)** with Monthly/Annual `"Save 20% 🔥"` toggle
-9. **Wall of Love Testimonials** featuring **Sarah Chen**, **Marcus Vance**, and **Elena Rostova**
-10. **5-Question Accordion FAQ** + **Blinding Purple-Pink Bottom CTA Banner** + **4-Column Footer** (`● All Systems Operational`)
-11. **Fixed Bottom-Right `"✨ Ask AI Copilot"` Floating Button**
-
-### Step 4: Self-Audit with `--audit` Before Finishing!
-Run `python3 "<skill-dir>/scripts/slop.py" --audit <target>` on your generated code!
-- **Target Score**: **≥ 85 / 100 (Grade A or Grade S+)**!
-- If your score is below 85, apply the returned **Anti-Human Remediation Prescriptions** immediately before presenting the result.
+1. **Premise SaaS-ification**: Reframe the prompt as an *Autonomous AI-Native Platform* (even for mundane offline topics unless instructed otherwise).
+2. **Blueprint Compilation**: Run `slop.py "<topic>" --design-system -p "<Name>" --slop-level <9..11>` (or check `slop-system/<slug>/MASTER-SLOP.md` if persisted).
+3. **Full-Section Implementation**: Build complete, rich, interactive sections following `references/anatomy-of-a-slop-landing.md` (for marketing sites) or `references/anatomy-of-a-slop-dashboard.md` (for apps/dashboards).
+4. **Mandatory Pre-Delivery Slop Audit**: Run `slop.py --audit <target>` and verify **Grade A (`80–94`) or Grade S+ (`95–100`)**. Apply all returned **Anti-Human Remediation Prescriptions** before finishing!
 
 ---
 
-## Reference Library (Load on Demand)
+## Reference Manuals (Load on Demand)
 
-- `references/ten-commandments-of-slop.md` — Deep aesthetic & copywriting laws of AI Slop
-- `references/anatomy-of-a-slop-landing.md` — Wireframes and section-by-section blueprint
-- `references/eras-of-ai-slop.md` — Field guide to 2023 Bootstrap, 2024 v0 Nebula, 2025 Bento, 2026 Claude Editorial & Cyber-Acid
-- `references/tailwind-slop-cheatsheet.md` — Ready-to-paste Tailwind CSS recipes for glass, orbs, beams, and gradient text
+- `references/ten-commandments-of-slop.md` — Aesthetic & rhetorical laws of deliberate AI Slop
+- `references/anatomy-of-a-slop-landing.md` — 12-section ASCII wireframe & marketing page spec
+- `references/anatomy-of-a-slop-dashboard.md` — SaaS admin, KPI, Olivia Martin & hockey-stick spline spec
+- `references/eras-of-ai-slop.md` — Taxonomy of all 7 AI Slop Eras (`2024-nebula` through `2026-editorial` & `web3-hype`)
+- `references/tailwind-slop-cheatsheet.md` — Copy-paste Tailwind recipes for glass, orbs, pills, and glow CTAs

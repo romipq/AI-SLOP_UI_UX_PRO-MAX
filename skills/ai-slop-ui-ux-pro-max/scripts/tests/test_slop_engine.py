@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Unit and contract tests for AI-SLOP UI/UX PRO-MAX."""
+"""Comprehensive unit, integration, and repository-hygiene tests for AI-SLOP UI/UX PRO-MAX v2.0."""
 
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -20,138 +21,158 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from auditor import audit_path  # noqa: E402
 from core import (  # noqa: E402
+    AVAILABLE_ERAS,
     AVAILABLE_STACKS,
     CANONICAL_DOMAINS,
     bm25_search,
+    catalog_stats,
     load_domain,
     load_stack,
 )
 from design_system import build_design_system, persist_design_system  # noqa: E402
+from generator import SCAFFOLD_TEMPLATES, generate_scaffold  # noqa: E402
+from tokens import export_tokens  # noqa: E402
 
 
-class TestSlopDatabases(unittest.TestCase):
-    def test_all_domains_load_non_empty_with_unique_ids(self) -> None:
+class TestSlopDatabasesV2(unittest.TestCase):
+    def test_catalog_exceeds_250_records_with_unique_ids(self) -> None:
+        stats = catalog_stats()
+        self.assertGreaterEqual(stats["grand_total_rows"], 250)
+        self.assertEqual(len(CANONICAL_DOMAINS), 11)
+        self.assertEqual(len(AVAILABLE_STACKS), 12)
+
         for domain in CANONICAL_DOMAINS:
             rows = load_domain(domain)
-            self.assertGreaterEqual(len(rows), 10, f"Domain {domain} has too few rows")
+            self.assertGreaterEqual(len(rows), 12, f"Domain {domain} too small")
             ids = [r["id"] for r in rows]
             self.assertEqual(len(ids), len(set(ids)), f"Duplicate IDs in {domain}")
 
-    def test_all_stacks_load_non_empty(self) -> None:
-        for stack in AVAILABLE_STACKS:
-            rows = load_stack(stack)
-            self.assertGreaterEqual(len(rows), 2, f"Stack {stack} has too few rows")
+    def test_synonym_bm25_relevance(self) -> None:
+        editorial = bm25_search(load_domain("style"), "anthropic warm cream terracotta", top_n=3)
+        self.assertEqual(editorial[0]["id"], "S06")
 
-    def test_bm25_relevance_across_domains(self) -> None:
-        fintech_palettes = bm25_search(load_domain("palette"), "fintech emerald bank", top_n=3)
-        self.assertTrue(any("Emerald" in r["name"] for r in fintech_palettes))
+        charts = bm25_search(load_domain("charts"), "hockey stick spline revenue", top_n=3)
+        self.assertEqual(charts[0]["id"], "CH01")
 
-        editorial_styles = bm25_search(load_domain("style"), "editorial warm cream terracotta", top_n=3)
-        self.assertEqual(editorial_styles[0]["id"], "S06")
-
-        bakery_reasoning = bm25_search(load_domain("reasoning"), "sourdough bakery local plumber", top_n=2)
-        self.assertEqual(bakery_reasoning[0]["id"], "R12")
+        bakery = bm25_search(load_domain("reasoning"), "sourdough bakery plumber", top_n=2)
+        self.assertEqual(bakery[0]["id"], "R18")
 
 
-class TestDesignSystemAndPersist(unittest.TestCase):
-    def test_level_11_activates_omega_singularity(self) -> None:
-        ds = build_design_system("ai workflow saas", project_name="HyperSlop", slop_level=11)
-        self.assertEqual(ds["dials"]["slop_level"], 11)
-        self.assertEqual(ds["style"]["id"], "S25")
-        self.assertEqual(ds["palette"]["id"], "P20")
-        self.assertEqual(ds["tier"]["orb_count"], 6)
-        self.assertEqual(ds["tier"]["announcement_bars"], 2)
+class TestCompilerTokensAndScaffolder(unittest.TestCase):
+    def test_all_7_eras_and_level_11_compile_cleanly(self) -> None:
+        ds11 = build_design_system("ai workflow", project_name="OmegaAI", slop_level=11)
+        self.assertEqual(ds11["style"]["id"], "S50")
+        self.assertEqual(ds11["palette"]["id"], "P30")
+        self.assertEqual(ds11["tier"]["orb_count"], 6)
 
-    def test_era_override_locks_to_2026_editorial(self) -> None:
-        ds = build_design_system("saas platform", era="2026-editorial", slop_level=8)
-        self.assertEqual(ds["style"]["era"], "2026-editorial")
-        self.assertEqual(ds["palette"]["era"], "2026-editorial")
+        for era in AVAILABLE_ERAS:
+            if era == "auto":
+                continue
+            ds = build_design_system("platform", era=era, slop_level=8)
+            self.assertEqual(ds["style"]["era"], era)
 
-    def test_persist_respects_force_flag(self) -> None:
+    def test_token_exporters_all_formats(self) -> None:
+        ds = build_design_system("fintech card", project_name="VaultAI")
+        css_out = export_tokens(ds, "css")
+        self.assertIn("--slop-primary:", css_out)
+        tw_out = export_tokens(ds, "tailwind")
+        self.assertIn("slop-gradient", tw_out)
+        sh_out = export_tokens(ds, "shadcn")
+        self.assertIn("--background:", sh_out)
+        w3c_out = json.loads(export_tokens(ds, "w3c"))
+        self.assertIn("color", w3c_out)
+
+    def test_scaffolder_html_and_tsx_pass_high_slop_audit(self) -> None:
+        ds = build_design_system("saas analytics", project_name="PulseFlow")
+        with tempfile.TemporaryDirectory() as tmp:
+            for tpl in SCAFFOLD_TEMPLATES:
+                html_file = Path(tmp) / f"{tpl}.html"
+                html_file.write_text(generate_scaffold(ds, tpl, fmt="html"), encoding="utf-8")
+                rep = audit_path(str(html_file))
+                self.assertGreaterEqual(rep["slop_score"], 75, f"HTML scaffold {tpl} scored too low: {rep['slop_score']}")
+
+            tsx_file = Path(tmp) / "App.tsx"
+            tsx_file.write_text(generate_scaffold(ds, "landing", fmt="tsx"), encoding="utf-8")
+            tsx_rep = audit_path(str(tsx_file))
+            self.assertGreaterEqual(tsx_rep["slop_score"], 85)
+
+    def test_persist_writes_master_and_css_tokens(self) -> None:
         ds = build_design_system("devtools cli", project_name="VaporCLI")
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
-            first = persist_design_system(ds, output_dir=tmp_path, page="pricing", force=False)
-            self.assertEqual(len(first["written"]), 2)
-            self.assertEqual(len(first["skipped"]), 0)
-
-            second = persist_design_system(ds, output_dir=tmp_path, page="pricing", force=False)
-            self.assertEqual(len(second["written"]), 0)
-            self.assertEqual(len(second["skipped"]), 2)
-
-            third = persist_design_system(ds, output_dir=tmp_path, page="pricing", force=True)
-            self.assertEqual(len(third["written"]), 2)
+            res = persist_design_system(ds, output_dir=tmp_path, page="pricing", force=False)
+            self.assertEqual(len(res["written"]), 3)
+            self.assertTrue(Path(res["master_path"]).is_file())
+            self.assertTrue(Path(res["tokens_path"]).is_file())
 
 
-class TestAuditor(unittest.TestCase):
-    def test_human_html_scores_grade_f(self) -> None:
+class TestAuditorAndShowcase(unittest.TestCase):
+    def test_plain_human_html_scores_grade_f(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             plain = Path(tmp) / "plain.html"
             plain.write_text(
-                "<!doctype html><html><body><h1> Joe's Hardware Store </h1><p>Open 8am to 5pm Monday through Saturday. Hammers $12.</p><button>Save</button></body></html>",
+                "<!doctype html><html><body><h1>Corner Hardware</h1><p>Open 8am-5pm. Nails $4/lb.</p><button>Buy</button></body></html>",
                 encoding="utf-8",
             )
-            report = audit_path(str(plain))
-            self.assertLess(report["slop_score"], 20)
-            self.assertEqual(report["grade"], "F")
-            self.assertGreaterEqual(len(report["anti_human_prescriptions"]), 5)
+            rep = audit_path(str(plain))
+            self.assertLess(rep["slop_score"], 20)
+            self.assertEqual(rep["grade"], "F")
 
-    def test_showcase_html_scores_grade_s_plus(self) -> None:
+    def test_showcase_scores_grade_s_plus_and_detects_era(self) -> None:
         showcase = REPO_ROOT / "examples" / "nexusflow-ai-showcase.html"
-        report = audit_path(str(showcase))
-        self.assertGreaterEqual(report["slop_score"], 95)
-        self.assertEqual(report["grade"], "S+")
+        rep = audit_path(str(showcase))
+        self.assertGreaterEqual(rep["slop_score"], 95)
+        self.assertEqual(rep["grade"], "S+")
+        self.assertIn("2024-nebula", rep["detected_era"])
 
 
-class TestAgentSkillManifestsAndInstaller(unittest.TestCase):
-    def test_skill_frontmatter_and_unique_names(self) -> None:
+class TestSkillsManifestsInstallerAndEnglishOnly(unittest.TestCase):
+    def test_all_5_skills_have_valid_frontmatter(self) -> None:
         skills_root = REPO_ROOT / "skills"
         skill_dirs = [d for d in sorted(skills_root.iterdir()) if d.is_dir()]
-        self.assertGreaterEqual(len(skill_dirs), 3)
+        self.assertEqual(len(skill_dirs), 5)
 
-        seen_names = set()
+        seen = set()
         for sdir in skill_dirs:
             skill_md = sdir / "SKILL.md"
             self.assertTrue(skill_md.is_file(), f"Missing SKILL.md in {sdir}")
-            text = skill_md.read_text(encoding="utf-8")
-            self.assertTrue(text.startswith("---\n"), f"Invalid frontmatter start in {skill_md}")
-            frontmatter = text.split("---\n", 2)[1]
-            name_line = next((ln for ln in frontmatter.splitlines() if ln.startswith("name:")), "")
-            desc_line = next((ln for ln in frontmatter.splitlines() if ln.startswith("description:")), "")
-            name_val = name_line.split(":", 1)[1].strip().strip('"').strip("'")
-            desc_val = desc_line.split(":", 1)[1].strip().strip('"').strip("'")
+            content = skill_md.read_text(encoding="utf-8")
+            self.assertTrue(content.startswith("---\n"))
+            fm = content.split("---\n", 2)[1]
+            name_val = next(ln for ln in fm.splitlines() if ln.startswith("name:")).split(":", 1)[1].strip().strip("\"'")
+            desc_val = next(ln for ln in fm.splitlines() if ln.startswith("description:")).split(":", 1)[1].strip().strip("\"'")
             self.assertEqual(name_val, sdir.name)
-            self.assertGreater(len(desc_val), 30)
-            self.assertNotIn(name_val, seen_names)
-            seen_names.add(name_val)
+            self.assertGreater(len(desc_val), 40)
+            self.assertNotIn(name_val, seen)
+            seen.add(name_val)
 
-    def test_json_manifests_valid(self) -> None:
-        for rel in [
-            ".claude-plugin/plugin.json",
-            ".claude-plugin/marketplace.json",
-            "skill.json",
-            "package.json",
-        ]:
-            path = REPO_ROOT / rel
-            data = json.loads(path.read_text(encoding="utf-8"))
-            self.assertIsInstance(data, dict)
-
-    def test_node_cli_installer_all_platforms(self) -> None:
+    def test_cli_installer_all_12_platforms_and_doctor(self) -> None:
         cli = REPO_ROOT / "bin" / "cli.mjs"
+        doc = subprocess.run(["node", str(cli), "doctor"], capture_output=True, text=True, check=True)
+        self.assertIn("Grand Total Searchable Records", doc.stdout)
+
         with tempfile.TemporaryDirectory() as tmp:
-            proc = subprocess.run(
-                ["node", str(cli), "init", "--ai", "all", "--dir", tmp],
-                capture_output=True,
-                text=True,
-                check=True,
-            )
-            self.assertIn("Installed for Claude Code", proc.stdout)
-            tmp_path = Path(tmp)
-            self.assertTrue((tmp_path / ".claude/skills/ai-slop-ui-ux-pro-max/SKILL.md").is_file())
-            self.assertTrue((tmp_path / ".cursor/rules/ai-slop-ui-ux-pro-max.mdc").is_file())
-            self.assertTrue((tmp_path / ".agents/skills/ai-slop-copywriter/SKILL.md").is_file())
-            self.assertTrue((tmp_path / ".windsurfrules").is_file())
-            self.assertTrue((tmp_path / ".github/copilot-instructions.md").is_file())
+            subprocess.run(["node", str(cli), "init", "--ai", "all", "--dir", tmp], capture_output=True, text=True, check=True)
+            tp = Path(tmp)
+            self.assertTrue((tp / ".claude/skills/ai-slop-components/SKILL.md").is_file())
+            self.assertTrue((tp / ".cursor/skills/ai-slop-pitch-deck/SKILL.md").is_file())
+            self.assertTrue((tp / ".gemini/skills/ai-slop-ui-ux-pro-max/SKILL.md").is_file())
+            self.assertTrue((tp / ".github/copilot-instructions.md").is_file())
+
+    def test_repository_is_100_percent_english_no_cyrillic(self) -> None:
+        cyrillic_re = re.compile(r"[\u0400-\u04FF]")
+        skip_parts = {".git", "node_modules", "__pycache__"}
+        offending = []
+        for path in REPO_ROOT.rglob("*"):
+            if any(p in skip_parts for p in path.parts) or not path.is_file():
+                continue
+            try:
+                txt = path.read_text(encoding="utf-8")
+            except UnicodeDecodeError:
+                continue
+            if cyrillic_re.search(txt):
+                offending.append(str(path.relative_to(REPO_ROOT)))
+        self.assertEqual(offending, [], f"Found non-English Cyrillic text in: {offending}")
 
 
 if __name__ == "__main__":

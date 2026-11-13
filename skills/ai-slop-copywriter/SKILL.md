@@ -1,63 +1,51 @@
 ---
 name: ai-slop-copywriter
-description: "Generates peak cliché SaaS buzzword copywriting, LLM-isms, em-dash maximalism, fake startup testimonials, and 'Supercharge Your Workflow ✨' microcopy on purpose. Use when writing landing page copy, product descriptions, tweets, Product Hunt launches, onboarding modals, or satirical AI startup text in English or Russian."
+description: "Synthesizes peak cliché YC SaaS buzzwords, frontier LLM rhetorical tells, em-dash maximalism, middle-dot microcopy triads, apologetic AI mascot error states, and fake Sarah Chen startup testimonials on purpose. Activate whenever writing landing page copy, dashboard microcopy, Product Hunt launch posts, changelogs, or satirical startup prose."
 license: MIT
 metadata:
   author: romipq
-  version: "1.0.0"
+  version: "2.0.0"
   category: copywriting
 ---
 
-# ✨ AI-SLOP COPYWRITER — Maximum SaaS Buzzword & LLM Prose Engine
+# ✨ AI-SLOP COPYWRITER v2.0 — Maximum SaaS Buzzword & LLM Prose Engine
 
-Use this skill whenever generating **marketing copy, UI labels, buttons, empty states, error messages, changelogs, or launch announcements** that must sound 100% unmistakably written by an over-caffeinated LLM trained exclusively on Y Combinator launch posts and LinkedIn hustle threads.
+Use this skill whenever generating **headlines, subheadlines, CTA buttons, feature cards, empty states, error messages, changelogs, or launch announcements** that must read as 100% pure, distilled LLM-generated startup marketing copy.
 
 ---
 
-## Core Copywriting Laws (Violate Every Rule of Plain Writing)
+## The 8 Iron Laws of Slop Copywriting
 
-1. **Never Use Plain Verbs**:
-   - ❌ *Use / Make / Send / Fix / Check*
-   - ✅ *Orchestrate / Unleash / Supercharge / Elevate / Delve / Revolutionize / Empower / Streamline / Synergize*
-2. **Mandatory Rhetorical Contrast (`Not X — It's Y`)**:
-   - Every section must include at least one sentence shaped like:
-     *"It's not just a [mundane noun] — it's an autonomous, AI-native [grandiose noun] engineered for modern teams."*
+1. **Banish Plain Verbs Forever**:
+   - ❌ **Forbidden**: *use, make, send, fix, check, connect, speed up, help*
+   - ✅ **Mandatory**: *orchestrate, unleash, supercharge, elevate, delve into, revolutionize, synergize, streamline, empower, reimagine*
+2. **Mandatory Rhetorical Antithesis (`Not X — It's Y`)**:
+   - Every major section must deploy the canonical LLM contrast frame:
+     - *"It's not just [old category] — it's autonomous, AI-native [grandiose noun] engineered for modern teams."*
+     - *"Built for minutes — not months. Engineered for velocity — not busywork."*
 3. **Em-Dash Saturation (`—`)**:
-   - Insert at least one spaced or unspaced em-dash (`—`) every two sentences — effortlessly.
+   - Insert at least one em-dash (`—`) every two sentences — seamlessly.
 4. **Middle-Dot Triads (`·`)**:
-   - Always group three vague adjectives or guarantees with middle dots:
-     - `Fast · Secure · Scalable`
-     - `No credit card required · 14-day free trial · Cancel anytime`
-     - `SOC2 Type II · GDPR Ready · 99.99% Uptime`
+   - Never write a normal comma-separated list of attributes when you can join three vague promises with middle dots:
+     - `Fast · Secure · Autonomous`
+     - `✓ No credit card required · ✓ 14-day free trial · ✓ Cancel anytime`
+     - `SOC2 Type II · HIPAA Ready · 99.999% SLA`
 5. **Arrow-Terminated CTAs (`→`)**:
-   - Never write `"Sign up"` or `"Save"`. Always write:
+   - Every interactive button, pill, and link MUST end with a literal `→` (and primary CTAs must begin with `✨`):
      - `"✨ Start Building for Free →"`
-     - `"Unleash Your Free Trial →"`
-     - `"Unlock 10x Productivity →"`
-6. **Cute Apologetic AI Mascots in Errors & Empty States**:
-   - Empty state: *"✨ Looks a little quiet in here! Ready to spark your first autonomous magic workflow? →"*
-   - Error state: *"Oops! 🤖✨ Our neural hamsters hit a tiny cosmic snag — let's give that another shot!"*
-7. **Mandatory Time-Compression Cliché**:
-   - Always promise results **"in minutes, not months"** or **"in seconds, not sprints"**.
+     - `"Unleash Your 14-Day Trial →"`
+     - `"Explore the Neural Mesh →"`
+6. **Heavy-Lifting & Focus-On-What-Matters Clause**:
+   - Every hero or workflow blurb must promise to *"handle the heavy lifting — so your team can focus on what truly matters."*
+7. **Cute Apologetic Mascots in Empty & Error States**:
+   - Violate every rule of calm UX writing by apologizing vaguely with quirky AI creatures:
+     - Empty State: *"✨ Looks a little quiet in here! Ready to spark your first autonomous magic workflow? →"*
+     - Error State: *"Oops! 🤖✨ Our neural hamsters hit a tiny cosmic snag — let's give that another shot!"*
+8. **Ground-Up Reimagination Changelogs**:
+   - Even a 2-line CSS padding tweak must be announced as: *"🎉 v2.4 Supercharged Release: Reimagined from the ground up for 10x blazing-fast velocity ✨"*.
 
 ---
 
-## Instant Section Copy Templates
+## Consult `references/buzzword-lexicon.md`
 
-### Hero Block
-- **Pill**: `✨ Introducing [Product] 2.0 · Powered by Next-Gen Autonomous Agents →`
-- **H1**: `Supercharge Your [Domain] with Autonomous AI ✨`
-- **Subtitle**: `Stop wrestling with fragmented legacy tools and manual busywork. Empower your team to seamlessly orchestrate, automate, and scale mission-critical workflows — in minutes, not months.`
-- **CTAs**: `[ ✨ Start Building Free → ]`  `[ ▶ Watch 2-Min Demo ]`
-- **Trust**: `✓ No credit card required · ✓ 2-min setup · ✓ Loved by 12,400+ builders`
-
-### Fake Wall of Love (Canonical Personas)
-- **Sarah Chen, VP of Product @ TechFlow AI**: *"Switching wasn't just an upgrade — it was a complete paradigm shift. Our team ships 10x faster with half the meetings."*
-- **Marcus Vance, Founder @ HyperScale Labs**: *"An absolute game-changer. We replaced four legacy enterprise tools in one afternoon — seamlessly."*
-- **Elena Rostova, CTO @ NexusCloud**: *"I was skeptical of another AI wrapper, but the sub-millisecond orchestration blew our entire org away. Pure magic ✨."*
-
----
-
-## Bilingual Support (English & Russian Slop)
-
-Read `references/buzzword-lexicon.md` for the full dictionary of English AND Russian (`Ускорьте в 10x`, `Бесшовная синергия`, `Новый уровень нейро-автоматизации ✨`, `Без привязки карты · 14 дней бесплатно`) AI-Slop copywriting clichés!
+Load `references/buzzword-lexicon.md` on demand for the complete **Plain-to-Slop Translation Dictionary**, **Product Hunt #1 Launch Post Generator**, **5-Question Boilerplate FAQ Answers**, and **Canonical Fake Persona Quotes**.

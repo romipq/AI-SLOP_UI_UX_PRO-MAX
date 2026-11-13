@@ -1,28 +1,53 @@
-# Bilingual SaaS & LLM Slop Lexicon (EN / RU) ✨
+# The Complete SaaS & LLM Slop Copywriting Lexicon ✨
 
-## 1. Sacred Power Verbs
+## 1. Plain-English → Certified AI-Slop Translation Table
 
-| Plain Human Word (FORBIDDEN ❌) | Certified English AI-Slop ✅ | Certified Russian AI-Slop (Максимальный ИИ-Слоп) ✅ |
-|---|---|---|
-| Make / Build | Craft, Architect, Unleash, Spin up | Создавайте магию, Разверните в 1 клик, Запустите |
-| Improve | Supercharge, Elevate, Revolutionize, 10x | Прокачайте в 10x, Выведите на новый уровень, Трансформируйте |
-| Connect | Seamlessly orchestrate, Synergize | Бесшовно интегрируйте, Объедините в единую экосистему |
-| Look into | Delve into, Uncover actionable insights | Погрузитесь в глубинную аналитику, Раскройте потенциал |
-| Automate | Empower autonomous agents to handle heavy lifting | Делегируйте рутину автономным ИИ-агентам нового поколения |
-| Fast | Blazing-fast, Sub-millisecond, Warp-speed | Молниеносно, За считанные секунды — а не месяцы |
+| Plain Human Phrase (FORBIDDEN ❌) | Certified AI-Slop Replacement ✅ |
+|---|---|
+| Save changes | ✨ Lock In Magic Changes → |
+| Sign up | ✨ Start Building for Free → |
+| Fast performance | Blazing-fast sub-millisecond edge execution ⚡ |
+| Works with Slack and GitHub | Seamlessly orchestrates 250+ modern stack integrations in 1 click 🔌 |
+| Encrypts user passwords | Bank-grade zero-trust AES-256 & SOC2 Type II security out of the box 🔒 |
+| Dashboard with charts | Real-time predictive revenue intelligence engine 📈 |
+| Cron job / background script | Self-healing autonomous multi-agent swarm 🧠 |
+| No items found | ✨ Looks quiet in here! Unleash your first magic workflow → |
+| Invalid input / 500 error | Oops! 🤖✨ Our neural hamsters hit a tiny cosmic snag — retry magic → |
+| Costs $29 per month | Predictable pricing that scales effortlessly with your ambition ($29/mo · Save 20% 🔥) |
 
 ---
 
-## 2. Canonical Russian AI-Slop Formulas (Русский SaaS-Слоп Пак)
+## 2. Ready-to-Drop Product Hunt #1 Launch Post Template
 
-- **Eyebrow Pill**: `✨ Встречайте [Продукт] 2.0 — Уже в открытой бете →`
-- **Hero H1**: `Ускорьте ваш <gradient>воркфлоу в 10 раз</gradient> с помощью ИИ нового поколения ✨`
-- **Alternative H1**: `Это не просто аналитика — это <gradient>автономный интеллект</gradient> для вашего бизнеса`
-- **Subheadline**: `Забудьте о хаосе в таблицах и рутинных задачах. Позвольте нашему ИИ-копилоту бесшовно автоматизировать процессы — чтобы вы могли сфокусироваться на том, что действительно важно.`
-- **Primary CTA**: `✨ Начать бесплатно →` / `Попробовать магию ИИ →`
-- **Secondary CTA**: `▶ Смотреть демо (2 мин)`
-- **Trust Microcopy**: `Без привязки карты · 14 дней бесплатно · Отмена в 1 клик`
-- **Pricing Badge**: `✨ САМЫЙ ПОПУЛЯРНЫЙ 🔥` + переключатель `Годовая оплата (Выгода 20% 🔥)`
-- **Testimonial (Анна Чен, VP of Product @ TechFlow)**: *«Переход на эту платформу стал настоящим геймчейнджером — мы сократили время релиза в 10 раз буквально за один вечер. Чистая магия ✨!»*
-- **Floating Widget**: `✨ Спросить ИИ-ассистента`
-- **Footer**: `Создано с 💜 и ✨ для современных команд · ● Все системы работают штатно (99.99%)`
+```markdown
+Hey Hunters! 👋✨
+
+Today, we're beyond thrilled to unveil **[Product] 2.0** — the all-in-one, AI-native workspace engineered to **supercharge your [domain] 10x faster**.
+
+**😩 The Problem (The Old Manual Way):**
+Modern teams waste 40+ hours every week wrestling with fragmented spreadsheets, brittle legacy tools, and soul-crushing busywork.
+
+**🚀 The Solution (Autonomous Intelligence):**
+[Product] 2.0 isn't just another tool — it's a complete paradigm shift. Our self-healing multi-agent mesh handles the heavy lifting seamlessly, so you can focus on what truly matters: shipping.
+
+- ⚡ **Blazing-Fast Edge Velocity** — Go from raw idea to production in minutes, not months.
+- 🧠 **Zero-Config Neural Insights** — Uncover hidden growth levers with one click.
+- 🔒 **Enterprise SOC2 Ready** — Zero data retention by default.
+
+🎁 **Exclusive PH Deal:** Use code `HUNTER20` to lock in **20% OFF Pro forever 🔥** — no credit card required!
+```
+
+---
+
+## 3. Canonical Boilerplate 5-Item FAQ Pack
+
+1. **Is there really a free-forever plan?**
+   *Absolutely! ✨ Our Starter plan gives you 100 magic credits every month — no credit card required, ever.*
+2. **Can I cancel or switch plans anytime?**
+   *100%. Upgrade, downgrade, or cancel in one click from your dashboard — zero lock-in, zero headaches.*
+3. **Do you train foundation models on our private company data?**
+   *Never. 🔒 Your data is protected by bank-grade AES-256 encryption, strict zero-retention agreements, and SOC2 Type II controls.*
+4. **How long does setup take?**
+   *Most high-velocity teams go from sign-up to full autonomous orchestration in under 120 seconds — minutes, not months!*
+5. **Does it integrate with our existing modern stack?**
+   *Seamlessly! Connect Slack, Linear, Notion, GitHub, HubSpot, and 250+ tools in a single click.*
